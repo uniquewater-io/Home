@@ -668,119 +668,33 @@ section:not(.hero) {
     line-height:1.8;
 }
 
-/* ================= PRODUCTS ================= */
-
-.products {
-    background:
-        radial-gradient(circle at 5% 20%,#e9dafa80,transparent 25%),
-        linear-gradient(180deg,#fbf9fe,#f4edf9);
-}
-
-.product-grid {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.product-card {
-    position:relative;
-    overflow:hidden;
-    padding:0 0 27px;
-    border:1px solid #eee6f5;
-    border-radius:19px;
-    background:white;
-    box-shadow:0 8px 30px #32145f09;
-    transition:transform .4s,box-shadow .4s;
-}
-
-.product-card:hover {
-    transform:translateY(-12px);
-    box-shadow:0 28px 60px #32145f20;
-}
-
-.tag {
-    position:absolute;
-    z-index:2;
-    top:15px;
-    left:15px;
-    padding:8px 12px;
-    border-radius:30px;
-    background:#32145fdd;
-    color:white;
-    font-size:9px;
-    font-weight:900;
-    letter-spacing:1px;
-}
+/* PRODUCT CARDS - NO IMAGES */
 
 .product-image {
-    height:210px;
-    overflow:hidden;
-    background:#eee6f5;
-}
-
-.product-image img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:transform .7s;
-}
-
-.product-card:hover .product-image img {
-    transform:scale(1.1);
+    display: none;
 }
 
 .product-icon {
-    width:48px;
-    height:48px;
-    margin:-24px 0 17px 24px;
-    position:relative;
-    display:grid;
-    place-items:center;
-    border:4px solid white;
-    border-radius:14px;
-    background:linear-gradient(135deg,var(--plum),var(--purple));
+    width: 58px;
+    height: 58px;
+    margin: 24px 0 17px 24px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg,var(--plum),var(--purple));
+    box-shadow: 0 8px 22px #7541b835;
 }
 
 .product-icon svg {
-    width:25px;
-    fill:none;
-    stroke:white;
-    stroke-width:1.7;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-}
-
-.product-card h3 {
-    padding:0 24px;
-    color:var(--deep);
-    font-family:'Manrope',sans-serif;
-    font-size:18px;
-    font-weight:900;
-}
-
-.product-card p {
-    min-height:78px;
-    padding:12px 24px;
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.8;
-}
-
-.product-card>a {
-    display:inline-flex;
-    gap:10px;
-    margin:8px 24px 0;
-    color:var(--purple);
-    font-size:11px;
-    font-weight:900;
-}
-
-.product-card>a span {
-    transition:transform .3s;
-}
-
-.product-card>a:hover span {
-    transform:translateX(5px);
+    width: 29px;
+    height: 29px;
+    fill: none;
+    stroke: white;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* ================= ABOUT ================= */
@@ -1740,7 +1654,7 @@ footer {
         <article class="product-card reveal">
             <span class="tag">RO SYSTEMS</span>
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=900&q=85" alt="Water purification laboratory equipment" loading="lazy">
+                
             </div>
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M16 3C12 10 7 14 7 20a9 9 0 0 0 18 0c0-6-5-10-9-17Z"/><path d="M12 21c1 2 2 3 5 3"/></svg>
@@ -1753,7 +1667,7 @@ footer {
         <article class="product-card reveal">
             <span class="tag">FILTRATION</span>
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=85" alt="Industrial filtration equipment" loading="lazy">
+                
             </div>
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M8 4h16l-2 24H10L8 4Z"/><path d="M9 10h14M10 16h12M10 22h12"/></svg>
@@ -1766,7 +1680,7 @@ footer {
         <article class="product-card reveal">
             <span class="tag">INDUSTRIAL</span>
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=900&q=85" alt="Industrial water treatment plant" loading="lazy">
+                
             </div>
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M5 26V12l7 4V9l7 4V6h8v20H5Z"/><path d="M10 21h3m4 0h3m4 0h1"/></svg>
@@ -1779,7 +1693,7 @@ footer {
         <article class="product-card reveal">
             <span class="tag">PRE-TREATMENT</span>
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=85" alt="Stainless steel industrial vessels" loading="lazy">
+                
             </div>
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M5 8h22M8 8v16h16V8M12 13h8M12 18h8"/></svg>
@@ -1792,7 +1706,7 @@ footer {
         <article class="product-card reveal">
             <span class="tag">CONSUMABLES</span>
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?auto=format&fit=crop&w=900&q=85" alt="Water treatment media and granules" loading="lazy">
+                
             </div>
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M16 3 5 9v14l11 6 11-6V9L16 3Z"/><path d="m5 9 11 6 11-6M16 15v14M11 6l11 6"/></svg>
@@ -1805,7 +1719,7 @@ footer {
         <article class="product-card reveal">
             <span class="tag">MAINTENANCE</span>
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=85" alt="Industrial pump and mechanical equipment" loading="lazy">
+                
             </div>
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M19 6a7 7 0 0 0-9 9L4 21l7 7 6-6a7 7 0 0 0 9-9l-5 5-5-5 3-7Z"/></svg>

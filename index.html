@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -668,33 +667,122 @@ section:not(.hero) {
     line-height:1.8;
 }
 
-/* PRODUCT CARDS - NO IMAGES */
+/* ================= PRODUCTS - NO IMAGES ================= */
 
-.product-image {
-    display: none;
+.products {
+    background:#fff;
 }
 
+.product-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.product-card {
+    position:relative;
+    overflow:hidden;
+    min-width:0;
+    padding:0 0 25px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:white;
+    box-shadow:0 8px 28px #32145f08;
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+.product-card:hover {
+    transform:translateY(-8px);
+    border-color:#d6c0ed;
+    box-shadow:0 20px 45px #32145f18;
+}
+
+/* Category label */
+
+.product-card .tag {
+    position:absolute;
+    top:20px;
+    right:20px;
+    z-index:2;
+    padding:7px 11px;
+    border:1px solid #e9ddf6;
+    border-radius:30px;
+    background:#f7f1fc;
+    color:var(--purple);
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+/* SVG icon */
+
 .product-icon {
-    width: 58px;
-    height: 58px;
-    margin: 24px 0 17px 24px;
-    position: relative;
-    display: grid;
-    place-items: center;
-    border: 0;
-    border-radius: 16px;
-    background: linear-gradient(135deg,var(--plum),var(--purple));
-    box-shadow: 0 8px 22px #7541b835;
+    width:58px;
+    height:58px;
+    margin:24px 0 22px 24px;
+    position:relative;
+    display:grid;
+    place-items:center;
+    border:0;
+    border-radius:16px;
+    background:linear-gradient(135deg,var(--plum),var(--purple));
+    box-shadow:0 8px 22px #7541b835;
+    transition:transform .35s,box-shadow .35s;
+}
+
+.product-card:hover .product-icon {
+    transform:translateY(-4px) rotate(-5deg);
+    box-shadow:0 12px 28px #7541b855;
 }
 
 .product-icon svg {
-    width: 29px;
-    height: 29px;
-    fill: none;
-    stroke: white;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    width:29px;
+    height:29px;
+    fill:none;
+    stroke:white;
+    stroke-width:1.7;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.product-card h3 {
+    padding:0 24px;
+    margin-bottom:12px;
+    color:var(--deep);
+    font-family:'Manrope',sans-serif;
+    font-size:17px;
+    font-weight:900;
+    line-height:1.45;
+}
+
+.product-card p {
+    min-height:78px;
+    padding:0 24px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.85;
+}
+
+.product-card>a {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin:16px 24px 0;
+    color:var(--purple);
+    font-size:11px;
+    font-weight:900;
+    transition:gap .3s;
+}
+
+.product-card>a:hover {
+    gap:13px;
+}
+
+.product-card>a span {
+    font-size:16px;
 }
 
 /* ================= ABOUT ================= */
@@ -1368,27 +1456,30 @@ footer {
         gap:15px;
     }
 
-    .product-image {
-        height:165px;
-    }
-
     .product-card h3 {
         padding:0 15px;
         font-size:15px;
     }
 
     .product-card p {
-        padding:10px 15px;
+        padding:0 15px;
         font-size:11px;
     }
 
     .product-card>a {
-        margin:5px 15px 0;
+        margin:16px 15px 0;
         font-size:10px;
     }
 
     .product-icon {
         margin-left:15px;
+    }
+
+    .product-card .tag {
+        top:15px;
+        right:12px;
+        font-size:8px;
+        padding:6px 8px;
     }
 
     .about-grid {
@@ -1437,10 +1528,6 @@ footer {
 @media(max-width:430px) {
     .product-grid {
         grid-template-columns:1fr;
-    }
-
-    .product-image {
-        height:205px;
     }
 
     .process-grid {
@@ -1653,12 +1740,11 @@ footer {
 
         <article class="product-card reveal">
             <span class="tag">RO SYSTEMS</span>
-            <div class="product-image">
-                
-            </div>
+
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M16 3C12 10 7 14 7 20a9 9 0 0 0 18 0c0-6-5-10-9-17Z"/><path d="M12 21c1 2 2 3 5 3"/></svg>
             </div>
+
             <h3>RO Spares & Components</h3>
             <p>Replacement and maintenance components for reverse osmosis plants, skids and water purification systems.</p>
             <a href="#contact">Enquire about RO spares <span>→</span></a>
@@ -1666,12 +1752,11 @@ footer {
 
         <article class="product-card reveal">
             <span class="tag">FILTRATION</span>
-            <div class="product-image">
-                
-            </div>
+
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M8 4h16l-2 24H10L8 4Z"/><path d="M9 10h14M10 16h12M10 22h12"/></svg>
             </div>
+
             <h3>Filter Cartridges</h3>
             <p>Cartridge filter options for sediment reduction, pre-filtration and process water filtration requirements.</p>
             <a href="#contact">Enquire about cartridges <span>→</span></a>
@@ -1679,12 +1764,11 @@ footer {
 
         <article class="product-card reveal">
             <span class="tag">INDUSTRIAL</span>
-            <div class="product-image">
-                
-            </div>
+
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M5 26V12l7 4V9l7 4V6h8v20H5Z"/><path d="M10 21h3m4 0h3m4 0h1"/></svg>
             </div>
+
             <h3>Industrial Water Treatment Spares</h3>
             <p>Essential spares and accessories for industrial water treatment equipment and plant operations.</p>
             <a href="#contact">Enquire about industrial spares <span>→</span></a>
@@ -1692,12 +1776,11 @@ footer {
 
         <article class="product-card reveal">
             <span class="tag">PRE-TREATMENT</span>
-            <div class="product-image">
-                
-            </div>
+
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M5 8h22M8 8v16h16V8M12 13h8M12 18h8"/></svg>
             </div>
+
             <h3>Filter Housings & Vessels</h3>
             <p>Filter housings and related components to support pre-treatment, polishing and filtration assemblies.</p>
             <a href="#contact">Enquire about housings <span>→</span></a>
@@ -1705,12 +1788,11 @@ footer {
 
         <article class="product-card reveal">
             <span class="tag">CONSUMABLES</span>
-            <div class="product-image">
-                
-            </div>
+
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M16 3 5 9v14l11 6 11-6V9L16 3Z"/><path d="m5 9 11 6 11-6M16 15v14M11 6l11 6"/></svg>
             </div>
+
             <h3>Water Treatment Media</h3>
             <p>Selected filtration media and consumables for water conditioning and treatment applications.</p>
             <a href="#contact">Enquire about media <span>→</span></a>
@@ -1718,12 +1800,11 @@ footer {
 
         <article class="product-card reveal">
             <span class="tag">MAINTENANCE</span>
-            <div class="product-image">
-                
-            </div>
+
             <div class="product-icon">
                 <svg viewBox="0 0 32 32"><path d="M19 6a7 7 0 0 0-9 9L4 21l7 7 6-6a7 7 0 0 0 9-9l-5 5-5-5 3-7Z"/></svg>
             </div>
+
             <h3>Pumps, Valves & Accessories</h3>
             <p>Selected pump-related spares, valves, fittings and accessories used across water treatment installations.</p>
             <a href="#contact">Enquire about accessories <span>→</span></a>
@@ -2014,20 +2095,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // Progress animation is decorative only.
     loaderTimer = setInterval(function () {
 
-        loaderValue = Math.min(loaderValue + Math.floor(Math.random() * 9) + 4, 95);
+        loaderValue = Math.min(
+            loaderValue + Math.floor(Math.random() * 9) + 4,
+            95
+        );
 
         if (progress) progress.style.width = loaderValue + "%";
         if (percentage) percentage.textContent = loaderValue + "%";
 
     }, 100);
 
-    // Always reveal the page after the maximum wait.
     const loaderTimeout = setTimeout(hideLoader, 2500);
 
-    // Reveal as soon as the DOM is ready.
     requestAnimationFrame(function () {
         setTimeout(function () {
             clearTimeout(loaderTimeout);
@@ -2074,9 +2155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     navLinks.querySelectorAll("a").forEach(function (link) {
-
         link.addEventListener("click", closeMenu);
-
     });
 
     document.addEventListener("click", function (event) {
@@ -2108,8 +2187,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         header.classList.toggle("scrolled", scrollTop > 30);
 
-        /* Scroll progress */
-
         const scrollHeight =
             document.documentElement.scrollHeight - window.innerHeight;
 
@@ -2137,24 +2214,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if ("IntersectionObserver" in window) {
 
-        const revealObserver = new IntersectionObserver(function (entries, observer) {
+        const revealObserver = new IntersectionObserver(
+            function (entries, observer) {
 
-            entries.forEach(function (entry) {
+                entries.forEach(function (entry) {
 
-                if (entry.isIntersecting) {
+                    if (entry.isIntersecting) {
 
-                    entry.target.classList.add("visible");
+                        entry.target.classList.add("visible");
 
-                    observer.unobserve(entry.target);
+                        observer.unobserve(entry.target);
 
-                }
+                    }
 
-            });
+                });
 
-        }, {
-            threshold: 0.08,
-            rootMargin: "0px 0px -30px 0px"
-        });
+            },
+            {
+                threshold: 0.08,
+                rootMargin: "0px 0px -30px 0px"
+            }
+        );
 
         revealElements.forEach(function (element, index) {
 
@@ -2189,28 +2269,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if ("IntersectionObserver" in window) {
 
-        const activeObserver = new IntersectionObserver(function (entries) {
+        const activeObserver = new IntersectionObserver(
+            function (entries) {
 
-            entries.forEach(function (entry) {
+                entries.forEach(function (entry) {
 
-                if (entry.isIntersecting) {
+                    if (entry.isIntersecting) {
 
-                    sectionLinks.forEach(function (link) {
+                        sectionLinks.forEach(function (link) {
 
-                        link.classList.toggle(
-                            "active",
-                            link.getAttribute("href") === "#" + entry.target.id
-                        );
+                            link.classList.toggle(
+                                "active",
+                                link.getAttribute("href") ===
+                                "#" + entry.target.id
+                            );
 
-                    });
+                        });
 
-                }
+                    }
 
-            });
+                });
 
-        }, {
-            rootMargin: "-35% 0px -55% 0px"
-        });
+            },
+            {
+                rootMargin: "-35% 0px -55% 0px"
+            }
+        );
 
         sections.forEach(function (section) {
             activeObserver.observe(section);
@@ -2246,9 +2330,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             card.addEventListener("mouseleave", function () {
-
                 card.style.transform = "";
-
             });
 
         });
@@ -2292,30 +2374,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    /* =====================================
-       IMAGE LOADING POLISH
-    ===================================== */
-
-    document.querySelectorAll(".product-image img").forEach(function (img) {
-
-        function imageReady() {
-            img.classList.add("image-loaded");
-        }
-
-        if (img.complete) {
-            imageReady();
-        } else {
-            img.addEventListener("load", imageReady, { once:true });
-            img.addEventListener("error", imageReady, { once:true });
-        }
-
-    });
-
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(hideLoader, 500);
-    setTimeout(hideLoader, 2500);
 });
 
 </script>

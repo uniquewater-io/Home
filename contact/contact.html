@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#21103f">
 
 <title>Contact Us | Unique Water Technologies</title>
-<meta name="description" content="Contact Unique Water Technologies for RO components, water treatment spares, filters, cartridges and industrial filtration enquiries.">
+<meta name="description" content="Contact Unique Water Technologies for RO components, water treatment spares, industrial filtration, filters and cartridges.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,11 +20,13 @@
     --violet: #6335a5;
     --accent: #a879ef;
     --light: #f7f4fc;
+    --paper: #fbfaff;
     --white: #ffffff;
     --muted: #77718a;
     --line: #e9e2f2;
     --green: #16a66a;
-    --shadow: 0 20px 60px rgba(37, 16, 65, .10);
+    --shadow: 0 18px 50px rgba(37,16,65,.09);
+    --radius: 17px;
 }
 
 * {
@@ -35,31 +37,37 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
     font-family: 'DM Sans', sans-serif;
     color: var(--ink);
-    background: #fff;
+    background: white;
     overflow-x: hidden;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 button, input, select, textarea {
     font: inherit;
 }
 
-/* LOADING SCREEN */
+.container {
+    width: min(1190px, calc(100% - 44px));
+    margin: auto;
+}
+
+/* LOADER */
 
 #pageLoader {
     position: fixed;
     inset: 0;
+    z-index: 99999;
     background: #21103f;
-    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,6 +77,7 @@ button, input, select, textarea {
 #pageLoader.hide {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
 .loader-content {
@@ -78,31 +87,31 @@ button, input, select, textarea {
 
 .loader-logo {
     font-family: Manrope, sans-serif;
-    font-size: 23px;
     font-weight: 800;
+    font-size: 20px;
     letter-spacing: 1px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
 .loader-logo span {
-    color: #bb9af4;
+    color: #bd9af2;
 }
 
 .loader-spinner {
-    width: 43px;
-    height: 43px;
-    border: 3px solid rgba(255,255,255,.2);
-    border-top-color: #c5a4ff;
-    border-radius: 50%;
+    width: 42px;
+    height: 42px;
     margin: auto;
-    animation: spin 1s linear infinite;
+    border: 3px solid rgba(255,255,255,.18);
+    border-top-color: #c6a6ff;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
 }
 
 .loader-content p {
     margin-top: 20px;
-    color: #c8b8e0;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 3px;
+    color: #d4c4eb;
     text-transform: uppercase;
 }
 
@@ -113,72 +122,72 @@ button, input, select, textarea {
 /* HEADER */
 
 header {
-    width: 100%;
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255,255,255,.94);
+    background: rgba(255,255,255,.96);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(40,20,75,.07);
 }
 
 .navbar {
-    max-width: 1240px;
+    width: min(1320px, calc(100% - 40px));
+    min-height: 83px;
     margin: auto;
-    padding: 17px 25px;
-    min-height: 82px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 25px;
+    gap: 15px;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 11px;
+    width: fit-content;
 }
 
 .brand-icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 14px;
+    width: 45px;
+    height: 45px;
     display: grid;
     place-items: center;
+    border-radius: 13px;
+    background: linear-gradient(135deg,#32145f,#8152c5);
     color: white;
-    background: linear-gradient(135deg, #32145f, #8152c5);
     font-size: 23px;
     box-shadow: 0 7px 20px rgba(73,38,120,.2);
 }
 
 .brand-name {
-    font-family: Manrope, sans-serif;
-    font-size: 15px;
+    font-family: Manrope,sans-serif;
+    font-size: 13px;
     font-weight: 800;
-    line-height: 1.3;
-    color: var(--ink);
+    line-height: 1.35;
+    white-space: nowrap;
 }
 
 .brand-name small {
     display: block;
     color: #8b7c9e;
-    font-size: 9px;
-    letter-spacing: 2px;
-    font-weight: 700;
-    margin-top: 3px;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
 }
 
 .nav-links {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 27px;
 }
 
 .nav-links a {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: #625873;
-    transition: .3s;
+    transition: .25s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -187,18 +196,29 @@ header {
 }
 
 .nav-links .nav-cta {
-    padding: 13px 21px;
+    background: linear-gradient(120deg,#32145f,#7545b8);
     color: white;
-    background: linear-gradient(120deg, #32145f, #7545b8);
-    border-radius: 9px;
+    padding: 13px 17px;
+    border-radius: 8px;
+}
+
+.nav-links .nav-cta:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .menu-toggle {
     display: none;
-    background: none;
     border: 0;
+    background: none;
+    font-size: 26px;
     color: var(--ink);
-    font-size: 28px;
     cursor: pointer;
 }
 
@@ -207,60 +227,60 @@ header {
 .hero {
     position: relative;
     overflow: hidden;
-    padding: 100px 25px 110px;
+    padding: 76px 20px 83px;
     text-align: center;
     color: white;
     background:
-        radial-gradient(circle at 15% 20%, rgba(165,119,235,.25), transparent 35%),
-        radial-gradient(circle at 85% 80%, rgba(104,61,167,.35), transparent 35%),
-        linear-gradient(125deg, #21103f, #32145f 55%, #51318a);
+        radial-gradient(circle at 12% 20%,rgba(165,119,235,.25),transparent 35%),
+        radial-gradient(circle at 85% 80%,rgba(104,61,167,.35),transparent 35%),
+        linear-gradient(125deg,#21103f,#32145f 55%,#51318a);
 }
 
 .hero::before,
 .hero::after {
     content: "";
     position: absolute;
-    border: 1px solid rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.10);
     border-radius: 50%;
     pointer-events: none;
 }
 
 .hero::before {
-    width: 450px;
-    height: 450px;
-    top: -250px;
-    right: -100px;
+    width: 470px;
+    height: 470px;
+    top: -280px;
+    right: -90px;
 }
 
 .hero::after {
     width: 550px;
     height: 550px;
-    bottom: -400px;
-    left: -180px;
+    bottom: -420px;
+    left: -160px;
 }
 
 .hero-inner {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 790px;
     margin: auto;
 }
 
 .breadcrumb {
     color: #d0b9f2;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 800;
     letter-spacing: 2px;
-    margin-bottom: 23px;
-    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-family: Manrope, sans-serif;
-    font-size: clamp(38px, 6vw, 65px);
-    font-weight: 800;
+    font-family: Manrope,sans-serif;
+    font-size: clamp(36px,5vw,59px);
+    line-height: 1.16;
     letter-spacing: -2px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    font-weight: 800;
 }
 
 .hero h1 span {
@@ -268,75 +288,106 @@ header {
 }
 
 .hero p {
-    color: #e0d5ef;
-    font-size: 16px;
-    line-height: 1.9;
-    max-width: 620px;
+    max-width: 640px;
     margin: auto;
+    color: #e0d5ef;
+    font-size: 14px;
+    line-height: 1.9;
 }
 
-/* MAIN SECTION */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 29px;
+}
 
-.contact-section {
-    max-width: 1240px;
-    padding: 90px 25px;
-    margin: auto;
+.hero-btn {
+    display: inline-flex;
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.hero-btn.primary {
+    color: var(--ink);
+    background: white;
+}
+
+.hero-btn.secondary {
+    color: white;
+    border: 1px solid rgba(255,255,255,.4);
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* GENERAL SECTIONS */
+
+section.content-section {
+    padding: 78px 0;
 }
 
 .section-heading {
     text-align: center;
-    margin-bottom: 55px;
+    margin-bottom: 42px;
 }
 
 .eyebrow {
     color: #8151bb;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
-    margin-bottom: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
 .section-heading h2 {
-    font-family: Manrope, sans-serif;
-    font-size: clamp(27px, 4vw, 39px);
+    font-family: Manrope,sans-serif;
+    font-size: clamp(26px,4vw,37px);
     font-weight: 800;
     letter-spacing: -1px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .section-heading p {
+    max-width: 660px;
+    margin: auto;
     color: var(--muted);
-    font-size: 14px;
-    line-height: 1.8;
+    font-size: 13px;
+    line-height: 1.9;
 }
+
+/* CONTACT DETAILS */
 
 .contact-layout {
     display: grid;
-    grid-template-columns: .82fr 1.4fr;
-    gap: 30px;
+    grid-template-columns: .85fr 1.4fr;
+    gap: 25px;
     align-items: stretch;
 }
 
-/* LEFT CONTACT PANEL */
-
 .contact-info {
-    background: linear-gradient(145deg, #21103f, #462475);
-    padding: 42px 35px;
-    border-radius: 20px;
-    color: white;
     position: relative;
     overflow: hidden;
+    padding: 36px 30px;
+    border-radius: var(--radius);
+    color: white;
+    background: linear-gradient(145deg,#21103f,#462475);
     box-shadow: var(--shadow);
 }
 
 .contact-info::after {
     content: "";
     position: absolute;
-    width: 280px;
-    height: 280px;
-    right: -150px;
-    bottom: -140px;
+    width: 250px;
+    height: 250px;
+    right: -140px;
+    bottom: -130px;
     border: 1px solid rgba(255,255,255,.15);
     border-radius: 50%;
     box-shadow: 0 0 0 30px rgba(255,255,255,.025),
@@ -344,52 +395,51 @@ header {
 }
 
 .contact-info h3 {
-    font-family: Manrope, sans-serif;
-    font-size: 26px;
-    font-weight: 800;
-    margin-bottom: 14px;
+    font-family: Manrope,sans-serif;
+    font-size: 23px;
+    margin-bottom: 12px;
 }
 
 .contact-info > p {
     color: #d2c5e5;
-    font-size: 13px;
-    line-height: 1.8;
-    margin-bottom: 38px;
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 30px;
 }
 
 .info-item {
     position: relative;
     z-index: 1;
     display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 13px;
     align-items: flex-start;
+    margin-bottom: 25px;
 }
 
 .info-icon {
+    width: 41px;
+    height: 41px;
     flex-shrink: 0;
-    width: 43px;
-    height: 43px;
     display: grid;
     place-items: center;
+    border-radius: 11px;
     background: rgba(255,255,255,.12);
     border: 1px solid rgba(255,255,255,.12);
-    border-radius: 12px;
-    font-size: 19px;
+    font-size: 17px;
 }
 
 .info-item h4 {
-    font-size: 13px;
-    margin: 2px 0 7px;
     color: #c6a7f3;
+    font-size: 12px;
+    margin: 2px 0 6px;
 }
 
 .info-item p,
 .info-item a {
-    font-size: 13px;
-    line-height: 1.7;
-    color: #fff;
-    word-break: break-word;
+    color: white;
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
 }
 
 .info-item a:hover {
@@ -400,58 +450,58 @@ header {
     position: relative;
     z-index: 1;
     border-top: 1px solid rgba(255,255,255,.15);
-    padding-top: 25px;
-    margin-top: 35px;
+    padding-top: 22px;
+    margin-top: 27px;
     color: #d7c8e9;
-    font-size: 12px;
-    line-height: 1.8;
+    font-size: 11px;
+    line-height: 1.9;
 }
 
-/* FORM PANEL */
+/* FORM */
 
 .form-card {
-    background: #fff;
-    padding: 42px;
-    border-radius: 20px;
+    padding: 37px;
+    border-radius: var(--radius);
+    background: white;
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
 }
 
 .form-heading {
-    margin-bottom: 30px;
+    margin-bottom: 26px;
 }
 
 .form-heading h3 {
-    font-family: Manrope, sans-serif;
-    font-size: 25px;
+    font-family: Manrope,sans-serif;
+    font-size: 24px;
     font-weight: 800;
     margin-bottom: 8px;
 }
 
 .form-heading p {
-    font-size: 13px;
     color: var(--muted);
-    line-height: 1.7;
+    font-size: 12px;
+    line-height: 1.8;
 }
 
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 18px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 8px;
 }
 
 .form-group.full {
-    grid-column: 1 / -1;
+    grid-column: 1/-1;
 }
 
 .form-group label {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
     color: #45355b;
 }
@@ -464,23 +514,23 @@ header {
 .form-group select,
 .form-group textarea {
     width: 100%;
+    padding: 13px 14px;
     border: 1px solid #e7e0ef;
     background: #fcfbfe;
-    border-radius: 9px;
-    padding: 14px 15px;
-    font-size: 13px;
-    color: var(--ink);
+    border-radius: 8px;
     outline: none;
+    color: var(--ink);
+    font-size: 12px;
     transition: .25s;
 }
 
 .form-group input,
 .form-group select {
-    height: 49px;
+    height: 47px;
 }
 
 .form-group textarea {
-    min-height: 145px;
+    min-height: 130px;
     resize: vertical;
     line-height: 1.7;
 }
@@ -501,42 +551,40 @@ header {
 .form-actions {
     display: flex;
     gap: 12px;
+    margin-top: 23px;
     flex-wrap: wrap;
-    margin-top: 25px;
 }
 
 .submit-btn,
 .whatsapp-btn {
-    border: none;
-    min-height: 51px;
-    padding: 0 24px;
-    border-radius: 9px;
-    font-size: 13px;
-    font-weight: 800;
-    cursor: pointer;
+    min-height: 49px;
+    padding: 0 22px;
+    border-radius: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 9px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
     transition: .3s;
 }
 
 .submit-btn {
     flex: 1;
+    border: 0;
     color: white;
-    background: linear-gradient(120deg, #32145f, #7545b8);
-    box-shadow: 0 9px 20px rgba(75,37,120,.17);
+    background: linear-gradient(120deg,#32145f,#7545b8);
+    box-shadow: 0 8px 20px rgba(75,37,120,.16);
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(75,37,120,.25);
 }
 
 .submit-btn:disabled {
     opacity: .65;
-    cursor: not-allowed;
-    transform: none;
+    cursor: wait;
 }
 
 .whatsapp-btn {
@@ -551,10 +599,233 @@ header {
 }
 
 .form-disclaimer {
+    margin-top: 16px;
+    font-size: 10px;
+    line-height: 1.8;
     color: #9890a3;
-    font-size: 11px;
+}
+
+.error-message {
+    display: none;
+    background: #fff0f0;
+    color: #c03939;
+    border: 1px solid #ffd1d1;
+    padding: 13px;
+    border-radius: 8px;
+    margin-top: 17px;
+    font-size: 12px;
     line-height: 1.7;
-    margin-top: 18px;
+}
+
+.hp-field {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
+/* CLIENTS */
+
+.clients-section {
+    background: var(--paper);
+    border-top: 1px solid #f0ebf7;
+    border-bottom: 1px solid #f0ebf7;
+}
+
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 15px;
+}
+
+.client-card {
+    min-height: 125px;
+    padding: 20px 12px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    transition: .3s;
+}
+
+.client-card:hover {
+    transform: translateY(-5px);
+    border-color: #c9afea;
+    box-shadow: var(--shadow);
+}
+
+.client-symbol {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    color: #7545b8;
+    background: #f1eafa;
+    font-size: 19px;
+}
+
+.client-card strong {
+    font-family: Manrope,sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: #382052;
+}
+
+.client-card small {
+    font-size: 10px;
+    color: #93879f;
+}
+
+/* CONTACT PROCESS */
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 17px;
+}
+
+.process-card {
+    padding: 25px 20px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    transition: .3s;
+}
+
+.process-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.process-number {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(135deg,#32145f,#8152c5);
+    font-weight: 800;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.process-card h3 {
+    font-family: Manrope,sans-serif;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.process-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* CTA */
+
+.bottom-cta {
+    padding: 65px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(120deg,#21103f,#462475);
+}
+
+.bottom-cta h2 {
+    font-family: Manrope,sans-serif;
+    font-size: clamp(24px,4vw,35px);
+    margin-bottom: 12px;
+}
+
+.bottom-cta p {
+    color: #d6c8e8;
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 23px;
+}
+
+.cta-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 24px;
+    border-radius: 8px;
+    background: white;
+    color: #32145f;
+    font-size: 12px;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.cta-link:hover {
+    transform: translateY(-3px);
+}
+
+/* FOOTER */
+
+footer {
+    padding: 49px 20px 23px;
+    background: #1b0d32;
+    color: white;
+}
+
+.footer-inner {
+    max-width: 1190px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 35px;
+}
+
+.footer-brand h3 {
+    font-family: Manrope,sans-serif;
+    font-size: 17px;
+    margin-bottom: 13px;
+}
+
+.footer-brand p {
+    max-width: 350px;
+    color: #c4b7d5;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+.footer-column h4 {
+    color: #d0b3f7;
+    font-size: 12px;
+    margin-bottom: 17px;
+}
+
+.footer-column a {
+    display: block;
+    margin-bottom: 11px;
+    color: #c4b7d5;
+    font-size: 11px;
+    transition: .2s;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    max-width: 1190px;
+    margin: auto;
+    padding-top: 21px;
+    border-top: 1px solid rgba(255,255,255,.12);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    color: #a99ab9;
+    font-size: 10px;
 }
 
 /* SUCCESS POPUP */
@@ -563,7 +834,7 @@ header {
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: rgba(21,10,38,.68);
+    background: rgba(21,10,38,.72);
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
@@ -580,15 +851,14 @@ header {
 }
 
 .success-popup {
-    background: white;
     width: 100%;
-    max-width: 430px;
-    padding: 45px 35px;
+    max-width: 420px;
+    padding: 42px 30px;
     text-align: center;
-    border-radius: 22px;
-    transform: translateY(25px) scale(.95);
+    background: white;
+    border-radius: 20px;
+    transform: translateY(20px) scale(.95);
     transition: .4s;
-    box-shadow: 0 30px 90px rgba(0,0,0,.2);
 }
 
 .popup-overlay.show .success-popup {
@@ -596,169 +866,65 @@ header {
 }
 
 .success-icon {
-    width: 82px;
-    height: 82px;
-    border-radius: 50%;
-    margin: 0 auto 24px;
-    background: #e8f8ef;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 22px;
     display: grid;
     place-items: center;
+    border-radius: 50%;
+    background: #e8f8ef;
     color: #16a66a;
-    font-size: 43px;
+    font-size: 39px;
     font-weight: 800;
-    animation: pop .55s ease;
+    animation: pop .5s ease;
 }
 
 @keyframes pop {
     0% { transform: scale(0); }
-    70% { transform: scale(1.18); }
+    70% { transform: scale(1.17); }
     100% { transform: scale(1); }
 }
 
 .success-popup h3 {
-    font-family: Manrope, sans-serif;
-    font-size: 23px;
-    margin-bottom: 12px;
+    font-family: Manrope,sans-serif;
+    font-size: 22px;
+    margin-bottom: 11px;
 }
 
 .success-popup p {
-    color: #77718a;
-    font-size: 13px;
-    line-height: 1.8;
-    margin-bottom: 25px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 23px;
 }
 
 .popup-close {
-    background: linear-gradient(120deg, #32145f, #7545b8);
-    color: white;
     border: 0;
-    border-radius: 9px;
-    padding: 14px 32px;
-    font-size: 13px;
+    border-radius: 8px;
+    padding: 13px 28px;
+    color: white;
+    background: linear-gradient(120deg,#32145f,#7545b8);
+    font-size: 12px;
     font-weight: 800;
     cursor: pointer;
-}
-
-.error-message {
-    display: none;
-    background: #fff0f0;
-    color: #c03939;
-    border: 1px solid #ffd1d1;
-    padding: 13px;
-    border-radius: 9px;
-    margin-top: 18px;
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-/* CTA */
-
-.bottom-cta {
-    padding: 65px 25px;
-    text-align: center;
-    background: var(--light);
-}
-
-.bottom-cta h2 {
-    font-family: Manrope, sans-serif;
-    font-size: clamp(24px, 4vw, 34px);
-    margin-bottom: 12px;
-}
-
-.bottom-cta p {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 25px;
-    line-height: 1.8;
-}
-
-.cta-link {
-    display: inline-flex;
-    padding: 15px 25px;
-    border-radius: 9px;
-    color: white;
-    background: #32145f;
-    font-size: 13px;
-    font-weight: 800;
-}
-
-/* FOOTER */
-
-footer {
-    background: #1b0d32;
-    color: white;
-    padding: 50px 25px 25px;
-}
-
-.footer-inner {
-    max-width: 1190px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 45px;
-    padding-bottom: 40px;
-}
-
-.footer-brand h3 {
-    font-family: Manrope, sans-serif;
-    font-size: 18px;
-    margin-bottom: 14px;
-}
-
-.footer-brand p {
-    color: #c4b7d5;
-    font-size: 12px;
-    line-height: 1.9;
-    max-width: 350px;
-}
-
-.footer-column h4 {
-    font-size: 13px;
-    margin-bottom: 18px;
-    color: #d0b3f7;
-}
-
-.footer-column a {
-    display: block;
-    font-size: 12px;
-    color: #c4b7d5;
-    margin-bottom: 12px;
-    transition: .2s;
-}
-
-.footer-column a:hover {
-    color: white;
-}
-
-.footer-bottom {
-    max-width: 1190px;
-    margin: auto;
-    border-top: 1px solid rgba(255,255,255,.12);
-    padding-top: 23px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    color: #a99ab9;
-    font-size: 11px;
 }
 
 /* FLOATING WHATSAPP */
 
 .floating-whatsapp {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: 23px;
+    bottom: 22px;
     z-index: 900;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
+    width: 55px;
+    height: 55px;
     display: grid;
     place-items: center;
+    border-radius: 50%;
     background: #20c76a;
     color: white;
-    font-size: 29px;
-    box-shadow: 0 7px 25px rgba(25,170,90,.35);
+    font-size: 26px;
+    box-shadow: 0 7px 25px rgba(25,170,90,.3);
     transition: .3s;
 }
 
@@ -768,13 +934,31 @@ footer {
 
 /* RESPONSIVE */
 
-@media(max-width: 900px) {
+@media(max-width:1050px) {
+    .navbar {
+        grid-template-columns: 1fr auto;
+    }
+
+    .nav-right {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 19px;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media(max-width:800px) {
     .contact-layout {
         grid-template-columns: 1fr;
     }
 
-    .contact-info {
-        padding: 35px;
+    .process-grid {
+        grid-template-columns: repeat(2,1fr);
     }
 
     .footer-inner {
@@ -782,14 +966,28 @@ footer {
     }
 
     .footer-brand {
-        grid-column: 1 / -1;
+        grid-column: 1/-1;
     }
 }
 
-@media(max-width: 700px) {
+@media(max-width:700px) {
     .navbar {
         min-height: 72px;
-        padding: 12px 18px;
+        width: calc(100% - 32px);
+        grid-template-columns: 1fr auto;
+    }
+
+    .brand-name {
+        font-size: 11px;
+    }
+
+    .brand-name small {
+        font-size: 7px;
+    }
+
+    .brand-icon {
+        width: 40px;
+        height: 40px;
     }
 
     .menu-toggle {
@@ -805,8 +1003,8 @@ footer {
         padding: 22px;
         background: white;
         flex-direction: column;
-        align-items: stretch;
-        gap: 20px;
+        align-items: center;
+        gap: 18px;
         border-top: 1px solid var(--line);
         box-shadow: 0 15px 25px rgba(30,10,60,.1);
     }
@@ -816,32 +1014,37 @@ footer {
     }
 
     .nav-links a {
-        padding: 8px 0;
+        padding: 6px;
     }
 
     .nav-links .nav-cta {
+        width: 100%;
         text-align: center;
     }
 
     .hero {
-        padding: 75px 20px 85px;
+        padding: 65px 18px 72px;
     }
 
     .hero h1 {
         letter-spacing: -1px;
     }
 
-    .contact-section {
-        padding: 65px 17px;
+    section.content-section {
+        padding: 60px 0;
+    }
+
+    .container {
+        width: calc(100% - 34px);
     }
 
     .form-card {
-        padding: 27px 20px;
+        padding: 26px 19px;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
-        gap: 17px;
+        gap: 16px;
     }
 
     .form-group.full {
@@ -857,9 +1060,18 @@ footer {
         width: 100%;
     }
 
+    .clients-grid {
+        grid-template-columns: repeat(2,1fr);
+        gap: 11px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .footer-inner {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 27px;
     }
 
     .footer-brand {
@@ -871,26 +1083,27 @@ footer {
     }
 
     .floating-whatsapp {
-        right: 16px;
-        bottom: 17px;
+        right: 15px;
+        bottom: 16px;
     }
 }
 
-@media(prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+@media(max-width:380px) {
+    .brand-name {
+        font-size: 10px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *,*::before,*::after {
         scroll-behavior: auto !important;
         animation-duration: .01ms !important;
         transition-duration: .01ms !important;
     }
-}
-
-/* Honeypot */
-.hp-field {
-    position: absolute !important;
-    left: -9999px !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
 }
 </style>
 </head>
@@ -900,7 +1113,9 @@ footer {
 <!-- PAGE LOADER -->
 <div id="pageLoader">
     <div class="loader-content">
-        <div class="loader-logo">UNIQUE WATER <span>TECHNOLOGIES</span></div>
+        <div class="loader-logo">
+            UNIQUE WATER <span>TECHNOLOGIES</span>
+        </div>
         <div class="loader-spinner"></div>
         <p>Preparing your experience</p>
     </div>
@@ -908,51 +1123,79 @@ footer {
 
 <!-- HEADER -->
 <header>
-    <nav class="navbar">
-        <a href="index.html" class="brand">
-            <div class="brand-icon">💧</div>
-            <div class="brand-name">
-                UNIQUE WATER TECHNOLOGIES
-                <small>PURE SOLUTIONS. RELIABLE PERFORMANCE.</small>
-            </div>
-        </a>
+<nav class="navbar">
 
-        <button class="menu-toggle" id="menuToggle"
-                aria-label="Toggle navigation" aria-expanded="false">☰</button>
-
-        <div class="nav-links" id="navLinks">
-            <a href="https://uniquewater-io.github.io/Home/">Home</a>
-            <a href="https://uniquewater-io.github.io/Products/">Products</a>
-            <a href="https://uniquewater-io.github.io/About/">About</a>
-            <a href="https://uniquewater-io.github.io/Industries/">Industries</a>
-            <a href="https://uniquewater-io.github.io/Contact/" class="active">Contact</a>
-            <a href="#enquiry" class="nav-cta">Send an Enquiry ↗</a>
+    <a href="https://uniquewater-io.github.io/Home/" class="brand">
+        <div class="brand-icon">💧</div>
+        <div class="brand-name">
+            UNIQUE WATER TECHNOLOGIES
+            <small>PURE SOLUTIONS. RELIABLE PERFORMANCE.</small>
         </div>
-    </nav>
+    </a>
+
+    <!-- CENTER ALIGNED NAVIGATION -->
+    <div class="nav-links" id="navLinks">
+        <a href="https://uniquewater-io.github.io/Home/">Home</a>
+        <a href="https://uniquewater-io.github.io/Products/">Products</a>
+        <a href="https://uniquewater-io.github.io/About/">About</a>
+        <a href="https://uniquewater-io.github.io/Industries/">Industries</a>
+        <a href="https://uniquewater-io.github.io/Contact/" class="active">Contact</a>
+        <a href="#enquiry" class="nav-cta">Send an Enquiry ↗</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="#enquiry" class="nav-links nav-cta">Get a Quote ↗</a>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+</nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
     <div class="hero-inner">
+
         <div class="breadcrumb">HOME / CONTACT US</div>
-        <h1>Let's Talk About <span>Your Requirements.</span></h1>
+
+        <h1>
+            Let's Talk About
+            <span>Your Requirements.</span>
+        </h1>
+
         <p>
-            Looking for RO components, industrial water treatment spares,
-            filters or cartridges? Share your requirements with our team.
-            We are here to help you find the right solution.
+            Looking for RO components, water treatment spares,
+            filters or industrial filtration products?
+            Share your requirements with our team.
+            We are ready to help you find the right solution.
         </p>
+
+        <div class="hero-buttons">
+            <a href="#enquiry" class="hero-btn primary">
+                Send an Enquiry ↗
+            </a>
+
+            <a href="https://wa.me/919845733383"
+               target="_blank" rel="noopener"
+               class="hero-btn secondary">
+                WhatsApp Us
+            </a>
+        </div>
+
     </div>
 </section>
 
 <!-- CONTACT SECTION -->
-<section class="contact-section">
+<section class="content-section">
+<div class="container">
 
     <div class="section-heading">
         <div class="eyebrow">GET IN TOUCH</div>
         <h2>We're Ready to Assist You</h2>
         <p>
             Contact Unique Water Technologies for product enquiries,
-            quotations and sourcing assistance.
+            quotations, replacement components and sourcing assistance.
         </p>
     </div>
 
@@ -960,10 +1203,13 @@ footer {
 
         <!-- CONTACT INFORMATION -->
         <aside class="contact-info">
+
             <h3>Contact Information</h3>
+
             <p>
-                Have a question or need assistance? Reach out to us
-                through email or WhatsApp. Our team will be happy to assist.
+                Have a question or need assistance?
+                Reach our team through email or WhatsApp.
+                We will be happy to assist with your requirements.
             </p>
 
             <div class="info-item">
@@ -984,7 +1230,7 @@ footer {
             </div>
 
             <div class="info-item">
-                <div class="info-icon">☏</div>
+                <div class="info-icon">☎</div>
                 <div>
                     <h4>WhatsApp Enquiry</h4>
                     <p>
@@ -1003,16 +1249,31 @@ footer {
                     <p>
                         Product information<br>
                         Quotations & sourcing<br>
-                        Industrial requirements
+                        Industrial requirements<br>
+                        Bulk & project enquiries
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">⌂</div>
+                <div>
+                    <h4>Website</h4>
+                    <p>
+                        <a href="https://uniquewater-io.github.io/Home/"
+                           target="_blank" rel="noopener">
+                            www.uniquewater.in
+                        </a>
                     </p>
                 </div>
             </div>
 
             <div class="info-note">
-                Share your product name, model number, dimensions,
-                specifications or application details to help us
-                understand your requirement.
+                For faster assistance, please share the product name,
+                model number, dimensions, specifications, quantity
+                or application details.
             </div>
+
         </aside>
 
         <!-- ENQUIRY FORM -->
@@ -1020,66 +1281,80 @@ footer {
 
             <div class="form-heading">
                 <h3>Send Us an Enquiry</h3>
-                <p>Fill in the details below. Our team will receive your enquiry by email.</p>
+                <p>
+                    Complete the form below. Your enquiry will be
+                    submitted to our team by email.
+                </p>
             </div>
 
-            <form id="contactForm" novalidate>
+            <form id="contactForm">
 
-                <!-- FormSubmit configuration -->
+                <!-- FORMSUBMIT SETTINGS -->
                 <input type="hidden" name="_subject"
-                       value="New Website Enquiry - Unique Water Technologies">
+                    value="New Website Enquiry - Unique Water Technologies">
 
                 <input type="hidden" name="_cc"
-                       value="uniqueblr@yahoo.com">
+                    value="uniqueblr@yahoo.com">
 
-                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_template"
+                    value="table">
 
-                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_captcha"
+                    value="false">
 
                 <input type="hidden" name="_url"
-                       value="https://uniquewater-io.github.io/Contact/">
+                    value="https://uniquewater-io.github.io/Contact/">
 
-                <!-- Spam protection -->
+                <!-- SPAM PROTECTION -->
                 <div class="hp-field" aria-hidden="true">
-                    <label>Leave this field empty
-                        <input type="text" name="_honey" tabindex="-1"
-                               autocomplete="off">
+                    <label>
+                        Leave this field empty
+                        <input type="text" name="_honey"
+                            tabindex="-1" autocomplete="off">
                     </label>
                 </div>
 
                 <div class="form-grid">
 
                     <div class="form-group">
-                        <label for="name">Full Name <span>*</span></label>
+                        <label for="name">
+                            Full Name <span>*</span>
+                        </label>
                         <input type="text" id="name" name="name"
-                               placeholder="Enter your full name"
-                               autocomplete="name" maxlength="100" required>
+                            placeholder="Enter your full name"
+                            autocomplete="name" maxlength="100" required>
                     </div>
 
                     <div class="form-group">
                         <label for="company">Company Name</label>
                         <input type="text" id="company" name="company"
-                               placeholder="Your company name"
-                               autocomplete="organization" maxlength="120">
+                            placeholder="Your company name"
+                            autocomplete="organization" maxlength="120">
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address <span>*</span></label>
+                        <label for="email">
+                            Email Address <span>*</span>
+                        </label>
                         <input type="email" id="email" name="email"
-                               placeholder="example@email.com"
-                               autocomplete="email" maxlength="150" required>
+                            placeholder="example@email.com"
+                            autocomplete="email" maxlength="150" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone / WhatsApp <span>*</span></label>
+                        <label for="phone">
+                            Phone / WhatsApp <span>*</span>
+                        </label>
                         <input type="tel" id="phone" name="phone"
-                               placeholder="+91 XXXXX XXXXX"
-                               autocomplete="tel" maxlength="20"
-                               pattern="[+0-9() .-]{7,20}" required>
+                            placeholder="+91 XXXXX XXXXX"
+                            autocomplete="tel" maxlength="20"
+                            pattern="[+0-9() .-]{7,20}" required>
                     </div>
 
                     <div class="form-group full">
-                        <label for="subject">Enquiry Type <span>*</span></label>
+                        <label for="subject">
+                            Enquiry Type <span>*</span>
+                        </label>
                         <select id="subject" name="enquiry_type" required>
                             <option value="">Select your enquiry</option>
                             <option>RO System Components</option>
@@ -1094,70 +1369,167 @@ footer {
                     </div>
 
                     <div class="form-group full">
-                        <label for="message">Your Requirement <span>*</span></label>
+                        <label for="message">
+                            Your Requirement <span>*</span>
+                        </label>
                         <textarea id="message" name="message"
-                                  placeholder="Please describe your product requirement, model number, specifications, quantity or application..."
-                                  maxlength="3000" required></textarea>
+                            placeholder="Describe your product requirement, model number, specifications, quantity or application..."
+                            maxlength="3000" required></textarea>
                     </div>
 
                 </div>
 
-                <div class="error-message" id="errorMessage" role="alert">
-                    Unable to send your enquiry. Please try again or contact us through WhatsApp.
-                </div>
+                <div class="error-message" id="errorMessage"
+                     role="alert"></div>
 
                 <div class="form-actions">
-                    <button type="submit" class="submit-btn" id="submitBtn">
+
+                    <button type="submit" class="submit-btn"
+                        id="submitBtn">
                         <span id="submitText">Send Enquiry</span>
                         <span id="submitArrow">↗</span>
                     </button>
 
-                    <a class="whatsapp-btn"
-                       href="https://wa.me/919845733383?text=Hello%20Unique%20Water%20Technologies%2C%20I%20would%20like%20to%20make%20an%20enquiry."
-                       target="_blank" rel="noopener">
-                        ☎ WhatsApp Us
-                    </a>
+                    <button type="button" class="whatsapp-btn"
+                        id="whatsappFormBtn">
+                        ☎ WhatsApp Enquiry
+                    </button>
+
                 </div>
 
                 <p class="form-disclaimer">
-                    By submitting this form, you agree that our team may
-                    contact you regarding your enquiry.
+                    By submitting this form, you agree that our team
+                    may contact you regarding your enquiry.
                 </p>
 
             </form>
+
         </div>
 
     </div>
+
+</div>
 </section>
 
-<!-- SUCCESS POPUP -->
-<div class="popup-overlay" id="successPopup"
-     role="dialog" aria-modal="true" aria-labelledby="successTitle">
+<!-- OUR CLIENTS -->
+<section class="content-section clients-section">
+<div class="container">
 
-    <div class="success-popup">
-        <div class="success-icon">✓</div>
-
-        <h3 id="successTitle">Enquiry Sent Successfully!</h3>
-
+    <div class="section-heading">
+        <div class="eyebrow">OUR CLIENTS & PROJECTS</div>
+        <h2>Building Connections Through Reliable Solutions</h2>
         <p>
-            Thank you for contacting Unique Water Technologies.
-            Your enquiry has been received successfully.
-            Our team will get back to you shortly.
+            We value the relationships and project associations
+            that help us support water treatment and industrial
+            requirements across different sectors.
         </p>
-
-        <button class="popup-close" id="popupClose">
-            Great, Thank You!
-        </button>
     </div>
+
+    <div class="clients-grid">
+
+        <div class="client-card">
+            <div class="client-symbol">⚡</div>
+            <strong>ADANI POWER LIMITED</strong>
+            <small>Power & Infrastructure</small>
+        </div>
+
+        <div class="client-card">
+            <div class="client-symbol">💧</div>
+            <strong>ECO-LOGIC</strong>
+            <small>Environmental Solutions</small>
+        </div>
+
+        <div class="client-card">
+            <div class="client-symbol">🏭</div>
+            <strong>MSPL</strong>
+            <small>Industrial Sector</small>
+        </div>
+
+        <div class="client-card">
+            <div class="client-symbol">🧪</div>
+            <strong>STRING BIO</strong>
+            <small>Biotechnology</small>
+        </div>
+
+        <div class="client-card">
+            <div class="client-symbol">⚙</div>
+            <strong>UNITHEM ENGINEERS</strong>
+            <small>Engineering Solutions</small>
+        </div>
+
+    </div>
+
 </div>
+</section>
+
+<!-- ENQUIRY PROCESS -->
+<section class="content-section">
+<div class="container">
+
+    <div class="section-heading">
+        <div class="eyebrow">HOW IT WORKS</div>
+        <h2>From Requirement to the Right Component</h2>
+        <p>
+            Share your requirements and let our team help you
+            identify suitable water treatment products and components.
+        </p>
+    </div>
+
+    <div class="process-grid">
+
+        <div class="process-card">
+            <div class="process-number">01</div>
+            <h3>Tell Us What You Need</h3>
+            <p>
+                Send the product name, application or a brief
+                description of your requirement.
+            </p>
+        </div>
+
+        <div class="process-card">
+            <div class="process-number">02</div>
+            <h3>Share Specifications</h3>
+            <p>
+                Include dimensions, model number, material,
+                micron rating or reference details.
+            </p>
+        </div>
+
+        <div class="process-card">
+            <div class="process-number">03</div>
+            <h3>Requirement Review</h3>
+            <p>
+                Our team reviews the information and helps
+                identify a suitable product option.
+            </p>
+        </div>
+
+        <div class="process-card">
+            <div class="process-number">04</div>
+            <h3>Receive a Quotation</h3>
+            <p>
+                Our team follows up using the contact details
+                provided in your enquiry.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+</section>
 
 <!-- BOTTOM CTA -->
 <section class="bottom-cta">
-    <div class="eyebrow">NEED QUICK ASSISTANCE?</div>
+
+    <div class="eyebrow" style="color:#c9a7ff">
+        NEED QUICK ASSISTANCE?
+    </div>
+
     <h2>Let's Find the Right Solution for You.</h2>
+
     <p>
-        Connect with our team directly on WhatsApp for your
-        water treatment product and sourcing enquiries.
+        Connect directly with our team for water treatment products,
+        industrial spares and filtration enquiries.
     </p>
 
     <a class="cta-link"
@@ -1165,10 +1537,12 @@ footer {
        target="_blank" rel="noopener">
         Chat on WhatsApp ↗
     </a>
+
 </section>
 
 <!-- FOOTER -->
 <footer>
+
     <div class="footer-inner">
 
         <div class="footer-brand">
@@ -1182,6 +1556,7 @@ footer {
 
         <div class="footer-column">
             <h4>Explore</h4>
+
             <a href="https://uniquewater-io.github.io/Home/">Home</a>
             <a href="https://uniquewater-io.github.io/Products/">Products</a>
             <a href="https://uniquewater-io.github.io/About/">About Us</a>
@@ -1191,20 +1566,38 @@ footer {
 
         <div class="footer-column">
             <h4>Product Enquiries</h4>
-            <a href="mailto:daisy@uniquewater.in">daisy@uniquewater.in</a>
-            <a href="mailto:uniqueblr@yahoo.com">uniqueblr@yahoo.com</a>
-            <a href="https://wa.me/919845733383" target="_blank" rel="noopener">
+
+            <a href="mailto:daisy@uniquewater.in">
+                daisy@uniquewater.in
+            </a>
+
+            <a href="mailto:uniqueblr@yahoo.com">
+                uniqueblr@yahoo.com
+            </a>
+
+            <a href="https://wa.me/919845733383"
+               target="_blank" rel="noopener">
                 WhatsApp: +91 98457 33383
             </a>
+
             <a href="#enquiry">Request a Quotation</a>
         </div>
 
     </div>
 
     <div class="footer-bottom">
-        <span>© <span id="year"></span> Unique Water Technologies. All rights reserved.</span>
-        <span>Water Treatment Spares • RO • Filters • Cartridges</span>
+
+        <span>
+            © <span id="year"></span>
+            Unique Water Technologies. All rights reserved.
+        </span>
+
+        <span>
+            Water Treatment Spares • RO • Filters • Cartridges
+        </span>
+
     </div>
+
 </footer>
 
 <!-- FLOATING WHATSAPP -->
@@ -1215,131 +1608,364 @@ footer {
     ☎
 </a>
 
+<!-- SUCCESS POPUP -->
+<div class="popup-overlay" id="successPopup"
+     role="dialog" aria-modal="true"
+     aria-labelledby="successTitle">
+
+    <div class="success-popup">
+
+        <div class="success-icon">✓</div>
+
+        <h3 id="successTitle">Enquiry Sent Successfully!</h3>
+
+        <p>
+            Thank you for contacting Unique Water Technologies.
+            Your enquiry has been submitted successfully.
+            Our team will get back to you shortly.
+        </p>
+
+        <button class="popup-close" id="popupClose">
+            Great, Thank You!
+        </button>
+
+    </div>
+
+</div>
+
 <script>
-/* PAGE LOADER */
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        document.getElementById("pageLoader").classList.add("hide");
-    }, 450);
+/* =====================================
+   PAGE LOADER
+===================================== */
+
+function hideLoader() {
+    const loader = document.getElementById("pageLoader");
+    if (loader) loader.classList.add("hide");
+}
+
+window.addEventListener("load", function() {
+    setTimeout(hideLoader, 450);
 });
 
-/* MOBILE NAVIGATION */
+/* Fallback if page loading takes too long */
+setTimeout(hideLoader, 8000);
+
+
+/* =====================================
+   MOBILE NAVIGATION
+===================================== */
+
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", function () {
+menuToggle.addEventListener("click", function() {
+
     const isOpen = navLinks.classList.toggle("open");
+
     menuToggle.setAttribute("aria-expanded", String(isOpen));
     menuToggle.textContent = isOpen ? "✕" : "☰";
+
 });
 
-document.querySelectorAll(".nav-links a").forEach(function (link) {
-    link.addEventListener("click", function () {
+document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
         navLinks.classList.remove("open");
+
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.textContent = "☰";
+
     });
+
 });
 
-/* FOOTER YEAR */
-document.getElementById("year").textContent = new Date().getFullYear();
 
-/* FORM SUBMISSION */
+/* =====================================
+   FOOTER YEAR
+===================================== */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =====================================
+   FORM ELEMENTS
+===================================== */
+
 const contactForm = document.getElementById("contactForm");
+
 const submitBtn = document.getElementById("submitBtn");
 const submitText = document.getElementById("submitText");
 const submitArrow = document.getElementById("submitArrow");
+
 const errorMessage = document.getElementById("errorMessage");
+
 const successPopup = document.getElementById("successPopup");
 const popupClose = document.getElementById("popupClose");
+
+const whatsappFormBtn =
+    document.getElementById("whatsappFormBtn");
+
+
+/* =====================================
+   FORMSUBMIT AJAX CONFIGURATION
+===================================== */
 
 const FORMSUBMIT_URL =
     "https://formsubmit.co/ajax/daisy@uniquewater.in";
 
-contactForm.addEventListener("submit", async function (event) {
+
+/* =====================================
+   VALIDATE FORM
+===================================== */
+
+function validateForm() {
+
+    if (!contactForm.checkValidity()) {
+
+        contactForm.reportValidity();
+
+        return false;
+
+    }
+
+    const honeypot =
+        contactForm.querySelector('[name="_honey"]');
+
+    if (honeypot.value.trim() !== "") {
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+/* =====================================
+   GET FORM DATA FOR WHATSAPP
+===================================== */
+
+function getEnquiryMessage() {
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const company =
+        document.getElementById("company").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const subject =
+        document.getElementById("subject").value;
+
+    const message =
+        document.getElementById("message").value.trim();
+
+    return [
+        "Hello Unique Water Technologies,",
+        "",
+        "I would like to make an enquiry.",
+        "",
+        "Name: " + name,
+        "Company: " + (company || "Not provided"),
+        "Email: " + email,
+        "Phone: " + phone,
+        "Enquiry Type: " + subject,
+        "",
+        "Requirement:",
+        message
+    ].join("\n");
+
+}
+
+
+/* =====================================
+   WHATSAPP FORM SUBMISSION
+===================================== */
+
+whatsappFormBtn.addEventListener("click", function() {
+
+    if (!validateForm()) return;
+
+    const message = getEnquiryMessage();
+
+    const whatsappURL =
+        "https://wa.me/919845733383?text=" +
+        encodeURIComponent(message);
+
+    window.open(
+        whatsappURL,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+});
+
+
+/* =====================================
+   EMAIL FORM SUBMISSION
+===================================== */
+
+contactForm.addEventListener("submit", async function(event) {
+
     event.preventDefault();
 
     errorMessage.style.display = "none";
+    errorMessage.textContent = "";
 
-    if (!contactForm.checkValidity()) {
-        contactForm.reportValidity();
-        return;
-    }
-
-    const honeypot = contactForm.querySelector('[name="_honey"]');
-
-    if (honeypot.value.trim() !== "") {
-        return;
-    }
+    if (!validateForm()) return;
 
     submitBtn.disabled = true;
+
     submitText.textContent = "Sending Enquiry...";
     submitArrow.textContent = "⏳";
 
     try {
+
         const formData = new FormData(contactForm);
 
         const response = await fetch(FORMSUBMIT_URL, {
+
             method: "POST",
+
             headers: {
                 "Accept": "application/json"
             },
+
             body: formData
+
         });
 
         let result;
 
         try {
+
             result = await response.json();
+
         } catch (parseError) {
-            throw new Error("Invalid response from email service.");
+
+            throw new Error(
+                "The email service returned an invalid response."
+            );
+
         }
 
-        if (!response.ok || result.success !== "true" &&
-            result.success !== true) {
-            throw new Error(result.message || "Email delivery failed.");
+        if (!response.ok ||
+            result.success !== true &&
+            result.success !== "true") {
+
+            throw new Error(
+                result.message || "Email submission failed."
+            );
+
         }
 
-        /* SUCCESS */
+        /* SUCCESS ONLY AFTER EMAIL SERVICE CONFIRMATION */
+
         contactForm.reset();
+
         successPopup.classList.add("show");
+
         document.body.style.overflow = "hidden";
 
-    } catch (error) {
-        console.error("Enquiry submission error:", error);
+        popupClose.focus();
+
+    }
+
+    catch(error) {
+
+        console.error("FormSubmit error:", error);
 
         errorMessage.textContent =
-            "Sorry, your enquiry could not be sent. Please check your internet connection and try again, or contact us through WhatsApp.";
+            "Sorry, your enquiry could not be submitted. Please try again or contact us directly through WhatsApp at +91 98457 33383.";
 
         errorMessage.style.display = "block";
 
-    } finally {
-        submitBtn.disabled = false;
-        submitText.textContent = "Send Enquiry";
-        submitArrow.textContent = "↗";
     }
+
+    finally {
+
+        submitBtn.disabled = false;
+
+        submitText.textContent = "Send Enquiry";
+
+        submitArrow.textContent = "↗";
+
+    }
+
 });
 
-/* CLOSE SUCCESS POPUP */
+
+/* =====================================
+   SUCCESS POPUP
+===================================== */
+
 function closeSuccessPopup() {
+
     successPopup.classList.remove("show");
+
     document.body.style.overflow = "";
+
 }
 
-popupClose.addEventListener("click", closeSuccessPopup);
+popupClose.addEventListener(
+    "click",
+    closeSuccessPopup
+);
 
-successPopup.addEventListener("click", function (event) {
+successPopup.addEventListener("click", function(event) {
+
     if (event.target === successPopup) {
+
         closeSuccessPopup();
+
     }
+
 });
 
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" &&
-        successPopup.classList.contains("show")) {
+document.addEventListener("keydown", function(event) {
+
+    if (
+        event.key === "Escape" &&
+        successPopup.classList.contains("show")
+    ) {
+
         closeSuccessPopup();
+
     }
+
 });
+
+
+/* =====================================
+   CLOSE MOBILE MENU ON OUTSIDE CLICK
+===================================== */
+
+document.addEventListener("click", function(event) {
+
+    if (
+        window.innerWidth <= 700 &&
+        !navLinks.contains(event.target) &&
+        !menuToggle.contains(event.target)
+    ) {
+
+        navLinks.classList.remove("open");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+
+        menuToggle.textContent = "☰";
+
+    }
+
+});
+
 </script>
 
 </body>

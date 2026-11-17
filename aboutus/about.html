@@ -1316,6 +1316,244 @@ button {
         grid-column:auto;
     }
 }
+
+
+
+/* OUR VALUED CLIENTS */
+
+.clients-section {
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 5% 15%,rgba(152,101,237,.09),transparent 30%),
+        radial-gradient(circle at 95% 85%,rgba(84,38,154,.08),transparent 30%),
+        linear-gradient(135deg,#fbfaff,#f5f0fc);
+}
+
+.clients-section::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(84,38,154,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(84,38,154,.025) 1px,transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+}
+
+.clients-section .container {
+    position:relative;
+    z-index:1;
+}
+
+.clients-heading {
+    max-width:750px;
+    margin:0 auto 55px;
+    text-align:center;
+}
+
+.clients-heading .section-label {
+    display:inline-block;
+    padding:9px 17px;
+    background:white;
+    border:1px solid var(--line);
+    border-radius:30px;
+}
+
+.clients-heading h2 {
+    font-family:'Manrope',sans-serif;
+    color:var(--primary);
+    font-size:clamp(30px,4vw,44px);
+    line-height:1.2;
+    letter-spacing:-1.4px;
+    margin:15px 0;
+}
+
+.clients-heading p {
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
+    max-width:650px;
+    margin:auto;
+}
+
+.clients-divider {
+    width:65px;
+    height:4px;
+    border-radius:10px;
+    background:var(--gradient);
+    margin:22px auto 0;
+}
+
+.clients-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.client-card {
+    min-height:175px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    padding:27px;
+    background:rgba(255,255,255,.92);
+    border:1px solid #e9e1f4;
+    border-radius:22px;
+    overflow:hidden;
+    transition:all .4s ease;
+    box-shadow:0 8px 25px rgba(50,20,95,.035);
+}
+
+.client-card::before {
+    content:"";
+    position:absolute;
+    width:5px;
+    height:0;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    background:var(--gradient);
+    border-radius:0 5px 5px 0;
+    transition:.35s;
+}
+
+.client-card::after {
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:rgba(152,101,237,.055);
+    right:-75px;
+    bottom:-85px;
+    transition:.4s;
+}
+
+.client-card:hover {
+    transform:translateY(-9px);
+    border-color:#cbb3eb;
+    box-shadow:0 20px 45px rgba(50,20,95,.12);
+}
+
+.client-card:hover::before {
+    height:65%;
+}
+
+.client-card:hover::after {
+    transform:scale(1.7);
+}
+
+.client-logo-box {
+    width:100%;
+    height:90px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    z-index:1;
+}
+
+.client-logo-box img {
+    max-width:85%;
+    max-height:75px;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    transition:.4s;
+    filter:grayscale(35%);
+}
+
+.client-card:hover .client-logo-box img {
+    filter:grayscale(0%);
+    transform:scale(1.07);
+}
+
+.client-name {
+    color:var(--primary);
+    font-family:'Manrope',sans-serif;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.6px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+}
+
+.client-tag {
+    font-size:9px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    font-weight:700;
+    position:relative;
+    z-index:1;
+}
+
+.clients-bottom {
+    margin-top:42px;
+    padding:24px;
+    background:var(--gradient);
+    border-radius:20px;
+    text-align:center;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.clients-bottom strong {
+    display:block;
+    font-family:'Manrope',sans-serif;
+    font-size:19px;
+    margin-bottom:7px;
+}
+
+.clients-bottom p {
+    font-size:12px;
+    line-height:1.8;
+    color:#e9ddfa;
+}
+
+@media(max-width:850px) {
+    .clients-grid {
+        grid-template-columns:repeat(2,1fr);
+        gap:17px;
+    }
+}
+
+@media(max-width:480px) {
+    .clients-grid {
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .client-card {
+        min-height:145px;
+        padding:17px 10px;
+        border-radius:16px;
+    }
+
+    .client-logo-box {
+        height:75px;
+    }
+
+    .client-logo-box img {
+        max-height:60px;
+    }
+
+    .client-name {
+        font-size:10px;
+    }
+
+    .clients-bottom {
+        padding:22px 15px;
+    }
+}
+
+
 </style>
 </head>
 
@@ -1674,6 +1912,116 @@ button {
 
     </div>
 </section>
+
+
+
+<!-- OUR VALUED CLIENTS -->
+<section class="section clients-section" id="clients">
+
+    <div class="container">
+
+        <div class="clients-heading reveal">
+
+            <span class="section-label">OUR VALUED CLIENTS</span>
+
+            <h2>Trusted by Our Valued Clients</h2>
+
+            <p>
+                We are proud to build professional relationships with
+                organisations across different industries. Their trust
+                inspires us to deliver dependable water treatment
+                solutions and quality-focused services.
+            </p>
+
+            <div class="clients-divider"></div>
+
+        </div>
+
+        <div class="clients-grid">
+
+            <!-- CLIENT 01 -->
+            <div class="client-card reveal">
+                <div class="client-logo-box">
+                    <img src="../clients/client-1.png"
+                         alt="Client 1 Logo"
+                         loading="lazy">
+                </div>
+                <div class="client-name">Client Name 01</div>
+                <div class="client-tag">Our Valued Client</div>
+            </div>
+
+            <!-- CLIENT 02 -->
+            <div class="client-card reveal">
+                <div class="client-logo-box">
+                    <img src="../clients/client-2.png"
+                         alt="Client 2 Logo"
+                         loading="lazy">
+                </div>
+                <div class="client-name">Client Name 02</div>
+                <div class="client-tag">Our Valued Client</div>
+            </div>
+
+            <!-- CLIENT 03 -->
+            <div class="client-card reveal">
+                <div class="client-logo-box">
+                    <img src="../clients/client-3.png"
+                         alt="Client 3 Logo"
+                         loading="lazy">
+                </div>
+                <div class="client-name">Client Name 03</div>
+                <div class="client-tag">Our Valued Client</div>
+            </div>
+
+            <!-- CLIENT 04 -->
+            <div class="client-card reveal">
+                <div class="client-logo-box">
+                    <img src="../clients/client-4.png"
+                         alt="Client 4 Logo"
+                         loading="lazy">
+                </div>
+                <div class="client-name">Client Name 04</div>
+                <div class="client-tag">Our Valued Client</div>
+            </div>
+
+            <!-- CLIENT 05 -->
+            <div class="client-card reveal">
+                <div class="client-logo-box">
+                    <img src="../clients/client-5.png"
+                         alt="Client 5 Logo"
+                         loading="lazy">
+                </div>
+                <div class="client-name">Client Name 05</div>
+                <div class="client-tag">Our Valued Client</div>
+            </div>
+
+            <!-- CLIENT 06 -->
+            <div class="client-card reveal">
+                <div class="client-logo-box">
+                    <img src="../clients/client-6.png"
+                         alt="Client 6 Logo"
+                         loading="lazy">
+                </div>
+                <div class="client-name">Client Name 06</div>
+                <div class="client-tag">Our Valued Client</div>
+            </div>
+
+        </div>
+
+        <div class="clients-bottom reveal">
+            <strong>Building Trust. Creating Long-Term Partnerships.</strong>
+            <p>
+                Thank you to our clients for trusting Unique Water Technologies
+                with their industrial water treatment requirements.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
 
 <!-- MISSION & VISION -->
 <section class="section section-light">

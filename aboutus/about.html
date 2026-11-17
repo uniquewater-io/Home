@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#32145f">
+<meta name="description" content="Learn about Unique Water Technologies, established in 2017 in Bengaluru, India. Industrial water treatment, ETP, STP and wastewater treatment solutions.">
+<meta name="robots" content="index, follow">
 
 <title>About Us | Unique Water Technologies</title>
-
-<meta name="description" content="Learn about Unique Water Technologies, established in 2017 in Bengaluru, India. We provide industrial water treatment, ETP, STP and wastewater treatment solutions across multiple industries.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
     --paper:#fbfaff;
     --ink:#211638;
     --muted:#746b82;
-    --white:#ffffff;
+    --white:#fff;
     --line:#e9e1f4;
     --gradient:linear-gradient(135deg,#32145f,#54269a 55%,#9865ed);
     --shadow:0 18px 50px rgba(50,20,95,.10);
@@ -43,8 +43,12 @@ html {
 body {
     font-family:'DM Sans',sans-serif;
     color:var(--ink);
-    background:var(--white);
+    background:#fff;
     overflow-x:hidden;
+}
+
+body.menu-open {
+    overflow:hidden;
 }
 
 a {
@@ -56,60 +60,202 @@ button {
     font:inherit;
 }
 
+img {
+    max-width:100%;
+}
+
 .container {
     width:min(1160px,90%);
     margin:auto;
 }
 
-/* PRELOADER */
+/* =====================================
+   MACOS STYLE LOADING SCREEN
+===================================== */
 
 #loader {
     position:fixed;
     inset:0;
-    z-index:9999;
-    background:var(--primary);
+    z-index:99999;
     display:flex;
-    align-items:center;
     justify-content:center;
-    flex-direction:column;
-    gap:22px;
-    transition:opacity .6s,visibility .6s;
+    align-items:center;
+    padding:20px;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(152,101,237,.35),transparent 35%),
+        radial-gradient(circle at 80% 80%,rgba(84,38,154,.4),transparent 35%),
+        linear-gradient(135deg,#160b2b,#32145f 55%,#20103e);
+    opacity:1;
+    visibility:visible;
+    transition:opacity .65s ease,visibility .65s ease;
 }
 
 #loader.hide {
     opacity:0;
     visibility:hidden;
+    pointer-events:none;
 }
 
-.loader-logo {
-    color:white;
+.loader-window {
+    width:min(390px,100%);
+    padding:0;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:19px;
+    background:rgba(255,255,255,.13);
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.3),
+        inset 0 1px 1px rgba(255,255,255,.2);
+    animation:loaderAppear .75s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes loaderAppear {
+    from {
+        opacity:0;
+        transform:translateY(25px) scale(.95);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.loader-titlebar {
+    height:43px;
+    display:flex;
+    align-items:center;
+    padding:0 15px;
+    gap:8px;
+    background:rgba(255,255,255,.09);
+    border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.mac-dot {
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    display:block;
+}
+
+.mac-red {background:#ff5f57;}
+.mac-yellow {background:#febc2e;}
+.mac-green {background:#28c840;}
+
+.loader-window-title {
+    flex:1;
+    text-align:center;
+    color:rgba(255,255,255,.7);
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:1px;
+    margin-right:42px;
+}
+
+.loader-content {
+    padding:36px 28px 32px;
+    text-align:center;
+}
+
+.loader-logo-icon {
+    width:73px;
+    height:73px;
+    display:grid;
+    place-items:center;
+    margin:0 auto 20px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#fff,#e9dcff);
+    box-shadow:0 12px 35px rgba(0,0,0,.2);
+    font-size:37px;
+    animation:logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%,100% {transform:translateY(0);}
+    50% {transform:translateY(-7px);}
+}
+
+.loader-brand {
     font-family:'Manrope',sans-serif;
-    font-size:25px;
+    color:#fff;
+    font-size:23px;
     font-weight:800;
-    letter-spacing:2px;
+    letter-spacing:1px;
+    margin-bottom:5px;
 }
 
-.loader-ring {
-    width:48px;
-    height:48px;
-    border:3px solid rgba(255,255,255,.2);
+.loader-subtitle {
+    color:#d9c9f4;
+    font-size:10px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    margin-bottom:28px;
+}
+
+.loader-progress-track {
+    width:100%;
+    height:5px;
+    background:rgba(255,255,255,.17);
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:12px;
+}
+
+.loader-progress {
+    width:0;
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#c5a4ff,#fff);
+    animation:progressLoad 1.8s ease forwards;
+}
+
+@keyframes progressLoad {
+    0% {width:0;}
+    40% {width:45%;}
+    75% {width:75%;}
+    100% {width:100%;}
+}
+
+.loader-status {
+    display:flex;
+    justify-content:space-between;
+    color:#e5d9f8;
+    font-size:10px;
+}
+
+.loader-status span:last-child {
+    color:#fff;
+    font-weight:700;
+}
+
+.loader-bottom {
+    margin-top:23px;
+    color:rgba(255,255,255,.55);
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.loader-spinner {
+    width:15px;
+    height:15px;
+    display:inline-block;
+    border:2px solid rgba(255,255,255,.2);
     border-top-color:white;
     border-radius:50%;
-    animation:spin .8s linear infinite;
-}
-
-.loader-text {
-    color:#d8c5f6;
-    font-size:11px;
-    letter-spacing:4px;
-    text-transform:uppercase;
+    vertical-align:middle;
+    margin-right:7px;
+    animation:spin .7s linear infinite;
 }
 
 @keyframes spin {
     to {transform:rotate(360deg);}
 }
 
-/* TOP BAR */
+/* =====================================
+   TOP BAR
+===================================== */
 
 .topbar {
     background:var(--primary);
@@ -125,23 +271,22 @@ button {
     gap:15px;
 }
 
-.topbar strong {
-    color:white;
-    font-weight:700;
-}
-
+.topbar strong,
 .topbar a {
-    color:white;
+    color:#fff;
 }
 
-/* HEADER */
+/* =====================================
+   HEADER
+===================================== */
 
 .header {
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(255,255,255,.94);
+    background:rgba(255,255,255,.96);
     backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
     border-bottom:1px solid rgba(50,20,95,.08);
     transition:.3s;
 }
@@ -161,30 +306,14 @@ button {
 .brand {
     display:flex;
     align-items:center;
-    gap:10px;
     min-width:0;
 }
 
 .brand-logo {
-    width:180px;
-    height:160px;
+    width:155px;
+    height:75px;
     object-fit:contain;
-}
-
-.brand-text {
-    font-family:'Manrope',sans-serif;
-    font-weight:800;
-    font-size:16px;
-    color:var(--primary);
-    line-height:1.2;
-}
-
-.brand-text small {
     display:block;
-    font-size:8px;
-    color:var(--muted);
-    letter-spacing:2px;
-    margin-top:4px;
 }
 
 .nav-menu {
@@ -223,7 +352,6 @@ button {
     border-radius:30px;
     font-size:11px;
     font-weight:800;
-    box-shadow:0 8px 20px rgba(84,38,154,.2);
     transition:.3s;
 }
 
@@ -237,19 +365,24 @@ button {
     background:var(--light);
     border:0;
     border-radius:12px;
-    width:43px;
-    height:43px;
+    width:44px;
+    height:44px;
     color:var(--primary);
-    font-size:22px;
+    font-size:25px;
     cursor:pointer;
+    justify-self:end;
+    align-items:center;
+    justify-content:center;
 }
 
-/* HERO */
+/* =====================================
+   HERO
+===================================== */
 
 .hero {
     position:relative;
     overflow:hidden;
-    padding:105px 0 90px;
+    padding:100px 0 85px;
     background:
         radial-gradient(circle at 85% 20%,rgba(152,101,237,.18),transparent 28%),
         radial-gradient(circle at 10% 90%,rgba(84,38,154,.10),transparent 28%),
@@ -264,7 +397,7 @@ button {
         linear-gradient(rgba(84,38,154,.035) 1px,transparent 1px),
         linear-gradient(90deg,rgba(84,38,154,.035) 1px,transparent 1px);
     background-size:45px 45px;
-    mask-image:linear-gradient(to bottom,black,transparent);
+    pointer-events:none;
 }
 
 .hero-inner {
@@ -433,7 +566,9 @@ button {
     50% {transform:translateY(-13px);}
 }
 
-/* TRUST STRIP */
+/* =====================================
+   TRUST STRIP
+===================================== */
 
 .trust-strip {
     background:white;
@@ -476,7 +611,9 @@ button {
     font-size:10px;
 }
 
-/* COMMON SECTION */
+/* =====================================
+   COMMON SECTIONS
+===================================== */
 
 .section {
     padding:95px 0;
@@ -517,7 +654,9 @@ button {
     line-height:1.9;
 }
 
-/* ABOUT STORY */
+/* =====================================
+   COMPANY STORY
+===================================== */
 
 .story-grid {
     display:grid;
@@ -538,22 +677,22 @@ button {
     padding:35px;
 }
 
-.story-visual::before {
+.story-visual::before,
+.story-visual::after {
     content:"";
     position:absolute;
-    width:340px;
-    height:340px;
     border:1px solid rgba(255,255,255,.18);
     border-radius:50%;
 }
 
+.story-visual::before {
+    width:340px;
+    height:340px;
+}
+
 .story-visual::after {
-    content:"";
-    position:absolute;
     width:260px;
     height:260px;
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:50%;
 }
 
 .story-graphic {
@@ -584,10 +723,6 @@ button {
     display:block;
     color:var(--muted);
     font-size:11px;
-}
-
-.story-content .section-label {
-    margin-bottom:15px;
 }
 
 .story-content h2 {
@@ -633,7 +768,9 @@ button {
     place-items:center;
 }
 
-/* STATS */
+/* =====================================
+   STATS
+===================================== */
 
 .stats {
     background:var(--gradient);
@@ -685,7 +822,9 @@ button {
     letter-spacing:.5px;
 }
 
-/* SERVICES */
+/* =====================================
+   SERVICES
+===================================== */
 
 .service-grid {
     display:grid;
@@ -751,7 +890,9 @@ button {
     z-index:1;
 }
 
-/* INDUSTRIES */
+/* =====================================
+   INDUSTRIES
+===================================== */
 
 .industry-grid {
     display:grid;
@@ -798,7 +939,191 @@ button {
     color:white;
 }
 
-/* MISSION VISION */
+/* =====================================
+   CLIENTS
+===================================== */
+
+.clients-section {
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 5% 15%,rgba(152,101,237,.09),transparent 30%),
+        radial-gradient(circle at 95% 85%,rgba(84,38,154,.08),transparent 30%),
+        linear-gradient(135deg,#fbfaff,#f5f0fc);
+}
+
+.clients-section::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(84,38,154,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(84,38,154,.025) 1px,transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+}
+
+.clients-section .container {
+    position:relative;
+    z-index:1;
+}
+
+.clients-heading {
+    max-width:750px;
+    margin:0 auto 55px;
+    text-align:center;
+}
+
+.clients-heading .section-label {
+    display:inline-block;
+    padding:9px 17px;
+    background:white;
+    border:1px solid var(--line);
+    border-radius:30px;
+}
+
+.clients-heading h2 {
+    font-family:'Manrope',sans-serif;
+    color:var(--primary);
+    font-size:clamp(30px,4vw,44px);
+    line-height:1.2;
+    letter-spacing:-1.4px;
+    margin:15px 0;
+}
+
+.clients-heading p {
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
+    max-width:650px;
+    margin:auto;
+}
+
+.clients-divider {
+    width:65px;
+    height:4px;
+    border-radius:10px;
+    background:var(--gradient);
+    margin:22px auto 0;
+}
+
+.clients-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.client-card {
+    min-height:175px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    padding:27px;
+    background:rgba(255,255,255,.92);
+    border:1px solid var(--line);
+    border-radius:22px;
+    overflow:hidden;
+    transition:all .4s ease;
+    box-shadow:0 8px 25px rgba(50,20,95,.035);
+}
+
+.client-card::before {
+    content:"";
+    position:absolute;
+    width:5px;
+    height:0;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    background:var(--gradient);
+    border-radius:0 5px 5px 0;
+    transition:.35s;
+}
+
+.client-card:hover {
+    transform:translateY(-9px);
+    border-color:#cbb3eb;
+    box-shadow:0 20px 45px rgba(50,20,95,.12);
+}
+
+.client-card:hover::before {
+    height:65%;
+}
+
+.client-logo-box {
+    width:100%;
+    height:90px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    z-index:1;
+}
+
+.client-logo-box img {
+    max-width:85%;
+    max-height:75px;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    transition:.4s;
+    filter:grayscale(20%);
+}
+
+.client-card:hover img {
+    filter:grayscale(0);
+    transform:scale(1.07);
+}
+
+.client-name {
+    color:var(--primary);
+    font-family:'Manrope',sans-serif;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.6px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+}
+
+.client-tag {
+    font-size:9px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    font-weight:700;
+    position:relative;
+    z-index:1;
+}
+
+.clients-bottom {
+    margin-top:42px;
+    padding:24px;
+    background:var(--gradient);
+    border-radius:20px;
+    text-align:center;
+    color:white;
+}
+
+.clients-bottom strong {
+    display:block;
+    font-family:'Manrope',sans-serif;
+    font-size:19px;
+    margin-bottom:7px;
+}
+
+.clients-bottom p {
+    font-size:12px;
+    line-height:1.8;
+    color:#e9ddfa;
+}
+
+/* =====================================
+   MISSION AND VISION
+===================================== */
 
 .mv-grid {
     display:grid;
@@ -853,7 +1178,9 @@ button {
     color:white;
 }
 
-/* WHY US */
+/* =====================================
+   WHY CHOOSE US
+===================================== */
 
 .why-grid {
     display:grid;
@@ -866,6 +1193,12 @@ button {
     background:#fff;
     border:1px solid var(--line);
     border-radius:17px;
+    transition:.3s;
+}
+
+.why-item:hover {
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
 }
 
 .why-item strong {
@@ -882,7 +1215,9 @@ button {
     color:var(--muted);
 }
 
-/* LOCATION */
+/* =====================================
+   LOCATION
+===================================== */
 
 .location-box {
     background:var(--gradient);
@@ -895,17 +1230,6 @@ button {
     color:white;
     overflow:hidden;
     position:relative;
-}
-
-.location-box::after {
-    content:"";
-    position:absolute;
-    width:350px;
-    height:350px;
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:50%;
-    right:-130px;
-    top:-160px;
 }
 
 .location-box h2 {
@@ -949,7 +1273,9 @@ button {
     font-size:19px;
 }
 
-/* CTA */
+/* =====================================
+   CTA
+===================================== */
 
 .cta {
     padding:85px 0;
@@ -972,7 +1298,9 @@ button {
     color:var(--muted);
 }
 
-/* FOOTER */
+/* =====================================
+   FOOTER
+===================================== */
 
 .footer {
     background:#211039;
@@ -988,21 +1316,14 @@ button {
 }
 
 .footer-brand {
-    display:flex;
-    align-items:center;
-    gap:12px;
     margin-bottom:20px;
 }
 
 .footer-brand img {
-    width:180px;
-    height:160px;
+    width:155px;
+    height:85px;
     object-fit:contain;
-}
-
-.footer-brand strong {
-    font-family:'Manrope',sans-serif;
-    font-size:16px;
+    display:block;
 }
 
 .footer-about {
@@ -1045,6 +1366,10 @@ button {
     font-size:10px;
 }
 
+/* =====================================
+   BACK TO TOP
+===================================== */
+
 .back-top {
     position:fixed;
     right:24px;
@@ -1071,30 +1396,34 @@ button {
     transform:translateY(0);
 }
 
-/* SCROLL ANIMATION */
+/* =====================================
+   SCROLL REVEAL
+===================================== */
+
+/* Content stays visible even if JavaScript is disabled. */
 
 .reveal {
+    opacity:1;
+    transform:none;
+}
+
+.js-enabled .reveal {
     opacity:0;
     transform:translateY(28px);
     transition:opacity .8s ease,transform .8s ease;
 }
 
-.reveal.visible {
+.js-enabled .reveal.visible {
     opacity:1;
     transform:translateY(0);
 }
 
-@media (prefers-reduced-motion:reduce) {
-    *,*::before,*::after {
-        scroll-behavior:auto!important;
-        animation-duration:.01ms!important;
-        transition-duration:.01ms!important;
-    }
-}
-
-/* RESPONSIVE */
+/* =====================================
+   RESPONSIVE TABLET
+===================================== */
 
 @media(max-width:950px) {
+
     .nav-wrapper {
         grid-template-columns:1fr auto;
     }
@@ -1104,8 +1433,7 @@ button {
     }
 
     .menu-toggle {
-        display:block;
-        justify-self:end;
+        display:flex;
     }
 
     .nav-menu {
@@ -1114,11 +1442,14 @@ button {
         top:100%;
         left:0;
         width:100%;
-        padding:18px 5%;
+        padding:18px 5% 24px;
         background:white;
         box-shadow:0 15px 25px rgba(0,0,0,.08);
         flex-direction:column;
         align-items:stretch;
+        gap:5px;
+        max-height:calc(100vh - 80px);
+        overflow-y:auto;
     }
 
     .nav-menu.open {
@@ -1127,6 +1458,7 @@ button {
 
     .nav-menu a {
         text-align:center;
+        padding:14px;
     }
 
     .hero-inner {
@@ -1156,12 +1488,21 @@ button {
         grid-template-columns:repeat(2,1fr);
     }
 
+    .clients-grid {
+        grid-template-columns:repeat(2,1fr);
+    }
+
     .footer-grid {
         grid-template-columns:repeat(2,1fr);
     }
 }
 
+/* =====================================
+   RESPONSIVE MOBILE
+===================================== */
+
 @media(max-width:650px) {
+
     .topbar-inner {
         justify-content:center;
         text-align:center;
@@ -1176,12 +1517,8 @@ button {
     }
 
     .brand-logo {
-        width:42px;
-        height:42px;
-    }
-
-    .brand-text {
-        font-size:14px;
+        width:125px;
+        height:65px;
     }
 
     .hero {
@@ -1288,243 +1625,6 @@ button {
         padding:32px 24px;
     }
 
-    .footer-grid {
-        grid-template-columns:1fr 1fr;
-        gap:30px 20px;
-    }
-
-    .footer-grid > div:first-child {
-        grid-column:1/-1;
-    }
-
-    .footer-bottom {
-        flex-direction:column;
-        text-align:center;
-    }
-}
-
-@media(max-width:380px) {
-    .industry-grid {
-        grid-template-columns:1fr;
-    }
-
-    .footer-grid {
-        grid-template-columns:1fr;
-    }
-
-    .footer-grid > div:first-child {
-        grid-column:auto;
-    }
-}
-
-
-
-/* OUR VALUED CLIENTS */
-
-.clients-section {
-    position:relative;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 5% 15%,rgba(152,101,237,.09),transparent 30%),
-        radial-gradient(circle at 95% 85%,rgba(84,38,154,.08),transparent 30%),
-        linear-gradient(135deg,#fbfaff,#f5f0fc);
-}
-
-.clients-section::before {
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image:
-        linear-gradient(rgba(84,38,154,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(84,38,154,.025) 1px,transparent 1px);
-    background-size:40px 40px;
-    pointer-events:none;
-}
-
-.clients-section .container {
-    position:relative;
-    z-index:1;
-}
-
-.clients-heading {
-    max-width:750px;
-    margin:0 auto 55px;
-    text-align:center;
-}
-
-.clients-heading .section-label {
-    display:inline-block;
-    padding:9px 17px;
-    background:white;
-    border:1px solid var(--line);
-    border-radius:30px;
-}
-
-.clients-heading h2 {
-    font-family:'Manrope',sans-serif;
-    color:var(--primary);
-    font-size:clamp(30px,4vw,44px);
-    line-height:1.2;
-    letter-spacing:-1.4px;
-    margin:15px 0;
-}
-
-.clients-heading p {
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.9;
-    max-width:650px;
-    margin:auto;
-}
-
-.clients-divider {
-    width:65px;
-    height:4px;
-    border-radius:10px;
-    background:var(--gradient);
-    margin:22px auto 0;
-}
-
-.clients-grid {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-}
-
-.client-card {
-    min-height:175px;
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:15px;
-    padding:27px;
-    background:rgba(255,255,255,.92);
-    border:1px solid #e9e1f4;
-    border-radius:22px;
-    overflow:hidden;
-    transition:all .4s ease;
-    box-shadow:0 8px 25px rgba(50,20,95,.035);
-}
-
-.client-card::before {
-    content:"";
-    position:absolute;
-    width:5px;
-    height:0;
-    left:0;
-    top:50%;
-    transform:translateY(-50%);
-    background:var(--gradient);
-    border-radius:0 5px 5px 0;
-    transition:.35s;
-}
-
-.client-card::after {
-    content:"";
-    position:absolute;
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    background:rgba(152,101,237,.055);
-    right:-75px;
-    bottom:-85px;
-    transition:.4s;
-}
-
-.client-card:hover {
-    transform:translateY(-9px);
-    border-color:#cbb3eb;
-    box-shadow:0 20px 45px rgba(50,20,95,.12);
-}
-
-.client-card:hover::before {
-    height:65%;
-}
-
-.client-card:hover::after {
-    transform:scale(1.7);
-}
-
-.client-logo-box {
-    width:100%;
-    height:90px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    z-index:1;
-}
-
-.client-logo-box img {
-    max-width:85%;
-    max-height:75px;
-    width:auto;
-    height:auto;
-    object-fit:contain;
-    transition:.4s;
-    filter:grayscale(35%);
-}
-
-.client-card:hover .client-logo-box img {
-    filter:grayscale(0%);
-    transform:scale(1.07);
-}
-
-.client-name {
-    color:var(--primary);
-    font-family:'Manrope',sans-serif;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.6px;
-    text-align:center;
-    position:relative;
-    z-index:1;
-}
-
-.client-tag {
-    font-size:9px;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-    font-weight:700;
-    position:relative;
-    z-index:1;
-}
-
-.clients-bottom {
-    margin-top:42px;
-    padding:24px;
-    background:var(--gradient);
-    border-radius:20px;
-    text-align:center;
-    color:white;
-    position:relative;
-    overflow:hidden;
-}
-
-.clients-bottom strong {
-    display:block;
-    font-family:'Manrope',sans-serif;
-    font-size:19px;
-    margin-bottom:7px;
-}
-
-.clients-bottom p {
-    font-size:12px;
-    line-height:1.8;
-    color:#e9ddfa;
-}
-
-@media(max-width:850px) {
-    .clients-grid {
-        grid-template-columns:repeat(2,1fr);
-        gap:17px;
-    }
-}
-
-@media(max-width:480px) {
     .clients-grid {
         grid-template-columns:1fr 1fr;
         gap:12px;
@@ -1551,85 +1651,224 @@ button {
     .clients-bottom {
         padding:22px 15px;
     }
+
+    .footer-grid {
+        grid-template-columns:1fr 1fr;
+        gap:30px 20px;
+    }
+
+    .footer-grid > div:first-child {
+        grid-column:1/-1;
+    }
+
+    .footer-bottom {
+        flex-direction:column;
+        text-align:center;
+    }
 }
 
+@media(max-width:380px) {
 
+    .industry-grid,
+    .footer-grid {
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid > div:first-child {
+        grid-column:auto;
+    }
+
+    .loader-content {
+        padding:30px 20px;
+    }
+}
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media(prefers-reduced-motion:reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior:auto!important;
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-    <div class="loader-logo">UNIQUE WATER</div>
-    <div class="loader-ring"></div>
-    <div class="loader-text">Quality • Trust • Excellence</div>
+<!-- =====================================
+     MACOS LOADER
+===================================== -->
+
+<div id="loader" role="status" aria-label="Loading Unique Water Technologies">
+
+    <div class="loader-window">
+
+        <div class="loader-titlebar">
+            <span class="mac-dot mac-red"></span>
+            <span class="mac-dot mac-yellow"></span>
+            <span class="mac-dot mac-green"></span>
+            <span class="loader-window-title">WELCOME</span>
+        </div>
+
+        <div class="loader-content">
+
+            <div class="loader-logo-icon">💧</div>
+
+            <div class="loader-brand">UNIQUE WATER</div>
+
+            <div class="loader-subtitle">
+                Technologies
+            </div>
+
+            <div class="loader-progress-track">
+                <div class="loader-progress"></div>
+            </div>
+
+            <div class="loader-status">
+                <span>Preparing your experience</span>
+                <span>Loading...</span>
+            </div>
+
+            <div class="loader-bottom">
+                <span class="loader-spinner"></span>
+                QUALITY • TRUST • EXCELLENCE
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
-<!-- TOPBAR -->
+<!-- TOP BAR -->
+
 <div class="topbar">
     <div class="container topbar-inner">
-        <span>Water Treatment Solutions. <strong>Dependable Service. Quality Support.</strong></span>
-        <span>Company Enquiries: <a href="mailto:daisy@uniquewater.in">daisy@uniquewater.in</a></span>
+
+        <span>
+            Water Treatment Solutions.
+            <strong>Dependable Service. Quality Support.</strong>
+        </span>
+
+        <span>
+            Company Enquiries:
+            <a href="mailto:daisy@uniquewater.in">
+                daisy@uniquewater.in
+            </a>
+        </span>
+
     </div>
 </div>
 
 <!-- HEADER -->
+
 <header class="header" id="header">
+
     <div class="container nav-wrapper">
 
-        <a href="/Home/" class="brand">
-            <img class="brand-logo" src="../logo/unique%20logo.png" alt="Unique Water Technologies Logo">
-            <span class="brand-text">
-            
-                <small></small>
-            </span>
+        <a href="https://uniquewater-io.github.io/Home/" class="brand">
+            <img
+                class="brand-logo"
+                src="https://uniquewater-io.github.io/Home/logo/unique%20logo.png"
+                alt="Unique Water Technologies Logo">
         </a>
 
         <nav class="nav-menu" id="navMenu">
-            <a href="https://uniquewater-io.github.io/Home">Home</a>
-            <a href="https://uniquewater-io.github.io/Home/products/products">Products</a>
-            <a href="https://uniquewater-io.github.io/Home/aboutus/about" class="active">About Us</a>
-            <a href="https://uniquewater-io.github.io/Home/industries/industries">Industries</a>
-            <a href="https://uniquewater-io.github.io/Home/contact/contact">Contact</a>
-            
+
+            <a href="https://uniquewater-io.github.io/Home/">
+                Home
+            </a>
+
+            <a href="https://uniquewater-io.github.io/Home/products/products">
+                Products
+            </a>
+
+            <a href="https://uniquewater-io.github.io/Home/aboutus/about" class="active">
+                About Us
+            </a>
+
+            <a href="https://uniquewater-io.github.io/Home/industries/industries">
+                Industries
+            </a>
+
+            <a href="https://uniquewater-io.github.io/Home/contact/contact">
+                Contact
+            </a>
+
         </nav>
 
         <div class="nav-action">
-            <a href="mailto:daisy@uniquewater.in">Send an Enquiry ↗</a>
+            <a href="mailto:daisy@uniquewater.in">
+                Send an Enquiry ↗
+            </a>
         </div>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navMenu">
+            ☰
+        </button>
+
     </div>
+
 </header>
 
 <main>
 
 <!-- HERO -->
+
 <section class="hero">
+
     <div class="container hero-inner">
 
         <div class="reveal">
-            <div class="eyebrow"><span></span> ABOUT UNIQUE WATER TECHNOLOGIES</div>
+
+            <div class="eyebrow">
+                <span></span>
+                ABOUT UNIQUE WATER TECHNOLOGIES
+            </div>
 
             <h1>
-                Engineering Better Water Solutions for a <span>Sustainable Future.</span>
+                Engineering Better Water Solutions for a
+                <span>Sustainable Future.</span>
             </h1>
 
             <p class="hero-description">
-                Established in 2017, Unique Water Technologies is a Bengaluru-based
-                water treatment service provider delivering practical and reliable
-                water and wastewater treatment solutions for industrial and
-                commercial applications across India.
+                Established in 2017, Unique Water Technologies is a
+                Bengaluru-based water treatment service provider
+                delivering practical and reliable water and wastewater
+                treatment solutions for industrial and commercial
+                applications across India.
             </p>
 
             <div class="hero-buttons">
-                <a href="#our-story" class="btn btn-primary">Discover Our Story ↓</a>
-                <a href="/Home/contact/contact" class="btn btn-outline">Contact Our Team ↗</a>
+
+                <a href="#our-story" class="btn btn-primary">
+                    Discover Our Story ↓
+                </a>
+
+                <a href="https://uniquewater-io.github.io/Home/contact/contact"
+                   class="btn btn-outline">
+                    Contact Our Team ↗
+                </a>
+
             </div>
+
         </div>
 
         <div class="hero-visual reveal">
+
             <div class="visual-circle">
                 <div class="water-symbol">💧</div>
             </div>
@@ -1643,13 +1882,17 @@ button {
                 <strong>ISO 9001</strong>
                 <small>Quality-based approach</small>
             </div>
+
         </div>
 
     </div>
+
 </section>
 
 <!-- TRUST STRIP -->
+
 <section class="trust-strip">
+
     <div class="container trust-grid">
 
         <div class="trust-item">
@@ -1685,60 +1928,90 @@ button {
         </div>
 
     </div>
+
 </section>
 
 <!-- COMPANY STORY -->
+
 <section class="section" id="our-story">
+
     <div class="container story-grid">
 
         <div class="story-visual reveal">
+
             <div class="story-graphic">💧</div>
 
             <div class="established-card">
                 <strong>Since 2017</strong>
-                <span>Committed to better water management and industrial solutions.</span>
+                <span>
+                    Committed to better water management and industrial solutions.
+                </span>
             </div>
+
         </div>
 
         <div class="story-content reveal">
 
             <span class="section-label">WHO WE ARE</span>
 
-            <h2>Your Trusted Partner in Water & Wastewater Treatment.</h2>
+            <h2>
+                Your Trusted Partner in Water & Wastewater Treatment.
+            </h2>
 
             <p>
-                Unique Water Technologies is a Bengaluru-based water treatment
-                company established in 2017. We specialise in providing water
-                treatment and wastewater management services for a wide range
-                of industrial and commercial sectors.
+                Unique Water Technologies is a Bengaluru-based water
+                treatment company established in 2017. We specialise
+                in providing water treatment and wastewater management
+                services for a wide range of industrial and commercial sectors.
             </p>
 
             <p>
-                With a focus on quality, reliability and practical engineering,
-                we support industries in addressing their water treatment
-                requirements through appropriate solutions, technical services
-                and application-focused support.
+                With a focus on quality, reliability and practical
+                engineering, we support industries in addressing their
+                water treatment requirements through appropriate solutions,
+                technical services and application-focused support.
             </p>
 
             <p>
                 Our operations follow an ISO 9001-based quality approach,
-                emphasising consistent processes, customer satisfaction and
-                continuous improvement.
+                emphasising consistent processes, customer satisfaction
+                and continuous improvement.
             </p>
 
             <div class="check-list">
-                <div class="check-item"><span>✓</span> Industrial Water Treatment</div>
-                <div class="check-item"><span>✓</span> ETP & STP Solutions</div>
-                <div class="check-item"><span>✓</span> Quality-Focused Services</div>
-                <div class="check-item"><span>✓</span> Application-Based Support</div>
+
+                <div class="check-item">
+                    <span>✓</span>
+                    Industrial Water Treatment
+                </div>
+
+                <div class="check-item">
+                    <span>✓</span>
+                    ETP & STP Solutions
+                </div>
+
+                <div class="check-item">
+                    <span>✓</span>
+                    Quality-Focused Services
+                </div>
+
+                <div class="check-item">
+                    <span>✓</span>
+                    Application-Based Support
+                </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 <!-- STATISTICS -->
+
 <section class="stats">
+
     <div class="container stats-grid">
 
         <div class="stat reveal">
@@ -1762,21 +2035,28 @@ button {
         </div>
 
     </div>
+
 </section>
 
 <!-- SERVICES -->
+
 <section class="section section-light" id="services">
 
     <div class="container">
 
         <div class="section-heading reveal">
+
             <span class="section-label">WHAT WE DO</span>
+
             <h2>Our Water Treatment Expertise</h2>
+
             <p>
-                We provide industrial water treatment and wastewater management
-                services designed to support efficient operations, responsible
-                water usage and industry-specific requirements.
+                We provide industrial water treatment and wastewater
+                management services designed to support efficient
+                operations, responsible water usage and industry-specific
+                requirements.
             </p>
+
         </div>
 
         <div class="service-grid">
@@ -1805,8 +2085,8 @@ button {
                 <div class="service-icon">🚰</div>
                 <h3>Sewage Treatment Plant (STP)</h3>
                 <p>
-                    STP-related services and wastewater treatment solutions
-                    for commercial and industrial establishments.
+                    STP-related services and wastewater treatment
+                    solutions for commercial and industrial establishments.
                 </p>
             </div>
 
@@ -1840,22 +2120,29 @@ button {
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 <!-- INDUSTRIES -->
+
 <section class="section" id="industries">
 
     <div class="container">
 
         <div class="section-heading reveal">
+
             <span class="section-label">INDUSTRIES WE SERVE</span>
+
             <h2>Supporting Diverse Industrial Sectors</h2>
+
             <p>
                 Our water treatment expertise supports industries with
                 different operational requirements, process conditions
                 and wastewater management needs.
             </p>
+
         </div>
 
         <div class="industry-grid">
@@ -1911,11 +2198,11 @@ button {
         </div>
 
     </div>
+
 </section>
 
-
-
 <!-- OUR VALUED CLIENTS -->
+
 <section class="section clients-section" id="clients">
 
     <div class="container">
@@ -1939,102 +2226,82 @@ button {
 
         <div class="clients-grid">
 
-            <!-- CLIENT 01 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/1.jpg"
-                         alt="Client 1 Logo"
-                         loading="lazy">
+                         alt="Client 1 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 01</div>
                 <div class="client-tag">Our Valued Client</div>
             </div>
 
-            <!-- CLIENT 02 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/2.jpeg"
-                         alt="Client 2 Logo"
-                         loading="lazy">
+                         alt="Client 2 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 02</div>
                 <div class="client-tag">Our Valued Client</div>
             </div>
 
-            <!-- CLIENT 03 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/3.png"
-                         alt="Client 3 Logo"
-                         loading="lazy">
+                         alt="Client 3 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 03</div>
                 <div class="client-tag">Our Valued Client</div>
             </div>
 
-            <!-- CLIENT 04 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/4.png"
-                         alt="Client 4 Logo"
-                         loading="lazy">
+                         alt="Client 4 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 04</div>
                 <div class="client-tag">Our Valued Client</div>
             </div>
 
-            <!-- CLIENT 05 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/5.webp"
-                         alt="Client 5 Logo"
-                         loading="lazy">
+                         alt="Client 5 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 05</div>
                 <div class="client-tag">Our Valued Client</div>
             </div>
 
-            <!-- CLIENT 06 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/6.webp"
-                         alt="Client 6 Logo"
-                         loading="lazy">
+                         alt="Client 6 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 06</div>
                 <div class="client-tag">Our Valued Client</div>
             </div>
 
-
-<!-- CLIENT 07 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/7.webp"
-                         alt="Client 7 Logo"
-                         loading="lazy">
+                         alt="Client 7 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 07</div>
                 <div class="client-tag">Our Valued Client</div>
             </div>
 
-            <!-- CLIENT 08 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/8.webp"
-                         alt="Client 8 Logo"
-                         loading="lazy">
+                         alt="Client 8 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 08</div>
                 <div class="client-tag">Our Valued Client</div>
             </div>
 
-
-            <!-- CLIENT 09 -->
             <div class="client-card reveal">
                 <div class="client-logo-box">
                     <img src="https://uniquewater-io.github.io/Home/unique-clients/9.png"
-                         alt="Client 9 Logo"
-                         loading="lazy">
+                         alt="Client 9 Logo" loading="lazy">
                 </div>
                 <div class="client-name">Client Name 09</div>
                 <div class="client-tag">Our Valued Client</div>
@@ -2043,41 +2310,50 @@ button {
         </div>
 
         <div class="clients-bottom reveal">
-            <strong>Building Trust. Creating Long-Term Partnerships.</strong>
+
+            <strong>
+                Building Trust. Creating Long-Term Partnerships.
+            </strong>
+
             <p>
                 Thank you to our clients for trusting Unique Water Technologies
                 with their industrial water treatment requirements.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-
-
-
-
 <!-- MISSION & VISION -->
+
 <section class="section section-light">
 
     <div class="container">
 
         <div class="section-heading reveal">
+
             <span class="section-label">OUR PURPOSE</span>
+
             <h2>Our Mission & Vision</h2>
+
             <p>
                 Building long-term relationships through dependable water
                 treatment services, quality practices and customer-focused
                 engineering solutions.
             </p>
+
         </div>
 
         <div class="mv-grid">
 
             <div class="mv-card featured reveal">
+
                 <div class="mv-icon">🎯</div>
+
                 <h3>Our Mission</h3>
+
                 <p>
                     To deliver reliable and practical water and wastewater
                     treatment services that support industrial operations,
@@ -2085,11 +2361,15 @@ button {
                     requirements of our customers through quality-focused
                     processes and continuous improvement.
                 </p>
+
             </div>
 
             <div class="mv-card reveal">
+
                 <div class="mv-icon">🌍</div>
+
                 <h3>Our Vision</h3>
+
                 <p>
                     To be a trusted and leading water treatment service
                     provider in Bengaluru and beyond, recognised for
@@ -2097,25 +2377,35 @@ button {
                     satisfaction and our commitment to sustainable
                     water management.
                 </p>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 <!-- WHY CHOOSE US -->
+
 <section class="section">
 
     <div class="container">
 
         <div class="section-heading reveal">
-            <span class="section-label">WHY UNIQUE WATER TECHNOLOGIES</span>
+
+            <span class="section-label">
+                WHY UNIQUE WATER TECHNOLOGIES
+            </span>
+
             <h2>Quality, Reliability & Commitment</h2>
+
             <p>
                 We believe successful water treatment solutions begin with
                 understanding the customer's requirements and delivering
                 dependable technical support.
             </p>
+
         </div>
 
         <div class="why-grid">
@@ -2169,18 +2459,29 @@ button {
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 <!-- LOCATION -->
+
 <section class="section section-light">
+
     <div class="container">
 
         <div class="location-box reveal">
 
             <div>
-                <span class="section-label" style="color:#e3d4fa">OUR LOCATION</span>
-                <h2>Rooted in Bengaluru. Serving Industrial Water Needs.</h2>
+
+                <span class="section-label" style="color:#e3d4fa">
+                    OUR LOCATION
+                </span>
+
+                <h2>
+                    Rooted in Bengaluru. Serving Industrial Water Needs.
+                </h2>
+
                 <p>
                     Unique Water Technologies is based in Bengaluru,
                     Karnataka, India. Since 2017, we have been committed
@@ -2188,25 +2489,40 @@ button {
                     with water treatment and wastewater management
                     requirements.
                 </p>
+
             </div>
 
             <div class="location-details">
+
                 <span>Headquarters</span>
+
                 <strong>Bengaluru</strong>
-                <p style="margin-top:8px">Karnataka, India</p>
+
+                <p style="margin-top:8px">
+                    Karnataka, India
+                </p>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 <!-- CTA -->
+
 <section class="cta">
+
     <div class="container reveal">
 
-        <span class="section-label">LET'S WORK TOGETHER</span>
+        <span class="section-label">
+            LET'S WORK TOGETHER
+        </span>
 
-        <h2>Looking for Reliable Water Treatment Solutions?</h2>
+        <h2>
+            Looking for Reliable Water Treatment Solutions?
+        </h2>
 
         <p>
             Whether your requirement involves industrial water treatment,
@@ -2214,25 +2530,31 @@ button {
             understand your application and discuss suitable solutions.
         </p>
 
-        <a href="/Home/contact/contact" class="btn btn-primary">
+        <a href="https://uniquewater-io.github.io/Home/contact/contact"
+           class="btn btn-primary">
             Get in Touch With Us ↗
         </a>
 
     </div>
+
 </section>
 
 </main>
 
 <!-- FOOTER -->
+
 <footer class="footer">
+
     <div class="container">
 
         <div class="footer-grid">
 
             <div>
+
                 <div class="footer-brand">
-                    <img src="../logo/unique%20logo.png" alt="Unique Water Technologies">
-                    <strong><br></strong>
+                    <img
+                        src="https://uniquewater-io.github.io/Home/logo/unique%20logo.png"
+                        alt="Unique Water Technologies">
                 </div>
 
                 <p class="footer-about">
@@ -2240,113 +2562,335 @@ button {
                     ETP, STP and wastewater management services.
                     Established in 2017 and based in Bengaluru, India.
                 </p>
+
             </div>
 
             <div>
+
                 <h4>Explore</h4>
+
                 <div class="footer-links">
-                    <a href="/Home/">Home</a>
-                    <a href="/Home/products/products">Our Products</a>
-                    <a href="/Home/about/about">About Us</a>
-                    <a href="/Home/industries/industries">Industries</a>
-                    <a href="/Home/contact/contact">Contact Us</a>
+
+                    <a href="https://uniquewater-io.github.io/Home/">
+                        Home
+                    </a>
+
+                    <a href="https://uniquewater-io.github.io/Home/products/products">
+                        Our Products
+                    </a>
+
+                    <a href="https://uniquewater-io.github.io/Home/aboutus/about">
+                        About Us
+                    </a>
+
+                    <a href="https://uniquewater-io.github.io/Home/industries/industries">
+                        Industries
+                    </a>
+
+                    <a href="https://uniquewater-io.github.io/Home/contact/contact">
+                        Contact Us
+                    </a>
+
                 </div>
+
             </div>
 
             <div>
+
                 <h4>Our Expertise</h4>
+
                 <div class="footer-links">
+
                     <a href="#services">Water Treatment</a>
                     <a href="#services">ETP Solutions</a>
                     <a href="#services">STP Solutions</a>
                     <a href="#industries">Industrial Applications</a>
                     <a href="#industries">Wastewater Management</a>
+
                 </div>
+
             </div>
 
             <div>
+
                 <h4>Contact</h4>
+
                 <div class="footer-links">
-                    <a href="mailto:daisy@uniquewater.in">daisy@uniquewater.in</a>
-                    <a href="/Home/contact/contact">Contact Our Team ↗</a>
-                    <a href="/Home/contact/contact">Request an Enquiry</a>
-                    <a href="#our-story">Bengaluru, Karnataka, India</a>
+
+                    <a href="mailto:daisy@uniquewater.in">
+                        daisy@uniquewater.in
+                    </a>
+
+                    <a href="https://uniquewater-io.github.io/Home/contact/contact">
+                        Contact Our Team ↗
+                    </a>
+
+                    <a href="https://uniquewater-io.github.io/Home/contact/contact">
+                        Request an Enquiry
+                    </a>
+
+                    <a href="#our-story">
+                        Bengaluru, Karnataka, India
+                    </a>
+
                 </div>
+
             </div>
 
         </div>
 
         <div class="footer-bottom">
-            <span>© <span id="year"></span> Unique Water Technologies. All Rights Reserved.</span>
-            <span>Water Treatment • ETP • STP • Industrial Solutions</span>
+
+            <span>
+                © <span id="year"></span>
+                Unique Water Technologies. All Rights Reserved.
+            </span>
+
+            <span>
+                Water Treatment • ETP • STP • Industrial Solutions
+            </span>
+
         </div>
 
     </div>
+
 </footer>
 
-<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+<!-- BACK TO TOP -->
+
+<button
+    class="back-top"
+    id="backTop"
+    type="button"
+    aria-label="Back to top">
+    ↑
+</button>
 
 <script>
-/* PRELOADER */
-window.addEventListener("load", function() {
-    setTimeout(function() {
-        document.getElementById("loader").classList.add("hide");
-    }, 650);
-});
+(function () {
+    "use strict";
 
-/* MOBILE MENU */
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+    /* =================================
+       INITIALIZE
+    ================================= */
 
-menuToggle.addEventListener("click", function() {
-    const opened = navMenu.classList.toggle("open");
-    menuToggle.textContent = opened ? "×" : "☰";
-    menuToggle.setAttribute("aria-expanded", opened);
-});
+    document.documentElement.classList.add("js-enabled");
 
-document.querySelectorAll(".nav-menu a").forEach(function(link) {
-    link.addEventListener("click", function() {
+    const loader = document.getElementById("loader");
+    const header = document.getElementById("header");
+    const backTop = document.getElementById("backTop");
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    /* =================================
+       MACOS LOADER
+    ================================= */
+
+    let loaderHidden = false;
+
+    function hideLoader() {
+
+        if (loaderHidden || !loader) return;
+
+        loaderHidden = true;
+
+        loader.classList.add("hide");
+
+        setTimeout(function () {
+            if (loader.parentNode) {
+                loader.remove();
+            }
+        }, 750);
+    }
+
+    // Normal loading completion.
+    window.addEventListener("load", function () {
+        setTimeout(hideLoader, 500);
+    }, { once: true });
+
+    // Fallback: never leave the website behind the loader.
+    const loaderFallback = setTimeout(function () {
+        hideLoader();
+    }, 3500);
+
+    // Handle pages that have already finished loading.
+    if (document.readyState === "complete") {
+        clearTimeout(loaderFallback);
+        setTimeout(hideLoader, 500);
+    }
+
+    /* =================================
+       MOBILE NAVIGATION
+    ================================= */
+
+    function closeMenu() {
+
+        if (!navMenu || !menuToggle) return;
+
         navMenu.classList.remove("open");
+
         menuToggle.textContent = "☰";
         menuToggle.setAttribute("aria-expanded", "false");
-    });
-});
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
 
-/* HEADER SCROLL EFFECT */
-const header = document.getElementById("header");
-const backTop = document.getElementById("backTop");
+        document.body.classList.remove("menu-open");
+    }
 
-window.addEventListener("scroll", function() {
-    header.classList.toggle("scrolled", window.scrollY > 30);
-    backTop.classList.toggle("show", window.scrollY > 400);
-});
+    if (menuToggle && navMenu) {
 
-/* BACK TO TOP */
-backTop.addEventListener("click", function() {
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-});
+        menuToggle.addEventListener("click", function () {
 
-/* SCROLL REVEAL */
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-        if(entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+            const isOpen = navMenu.classList.toggle("open");
+
+            menuToggle.textContent = isOpen ? "×" : "☰";
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            document.body.classList.toggle("menu-open", isOpen);
+
+        });
+
+        // Close menu when clicking a navigation link.
+        navMenu.querySelectorAll("a").forEach(function (link) {
+
+            link.addEventListener("click", closeMenu);
+
+        });
+
+        // Close menu when clicking outside the header.
+        document.addEventListener("click", function (event) {
+
+            if (
+                navMenu.classList.contains("open") &&
+                !event.target.closest(".header")
+            ) {
+                closeMenu();
+            }
+
+        });
+
+        // Close menu using Escape.
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+
+        });
+
+        // Reset menu when changing to desktop layout.
+        window.addEventListener("resize", function () {
+
+            if (window.innerWidth > 950) {
+                closeMenu();
+            }
+
+        });
+
+    }
+
+    /* =================================
+       HEADER SCROLL EFFECT
+    ================================= */
+
+    function handleScroll() {
+
+        const scrollPosition = window.scrollY;
+
+        if (header) {
+            header.classList.toggle("scrolled", scrollPosition > 30);
         }
+
+        if (backTop) {
+            backTop.classList.toggle("show", scrollPosition > 400);
+        }
+
+    }
+
+    window.addEventListener("scroll", handleScroll, {
+        passive: true
     });
-}, {
-    threshold:0.12
-});
 
-document.querySelectorAll(".reveal").forEach(function(element) {
-    observer.observe(element);
-});
+    handleScroll();
 
-/* COPYRIGHT YEAR */
-document.getElementById("year").textContent = new Date().getFullYear();
+    /* =================================
+       BACK TO TOP
+    ================================= */
+
+    if (backTop) {
+
+        backTop.addEventListener("click", function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches ? "auto" : "smooth"
+            });
+
+        });
+
+    }
+
+    /* =================================
+       SCROLL REVEAL ANIMATION
+    ================================= */
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+
+        const observer = new IntersectionObserver(
+            function (entries, currentObserver) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        currentObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.10,
+                rootMargin: "0px 0px -35px 0px"
+            }
+        );
+
+        revealElements.forEach(function (element) {
+            observer.observe(element);
+        });
+
+    } else {
+
+        // Fallback for older browsers.
+        revealElements.forEach(function (element) {
+            element.classList.add("visible");
+        });
+
+    }
+
+    /* =================================
+       COPYRIGHT YEAR
+    ================================= */
+
+    const year = document.getElementById("year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+
+})();
 </script>
 
 </body>

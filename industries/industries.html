@@ -115,6 +115,233 @@ img {
     color: transparent;
 }
 
+
+
+/* =========================================
+   macOS STYLE LOADING SCREEN
+========================================= */
+
+#macLoader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background:
+        radial-gradient(ellipse at 25% 20%, rgba(151,111,210,.30), transparent 40%),
+        radial-gradient(ellipse at 80% 85%, rgba(86,38,145,.35), transparent 45%),
+        linear-gradient(135deg, #321b50, #281044 55%, #35145d);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .65s ease, visibility .65s ease;
+}
+
+#macLoader.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.mac-window {
+    width: min(390px, 100%);
+    min-height: 350px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: rgba(255,255,255,.105);
+    border: 1px solid rgba(255,255,255,.23);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.28),
+        inset 0 1px 1px rgba(255,255,255,.2);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    animation: macWindowOpen .8s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.mac-titlebar {
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background: rgba(255,255,255,.09);
+    border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.mac-traffic-lights {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mac-light {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+}
+
+.mac-red { background: #ff5f57; }
+.mac-yellow { background: #febc2e; }
+.mac-green { background: #28c840; }
+
+.mac-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,.7);
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.mac-window-content {
+    padding: 35px 27px 30px;
+    text-align: center;
+}
+
+.mac-app-icon {
+    width: 73px;
+    height: 73px;
+    margin: 0 auto 23px;
+    display: grid;
+    place-items: center;
+    border-radius: 21px;
+    background: linear-gradient(145deg,#fff,#ded2f3);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15),
+        inset 0 1px 2px white;
+    animation: macIconFloat 3s ease-in-out infinite;
+}
+
+.mac-app-icon i {
+    font-size: 34px;
+    color: #32145f;
+    filter: drop-shadow(0 3px 5px rgba(50,20,95,.2));
+}
+
+.mac-brand {
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+    margin-bottom: 3px;
+}
+
+.mac-subtitle {
+    color: rgba(255,255,255,.65);
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 28px;
+}
+
+.mac-progress-track {
+    width: 100%;
+    height: 5px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255,255,255,.18);
+}
+
+.mac-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg,#c49aff,#fff);
+    box-shadow: 0 0 12px rgba(207,174,255,.6);
+    transition: width .25s ease;
+}
+
+.mac-loading-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 12px;
+    color: rgba(255,255,255,.75);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+#macPercentage {
+    color: white;
+    font-weight: 800;
+}
+
+.mac-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 23px;
+    color: rgba(255,255,255,.5);
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.mac-spinner {
+    width: 15px;
+    height: 15px;
+    border: 2px solid rgba(255,255,255,.2);
+    border-top-color: #d5baff;
+    border-radius: 50%;
+    animation: macSpin .8s linear infinite;
+}
+
+@keyframes macWindowOpen {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(.94);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes macIconFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes macSpin {
+    to { transform: rotate(360deg); }
+}
+
+@media(max-width:480px) {
+    .mac-window {
+        max-width: 360px;
+    }
+
+    .mac-window-content {
+        padding: 32px 22px 27px;
+    }
+
+    .mac-brand {
+        font-size: 21px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    #macLoader *,
+    #macLoader *::before,
+    #macLoader *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+
+
 /* TOP BAR */
 
 .topbar {
@@ -1255,6 +1482,58 @@ footer {
 
 <body>
 
+
+<!-- macOS STYLE LOADING SCREEN -->
+
+<div id="macLoader">
+
+    <div class="mac-window">
+
+        <div class="mac-titlebar">
+
+            <div class="mac-traffic-lights">
+                <span class="mac-light mac-red"></span>
+                <span class="mac-light mac-yellow"></span>
+                <span class="mac-light mac-green"></span>
+            </div>
+
+            <span class="mac-title">WELCOME</span>
+
+        </div>
+
+        <div class="mac-window-content">
+
+            <div class="mac-app-icon">
+                <i class="fa-solid fa-droplet"></i>
+            </div>
+
+            <h2 class="mac-brand">UNIQUE WATER</h2>
+
+            <p class="mac-subtitle">TECHNOLOGIES</p>
+
+            <div class="mac-progress-track">
+                <div class="mac-progress-fill" id="macProgress"></div>
+            </div>
+
+            <div class="mac-loading-info">
+                <span id="macStatus">Preparing your experience</span>
+                <span id="macPercentage">0%</span>
+            </div>
+
+            <div class="mac-footer">
+                <span class="mac-spinner"></span>
+                QUALITY · TRUST · EXCELLENCE
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
 <!-- TOP BAR -->
 
 <div class="topbar">
@@ -2342,6 +2621,149 @@ footer {
 </button>
 
 <script>
+
+
+
+/* =========================================
+   macOS LOADER CONTROLLER
+========================================= */
+
+(function () {
+
+    const loader = document.getElementById("macLoader");
+    const progress = document.getElementById("macProgress");
+    const percentage = document.getElementById("macPercentage");
+    const status = document.getElementById("macStatus");
+
+    if (!loader) return;
+
+    let currentProgress = 0;
+    let pageLoaded = document.readyState === "complete";
+    let startTime = Date.now();
+    let finished = false;
+
+    const messages = [
+        "Preparing your experience",
+        "Loading industrial solutions",
+        "Setting up your experience",
+        "Almost ready..."
+    ];
+
+    function updateProgress(value) {
+
+        currentProgress = Math.min(100, value);
+
+        progress.style.width = currentProgress + "%";
+        percentage.textContent = Math.round(currentProgress) + "%";
+
+        if (currentProgress < 30) {
+            status.textContent = messages[0];
+        } else if (currentProgress < 60) {
+            status.textContent = messages[1];
+        } else if (currentProgress < 90) {
+            status.textContent = messages[2];
+        } else {
+            status.textContent = messages[3];
+        }
+
+    }
+
+    function hideLoader() {
+
+        if (finished || !pageLoaded) return;
+
+        finished = true;
+
+        updateProgress(100);
+        status.textContent = "Experience ready";
+
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, 900 - elapsed);
+
+        setTimeout(function () {
+
+            loader.classList.add("loader-hidden");
+
+            setTimeout(function () {
+                loader.style.display = "none";
+            }, 700);
+
+        }, remaining);
+
+    }
+
+    // Smooth loading progress
+
+    const loadingInterval = setInterval(function () {
+
+        if (finished) {
+            clearInterval(loadingInterval);
+            return;
+        }
+
+        if (currentProgress < 90) {
+
+            let increment;
+
+            if (currentProgress < 35) {
+                increment = 3;
+            } else if (currentProgress < 70) {
+                increment = 1.5;
+            } else {
+                increment = 0.5;
+            }
+
+            updateProgress(
+                Math.min(90, currentProgress + increment)
+            );
+
+        }
+
+        if (pageLoaded && currentProgress >= 90) {
+            clearInterval(loadingInterval);
+            hideLoader();
+        }
+
+    }, 100);
+
+    // Wait until the complete page loads
+
+    window.addEventListener("load", function () {
+
+        pageLoaded = true;
+
+        if (currentProgress >= 90) {
+            clearInterval(loadingInterval);
+            hideLoader();
+        }
+
+    });
+
+    // Handle pages already loaded before script execution
+
+    if (pageLoaded) {
+        setTimeout(function () {
+            if (currentProgress >= 90) {
+                hideLoader();
+            }
+        }, 100);
+    }
+
+    // Safety fallback
+
+    setTimeout(function () {
+
+        pageLoaded = true;
+        clearInterval(loadingInterval);
+        hideLoader();
+
+    }, 10000);
+
+})();
+
+
+
+
 
 // MOBILE NAVIGATION
 

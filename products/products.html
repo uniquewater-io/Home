@@ -1162,6 +1162,11 @@
     
 @media(max-width:850px) {
 
+    #header {
+        position:relative;
+        z-index:1000;
+    }
+
     .navbar {
         grid-template-columns:1fr auto;
         gap:10px;
@@ -1180,12 +1185,15 @@
     /* Show mobile menu */
 
     .menu-toggle {
-        display:block;
+        display:flex;
         justify-self:end;
+        grid-column:2;
+        grid-row:1;
     }
 
     .nav-links {
         position:absolute;
+        z-index:1002;
         top:86px;
         left:0;
         width:100%;
@@ -1199,15 +1207,17 @@
         overflow:hidden;
         opacity:0;
         visibility:hidden;
-        transition:max-height .4s,opacity .3s,padding .4s;
+        transition:max-height .4s ease,opacity .3s ease,padding .4s ease,visibility .3s;
         box-shadow:0 15px 25px rgba(0,0,0,.07);
+        pointer-events:none;
     }
 
     .nav-links.open {
-        max-height:450px;
+        max-height:500px;
         opacity:1;
         visibility:visible;
         padding:15px 5% 25px;
+        pointer-events:auto;
     }
 
     .nav-links li {
@@ -1387,11 +1397,13 @@
 
     <!-- MOBILE MENU TOGGLE -->
 
-    <button class="menu-toggle"
+    <button type="button"
+            class="menu-toggle"
             id="menuToggle"
-            aria-label="Toggle navigation"
+            aria-label="Open navigation menu"
+            aria-controls="navLinks"
             aria-expanded="false">
-        ☰
+        <span aria-hidden="true">☰</span>
     </button>
 
 </nav>
@@ -1862,19 +1874,46 @@
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
-    menuToggle.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("open");
-        menuToggle.textContent = isOpen ? "×" : "☰";
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
-    });
+    // Reliable mobile menu toggle (touch + mouse)
+    function closeMobileMenu() {
+        navLinks.classList.remove("open");
+        menuToggle.innerHTML = '<span aria-hidden="true">☰</span>';
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+    }
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("open");
-            menuToggle.textContent = "☰";
-            menuToggle.setAttribute("aria-expanded", "false");
+    function toggleMobileMenu() {
+        const isOpen = navLinks.classList.toggle("open");
+
+        menuToggle.innerHTML = isOpen
+            ? '<span aria-hidden="true">×</span>'
+            : '<span aria-hidden="true">☰</span>';
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    }
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", toggleMobileMenu);
+
+        // Close the menu after selecting any navigation link
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMobileMenu);
         });
-    });
+
+        // Close with Escape
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") closeMobileMenu();
+        });
+
+        // Close when switching back to desktop layout
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 850) closeMobileMenu();
+        });
+    }
 
     // HEADER SCROLL EFFECT
 

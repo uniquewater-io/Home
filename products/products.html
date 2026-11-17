@@ -1310,48 +1310,37 @@ transition:none!important;
 <body class="loading-active">
 
 
-<!-- macOS STYLE STARTUP LOADER -->
+<!-- MACOS-INSPIRED LOADING SCREEN -->
+<div id="pageLoader" role="status" aria-label="Loading website">
+ <div class="loader-window">
+  <div class="window-bar">
+   <span class="window-dot red"></span>
+   <span class="window-dot yellow"></span>
+   <span class="window-dot green"></span>
+   <span class="window-title">Welcome</span>
+  </div>
+  <div class="loader-logo">
+   <img src="logo/unique logo.png" alt="Unique Water Technologies">
+  </div>
+  <h2>UNIQUE WATER TECHNOLOGIES</h2>
+  <p class="loader-subtitle">PURE SOLUTIONS. RELIABLE PERFORMANCE.</p>
+  <div class="loader-spinner" aria-hidden="true"></div>
+  <div class="loader-track"><span id="loaderProgress"></span></div>
+  <div class="loader-status">
+   <span id="loaderMessage">Preparing your experience...</span>
+   <strong id="loaderPercent">0%</strong>
+  </div>
+ </div>
+</div>
 
-<div class="loader" id="loader" aria-label="Loading website" role="status">
+<div id="scrollProgress"></div>
 
-    <div class="loader-glow"></div>
-
-    <div class="loader-content">
-
-        <!-- macOS WINDOW BAR -->
-        <div class="loader-windowbar">
-
-            <div class="loader-window-controls">
-                <span class="window-dot red"></span>
-                <span class="window-dot yellow"></span>
-                <span class="window-dot green"></span>
-            </div>
-
-            <span class="loader-window-title">WELCOME</span>
-
-        </div>
-
-        <!-- UNIQUE WATER APP ICON -->
-        <div class="loader-symbol">
-
-            <div class="loader-icon">
-
-                <div class="loader-drop">
-                    <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20 3C20 3 7 23 7 31C7 38.2 12.8 44 20 44C27.2 44 33 38.2 33 31C33 23 20 3 20 3Z"
-                            fill="#12B9E8"
-                            stroke="#15111C"
-                            stroke-width="2.5"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-                </div>
-
-            </div>
-
-        </div>
-
+<div class="topbar">
+ <div class="container">
+  <span>Water treatment components. Dependable supply. Practical support.</span>
+  <span>Enquiries: <a href="mailto:daisy@uniquewater.in">daisy@uniquewater.in</a></span>
+ </div>
+</div>
         <!-- BRAND -->
         <div class="loader-brand">UNIQUE WATER</div>
         <div class="loader-subtitle">TECHNOLOGIES</div>

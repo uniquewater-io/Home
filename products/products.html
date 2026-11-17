@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
+:root{
 --primary:#32145f;
 --secondary:#54269a;
 --accent:#9865ed;
@@ -28,122 +27,108 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-
 html{scroll-behavior:smooth;scroll-padding-top:100px}
-
-body{
-font-family:'DM Sans',sans-serif;
-background:#fff;
-color:var(--ink);
-overflow-x:hidden;
-}
-
+body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--ink);overflow-x:hidden}
 body.loading-active{overflow:hidden}
-
 a{text-decoration:none;color:inherit}
 button,input,select,textarea{font-family:inherit}
 .container{width:min(1200px,92%);margin:auto}
-
 
 /* =========================================
    macOS STYLE STARTUP LOADER
 ========================================= */
 
 .loader{
-    position:fixed;
-    inset:0;
-    z-index:999999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    background:
-        radial-gradient(ellipse at 50% 45%,rgba(137,93,184,.42),transparent 55%),
-        linear-gradient(135deg,#281044,#351653 50%,#24103f);
-    opacity:1;
-    visibility:visible;
-    transition:opacity .7s ease,visibility .7s ease;
+position:fixed;
+inset:0;
+z-index:999999;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+background:
+radial-gradient(ellipse at 50% 45%,rgba(137,93,184,.42),transparent 55%),
+linear-gradient(135deg,#281044,#351653 50%,#24103f);
+opacity:1;
+visibility:visible;
+transition:opacity .7s ease,visibility .7s ease;
 }
 
 .loader.hide{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+opacity:0;
+visibility:hidden;
+pointer-events:none;
 }
 
 .loader::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(ellipse at 20% 20%,rgba(255,255,255,.035),transparent 45%),
-        radial-gradient(ellipse at 80% 80%,rgba(0,0,0,.15),transparent 50%);
-    pointer-events:none;
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(ellipse at 20% 20%,rgba(255,255,255,.035),transparent 45%),
+radial-gradient(ellipse at 80% 80%,rgba(0,0,0,.15),transparent 50%);
+pointer-events:none;
 }
 
 .loader-glow{
-    position:absolute;
-    width:420px;
-    height:420px;
-    border-radius:50%;
-    background:rgba(183,139,235,.17);
-    filter:blur(100px);
-    animation:macGlow 5s ease-in-out infinite alternate;
-    pointer-events:none;
+position:absolute;
+width:420px;
+height:420px;
+border-radius:50%;
+background:rgba(183,139,235,.17);
+filter:blur(100px);
+animation:macGlow 5s ease-in-out infinite alternate;
+pointer-events:none;
 }
 
 .loader-content{
-    position:relative;
-    z-index:2;
-    width:min(390px,calc(100% - 36px));
-    min-height:350px;
-    padding:0 28px 26px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    border:1px solid rgba(255,255,255,.22);
-    border-radius:20px;
-    background:rgba(255,255,255,.105);
-    backdrop-filter:blur(28px);
-    -webkit-backdrop-filter:blur(28px);
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.25),
-        inset 0 1px 1px rgba(255,255,255,.2);
-    animation:macWindowAppear .85s cubic-bezier(.2,.8,.2,1) both;
+position:relative;
+z-index:2;
+width:min(390px,calc(100% - 36px));
+min-height:350px;
+padding:0 28px 26px;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+border:1px solid rgba(255,255,255,.22);
+border-radius:20px;
+background:rgba(255,255,255,.105);
+backdrop-filter:blur(28px);
+-webkit-backdrop-filter:blur(28px);
+box-shadow:0 25px 80px rgba(0,0,0,.25),inset 0 1px 1px rgba(255,255,255,.2);
+animation:macWindowAppear .85s cubic-bezier(.2,.8,.2,1) both;
 }
 
-/* macOS WINDOW TITLE BAR */
-
 .loader-windowbar{
-    width:calc(100% + 56px);
-    height:43px;
-    padding:0 15px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    border-bottom:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.075);
-    border-radius:20px 20px 0 0;
+width:calc(100% + 56px);
+height:43px;
+padding:0 15px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+border-bottom:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.075);
+border-radius:20px 20px 0 0;
 }
 
 .loader-window-controls{
-    position:absolute;
-    left:15px;
-    top:50%;
-    transform:translateY(-50%);
-    display:flex;
-    align-items:center;
-    gap:8px;
+position:absolute;
+left:15px;
+top:50%;
+transform:translateY(-50%);
+display:flex;
+align-items:center;
+gap:8px;
 }
 
 .window-dot{
-    width:11px;
-    height:11px;
-    border-radius:50%;
-    display:block;
-    box-shadow:inset 0 1px 1px rgba(255,255,255,.2);
+width:11px;
+height:11px;
+border-radius:50%;
+display:block;
+box-shadow:inset 0 1px 1px rgba(255,255,255,.2);
 }
 
 .window-dot.red{background:#ff5f57}
@@ -151,199 +136,139 @@ button,input,select,textarea{font-family:inherit}
 .window-dot.green{background:#28c840}
 
 .loader-window-title{
-    color:rgba(255,255,255,.72);
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1.5px;
+color:rgba(255,255,255,.72);
+font-size:10px;
+font-weight:800;
+letter-spacing:1.5px;
 }
 
-/* APP ICON */
-
 .loader-symbol{
-    width:73px;
-    height:73px;
-    margin-top:35px;
-    margin-bottom:22px;
-    display:grid;
-    place-items:center;
-    position:relative;
+width:73px;
+height:73px;
+margin-top:35px;
+margin-bottom:22px;
+display:grid;
+place-items:center;
+position:relative;
 }
 
 .loader-icon{
-    width:73px;
-    height:73px;
-    display:grid;
-    place-items:center;
-    border-radius:21px;
-    background:linear-gradient(145deg,#fff,#e8ddf8);
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.18),
-        inset 0 1px 2px rgba(255,255,255,.9);
-    animation:macIconFloat 3s ease-in-out infinite;
+width:73px;
+height:73px;
+display:grid;
+place-items:center;
+border-radius:21px;
+background:linear-gradient(145deg,#fff,#e8ddf8);
+box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 1px 2px rgba(255,255,255,.9);
+animation:macIconFloat 3s ease-in-out infinite;
 }
 
 .loader-drop{
-    width:39px;
-    height:46px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+width:39px;
+height:46px;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .loader-drop svg{
-    width:39px;
-    height:46px;
-    filter:drop-shadow(0 3px 3px rgba(0,0,0,.16));
+width:39px;
+height:46px;
+filter:drop-shadow(0 3px 3px rgba(0,0,0,.16));
 }
 
-/* BRAND */
-
 .loader-brand{
-    font-family:Manrope,sans-serif;
-    font-size:23px;
-    font-weight:800;
-    letter-spacing:1px;
-    color:#fff;
+font-family:Manrope,sans-serif;
+font-size:23px;
+font-weight:800;
+letter-spacing:1px;
+color:#fff;
 }
 
 .loader-subtitle{
-    margin-top:6px;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:3px;
-    color:rgba(255,255,255,.65);
+margin-top:6px;
+font-size:10px;
+font-weight:700;
+letter-spacing:3px;
+color:rgba(255,255,255,.65);
 }
 
-/* LOADING BAR */
-
 .loader-progress{
-    width:100%;
-    height:5px;
-    margin-top:29px;
-    background:rgba(255,255,255,.18);
-    border-radius:20px;
-    overflow:hidden;
+width:100%;
+height:5px;
+margin-top:29px;
+background:rgba(255,255,255,.18);
+border-radius:20px;
+overflow:hidden;
 }
 
 .loader-progress span{
-    display:block;
-    width:0;
-    height:100%;
-    border-radius:20px;
-    background:linear-gradient(90deg,#c39af5,#fff);
-    box-shadow:0 0 12px rgba(220,190,255,.65);
-    transition:width .25s ease;
+display:block;
+width:0;
+height:100%;
+border-radius:20px;
+background:linear-gradient(90deg,#c39af5,#fff);
+box-shadow:0 0 12px rgba(220,190,255,.65);
+transition:width .25s ease;
 }
-
-/* STATUS */
 
 .loader-status-row{
-    width:100%;
-    margin-top:12px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    color:rgba(255,255,255,.76);
-    font-size:10px;
-    font-weight:600;
+width:100%;
+margin-top:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+color:rgba(255,255,255,.76);
+font-size:10px;
+font-weight:600;
 }
 
-.loader-status{
-    text-align:left;
-}
-
-.loader-percent{
-    font-weight:800;
-    white-space:nowrap;
-}
-
-/* FOOTER SPINNER */
+.loader-status{text-align:left}
+.loader-percent{font-weight:800;white-space:nowrap}
 
 .loader-footer{
-    margin-top:24px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    color:rgba(255,255,255,.48);
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:2px;
+margin-top:24px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+color:rgba(255,255,255,.48);
+font-size:9px;
+font-weight:800;
+letter-spacing:2px;
 }
 
 .loader-spinner{
-    width:15px;
-    height:15px;
-    border:2px solid rgba(255,255,255,.2);
-    border-top-color:#e1caff;
-    border-radius:50%;
-    animation:macSpinner .8s linear infinite;
-    flex-shrink:0;
+width:15px;
+height:15px;
+border:2px solid rgba(255,255,255,.2);
+border-top-color:#e1caff;
+border-radius:50%;
+animation:macSpinner .8s linear infinite;
+flex-shrink:0;
 }
 
-/* ANIMATIONS */
-
-@keyframes macSpinner{
-    to{transform:rotate(360deg)}
-}
-
-@keyframes macIconFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-4px)}
-}
-
-@keyframes macGlow{
-    from{transform:scale(.85);opacity:.5}
-    to{transform:scale(1.2);opacity:1}
-}
-
+@keyframes macSpinner{to{transform:rotate(360deg)}}
+@keyframes macIconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes macGlow{from{transform:scale(.85);opacity:.5}to{transform:scale(1.2);opacity:1}}
 @keyframes macWindowAppear{
-    from{
-        opacity:0;
-        transform:translateY(18px) scale(.96);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
+from{opacity:0;transform:translateY(18px) scale(.96)}
+to{opacity:1;transform:translateY(0) scale(1)}
 }
-
-/* MOBILE */
 
 @media(max-width:480px){
-    .loader-content{
-        width:calc(100% - 36px);
-        min-height:335px;
-        padding:0 22px 24px;
-    }
-
-    .loader-windowbar{
-        width:calc(100% + 44px);
-    }
-
-    .loader-symbol{
-        margin-top:31px;
-    }
-
-    .loader-brand{
-        font-size:21px;
-    }
-
-    .loader-footer{
-        font-size:8px;
-        letter-spacing:1.5px;
-    }
+.loader-content{width:calc(100% - 36px);min-height:335px;padding:0 22px 24px}
+.loader-windowbar{width:calc(100% + 44px)}
+.loader-symbol{margin-top:31px}
+.loader-brand{font-size:21px}
+.loader-footer{font-size:8px;letter-spacing:1.5px}
 }
 
 @media(prefers-reduced-motion:reduce){
-    .loader *,
-    .loader::before{
-        animation:none!important;
-        transition:none!important;
-    }
+.loader *,
+.loader::before{animation:none!important;transition:none!important}
 }
-
 
 /* SCROLL PROGRESS */
 
@@ -361,31 +286,13 @@ pointer-events:none;
 
 /* TOPBAR */
 
-.topbar{
-background:#251044;
-color:white;
-padding:10px 0;
-font-size:12px;
-}
-
-.topbar-inner{
-display:flex;
-justify-content:space-between;
-gap:15px;
-flex-wrap:wrap;
-}
-
+.topbar{background:#251044;color:white;padding:10px 0;font-size:12px}
+.topbar-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
 .topbar a{color:#d9c2ff}
 
 /* HEADER */
 
-#header{
-position:relative;
-z-index:1000;
-background:white;
-transition:.35s;
-}
-
+#header{position:relative;z-index:1000;background:white;transition:.35s}
 #header.scrolled{
 position:sticky;
 top:0;
@@ -412,11 +319,7 @@ color:var(--primary);
 font-size:17px;
 }
 
-.logo img{
-width:125px;
-height:85px;
-object-fit:contain;
-}
+.logo img{width:125px;height:85px;object-fit:contain}
 
 .nav-links{
 display:flex;
@@ -430,9 +333,7 @@ color:#51485f;
 }
 
 .nav-links a{transition:.3s;position:relative}
-
-.nav-links a:hover,
-.nav-links a.active{color:var(--accent)}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
 
 .nav-links a:not(.nav-cta)::after{
 content:"";
@@ -445,13 +346,8 @@ background:var(--accent);
 transition:.3s;
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after{width:100%}
-
-.nav-spacer{
-display:flex;
-justify-content:flex-end;
-}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-spacer{display:flex;justify-content:flex-end}
 
 .nav-cta{
 background:var(--gradient);
@@ -464,11 +360,7 @@ display:inline-flex;
 transition:.3s;
 }
 
-.nav-cta:hover{
-transform:translateY(-3px);
-box-shadow:0 12px 25px rgba(50,20,95,.3);
-}
-
+.nav-cta:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(50,20,95,.3)}
 .mobile-enquiry{display:none}
 
 .menu-toggle{
@@ -586,25 +478,9 @@ margin:28px 0 22px;
 font-weight:800;
 }
 
-.hero h1 span{
-display:block;
-color:#c7a5ff;
-text-shadow:0 0 35px rgba(199,165,255,.2);
-}
-
-.hero p{
-font-size:15px;
-color:#e4d9f5;
-line-height:2;
-max-width:610px;
-}
-
-.hero-buttons{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-margin-top:34px;
-}
+.hero h1 span{display:block;color:#c7a5ff;text-shadow:0 0 35px rgba(199,165,255,.2)}
+.hero p{font-size:15px;color:#e4d9f5;line-height:2;max-width:610px}
+.hero-buttons{display:flex;gap:15px;flex-wrap:wrap;margin-top:34px}
 
 .btn{
 display:inline-flex;
@@ -627,21 +503,8 @@ overflow:hidden;
 .btn-outline{color:white;border-color:rgba(255,255,255,.5)}
 .btn-outline:hover{background:white;color:var(--primary);transform:translateY(-4px)}
 
-.hero-points{
-display:flex;
-flex-wrap:wrap;
-gap:24px;
-margin-top:40px;
-font-size:11px;
-color:#e5d9f6;
-font-weight:600;
-}
-
-.hero-points span::before{
-content:"✓";
-color:#c9a5ff;
-margin-right:8px;
-}
+.hero-points{display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;font-size:11px;color:#e5d9f6;font-weight:600}
+.hero-points span::before{content:"✓";color:#c9a5ff;margin-right:8px}
 
 /* TRUST */
 
@@ -680,21 +543,8 @@ transition:.4s;
 
 section{padding:100px 0}
 
-.section-heading{
-text-align:center;
-max-width:730px;
-margin:0 auto 55px;
-}
-
-.section-tag{
-display:inline-block;
-color:var(--secondary);
-font-size:11px;
-font-weight:800;
-letter-spacing:2.5px;
-text-transform:uppercase;
-margin-bottom:16px;
-}
+.section-heading{text-align:center;max-width:730px;margin:0 auto 55px}
+.section-tag{display:inline-block;color:var(--secondary);font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px}
 
 .section-heading h2{
 font-family:Manrope,sans-serif;
@@ -716,11 +566,7 @@ radial-gradient(circle at 95% 85%,rgba(139,92,246,.06),transparent 25%),
 #faf8fd;
 }
 
-.product-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
 
 .product-card{
 background:white;
@@ -734,12 +580,7 @@ transform:translateY(40px);
 }
 
 .product-card.show{opacity:1;transform:translateY(0)}
-
-.product-card:hover{
-transform:translateY(-12px);
-border-color:#c4a5ee;
-box-shadow:0 25px 60px rgba(50,20,95,.15);
-}
+.product-card:hover{transform:translateY(-12px);border-color:#c4a5ee;box-shadow:0 25px 60px rgba(50,20,95,.15)}
 
 .product-card::before{
 content:"";
@@ -754,13 +595,7 @@ transition:opacity .3s;
 }
 
 .product-card:hover::before{opacity:1}
-
-.product-image{
-height:240px;
-position:relative;
-overflow:hidden;
-background:#eee9f6;
-}
+.product-image{height:240px;position:relative;overflow:hidden;background:#eee9f6}
 
 .product-image::after{
 content:"";
@@ -770,13 +605,7 @@ background:linear-gradient(0deg,rgba(35,13,72,.25),transparent 60%);
 pointer-events:none;
 }
 
-.product-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:transform .9s;
-}
-
+.product-image img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
 .product-card:hover .product-image img{transform:scale(1.12)}
 
 .product-number{
@@ -804,13 +633,7 @@ margin:12px 0;
 color:var(--primary);
 }
 
-.product-content p{
-color:var(--muted);
-font-size:12px;
-line-height:1.9;
-min-height:75px;
-}
-
+.product-content p{color:var(--muted);font-size:12px;line-height:1.9;min-height:75px}
 .product-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 23px}
 
 .product-list span{
@@ -839,14 +662,7 @@ font-weight:800;
 /* FEATURE */
 
 .feature-section{background:white}
-
-.feature-layout{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:75px;
-align-items:center;
-}
-
+.feature-layout{display:grid;grid-template-columns:1fr 1fr;gap:75px;align-items:center}
 .feature-image{position:relative}
 
 .feature-image img{
@@ -882,14 +698,7 @@ margin-bottom:22px;
 }
 
 .feature-text>p{color:var(--muted);line-height:2;font-size:13px}
-
-.feature-points{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:22px;
-margin:32px 0;
-}
-
+.feature-points{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:32px 0}
 .feature-point{display:flex;gap:12px;align-items:flex-start}
 
 .check{
@@ -909,12 +718,7 @@ font-weight:900;
 /* APPLICATIONS */
 
 .application-section{background:#f7f3fc}
-
-.application-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-}
+.application-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 
 .application{
 background:white;
@@ -927,15 +731,7 @@ position:relative;
 overflow:hidden;
 }
 
-.application::before{
-content:"";
-position:absolute;
-inset:0;
-background:var(--gradient);
-opacity:0;
-transition:.4s;
-}
-
+.application::before{content:"";position:absolute;inset:0;background:var(--gradient);opacity:0;transition:.4s}
 .application:hover{transform:translateY(-9px);box-shadow:var(--shadow)}
 .application:hover::before{opacity:1}
 .application .icon{font-size:32px;margin-bottom:15px;position:relative;z-index:1;transition:.4s}
@@ -983,27 +779,14 @@ border:1px solid rgba(255,255,255,.15);
 animation:float 8s infinite ease-in-out;
 }
 
-.cta-inner{
-position:relative;
-z-index:2;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:30px;
-}
-
+.cta-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:30px}
 .cta-inner h2{font-family:Manrope,sans-serif;font-size:clamp(25px,3vw,36px);margin-bottom:13px}
 .cta-inner p{color:#e4d8f7;font-size:12px;line-height:1.9}
 
 /* CONTACT */
 
 .contact-section{background:#faf8fd}
-
-.contact-layout{
-display:grid;
-grid-template-columns:.8fr 1.2fr;
-gap:35px;
-}
+.contact-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px}
 
 .contact-info{
 background:var(--gradient);
@@ -1027,16 +810,7 @@ bottom:-90px;
 
 .contact-info h2{font-family:Manrope,sans-serif;font-size:29px;margin-bottom:15px}
 .contact-info>p{color:#e0d3f2;font-size:12px;line-height:1.9}
-
-.contact-detail{
-display:flex;
-gap:15px;
-margin-top:30px;
-align-items:flex-start;
-position:relative;
-z-index:1;
-}
-
+.contact-detail{display:flex;gap:15px;margin-top:30px;align-items:flex-start;position:relative;z-index:1}
 .contact-detail .icon{font-size:22px}
 .contact-detail strong{font-size:12px}
 .contact-detail p{color:#e0d3f2;font-size:11px;margin-top:6px;word-break:break-word}
@@ -1051,7 +825,6 @@ box-shadow:0 12px 35px rgba(50,20,95,.04);
 
 .enquiry-form h3{font-family:Manrope,sans-serif;font-size:23px;color:var(--primary);margin-bottom:8px}
 .enquiry-form>p{color:var(--muted);font-size:11px;margin-bottom:26px}
-
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form-group{display:flex;flex-direction:column;gap:9px}
 .form-group.full{grid-column:1/-1}
@@ -1096,17 +869,9 @@ transition:.3s;
 /* FOOTER */
 
 footer{background:#1e1035;color:white;padding:70px 0 0}
-
-.footer-grid{
-display:grid;
-grid-template-columns:1.4fr 1fr 1fr 1fr;
-gap:40px;
-padding-bottom:50px;
-}
-
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px}
 .footer-brand .logo{color:white;margin-bottom:20px}
 .footer-brand p{font-size:11px;color:#c2b6d2;line-height:2;max-width:300px}
-
 .footer-col h4{font-size:12px;margin-bottom:23px;color:#d7baff}
 
 .footer-col a{
@@ -1201,7 +966,6 @@ to{background-position:65px 65px,65px 65px}
 }
 
 @media(max-width:850px){
-
 .navbar{grid-template-columns:1fr auto;gap:10px}
 .nav-spacer{display:none}
 .menu-toggle{display:flex;grid-column:2;grid-row:1}
@@ -1238,30 +1002,24 @@ pointer-events:auto;
 .nav-links li{width:100%;text-align:center}
 .nav-links li a{display:block;padding:15px}
 .nav-links a::after{display:none}
-
 .mobile-enquiry{display:block}
 .mobile-enquiry .nav-cta{margin-top:8px;display:block;width:100%}
-
 .product-grid{grid-template-columns:repeat(2,1fr)}
 .feature-layout{gap:35px}
 .footer-grid{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:760px){
-
 .topbar-inner{justify-content:center;text-align:center}
 .navbar{height:76px}
 .logo img{width:85px;height:70px}
 .nav-links{top:76px}
-
 .hero{min-height:570px;background-position:65% center}
 .hero h1{letter-spacing:-1.5px}
 .hero-content{padding:85px 0}
-
 .trust-inner{grid-template-columns:1fr 1fr}
 .trust-item:nth-child(2){border-right:0}
 .trust-item{justify-content:flex-start;padding:18px 10px}
-
 section{padding:70px 0}
 .product-grid{grid-template-columns:1fr}
 .product-image{height:260px}
@@ -1275,7 +1033,6 @@ section{padding:70px 0}
 }
 
 @media(max-width:480px){
-
 .hero-buttons{flex-direction:column;align-items:stretch}
 .hero-points{gap:13px;flex-direction:column}
 .trust-item{gap:8px}
@@ -1293,78 +1050,74 @@ section{padding:70px 0}
 /* ACCESSIBILITY */
 
 @media(prefers-reduced-motion:reduce){
-
 *,*::before,*::after{
 scroll-behavior:auto!important;
 animation:none!important;
 transition:none!important;
 }
-
 .reveal,.product-card{opacity:1;transform:none}
 #pageProgress{display:none}
 }
-
 </style>
 </head>
 
 <body class="loading-active">
 
+<!-- PAGE SCROLL PROGRESS -->
+<div id="pageProgress" aria-hidden="true"></div>
 
 <!-- =====================================
-     MACOS LOADER
+     macOS STYLE LOADER
 ===================================== -->
 
-<div id="loader" role="status" aria-label="Loading Unique Water Technologies">
+<div class="loader" id="loader" role="status" aria-label="Loading Unique Water Technologies">
 
-    <div class="loader-window">
+    <div class="loader-glow"></div>
 
-        <div class="loader-titlebar">
-            <span class="mac-dot mac-red"></span>
-            <span class="mac-dot mac-yellow"></span>
-            <span class="mac-dot mac-green"></span>
-            <span class="loader-window-title">WELCOME</span>
-        </div>
+    <div class="loader-content">
 
-        <div class="loader-content">
+        <div class="loader-windowbar">
 
-            <div class="loader-logo-icon">💧</div>
-
-            <div class="loader-brand">UNIQUE WATER</div>
-
-            <div class="loader-subtitle">
-                Technologies
+            <div class="loader-window-controls">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
             </div>
 
-            <div class="loader-progress-track">
-                <div class="loader-progress"></div>
-            </div>
-
-            <div class="loader-status">
-                <span>Preparing your experience</span>
-                <span>Loading...</span>
-            </div>
-
-            <div class="loader-bottom">
-                <span class="loader-spinner"></span>
-                QUALITY • TRUST • EXCELLENCE
-            </div>
+            <span class="loader-window-title">UNIQUE WATER TECHNOLOGIES</span>
 
         </div>
 
-    </div>
+        <div class="loader-symbol">
+            <div class="loader-icon">
+                <div class="loader-drop">
+                    <svg viewBox="0 0 50 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M25 3C25 3 5 28 5 39C5 50 14 57 25 57C36 57 45 50 45 39C45 28 25 3 25 3Z" fill="#7040B5"/>
+                        <path d="M15 39C15 33 20 25 24 20" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
 
-</div>
+        <div class="loader-brand">UNIQUE WATER</div>
+        <div class="loader-subtitle">TECHNOLOGIES</div>
 
-        <!-- FOOTER -->
+        <div class="loader-progress">
+            <span id="loaderBar"></span>
+        </div>
+
+        <div class="loader-status-row">
+            <span class="loader-status" id="loaderStatus">Preparing your experience</span>
+            <span class="loader-percent" id="loaderPercent">0%</span>
+        </div>
+
         <div class="loader-footer">
             <span class="loader-spinner"></span>
             <span>QUALITY · TRUST · EXCELLENCE</span>
         </div>
 
     </div>
-
 </div>
-
 
 <!-- TOPBAR -->
 
@@ -1802,7 +1555,6 @@ Unique Water Technologies focuses on supplying components and spares used in wat
 </div>
 
 <button type="submit" class="submit-btn" id="submitBtn">Submit Product Enquiry ↗</button>
-
 <p class="form-note">Your email application will open with your enquiry details ready to send.</p>
 
 </form>
@@ -1872,7 +1624,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-
 /* =========================================
    macOS STARTUP LOADER
 ========================================= */
@@ -1886,104 +1637,102 @@ let loaderProgress = 0;
 let loaderFinished = false;
 let loaderInterval = null;
 let loaderFallback = null;
+let loaderHideTimeout = null;
 
 const loaderMessages = [
-    "Preparing your experience",
-    "Loading product collection",
-    "Preparing water treatment solutions",
-    "Almost ready"
+"Preparing your experience",
+"Loading product collection",
+"Preparing water treatment solutions",
+"Almost ready"
 ];
 
 function updateLoader(){
 
-    if(loaderFinished) return;
+if(loaderFinished) return;
 
-    loaderProgress = Math.min(
-        loaderProgress + Math.random() * 5 + 2,
-        90
-    );
+loaderProgress = Math.min(
+loaderProgress + Math.random() * 5 + 2,
+90
+);
 
-    if(loaderBar){
-        loaderBar.style.width = loaderProgress + "%";
-    }
+if(loaderBar){
+loaderBar.style.width = loaderProgress + "%";
+}
 
-    if(loaderPercent){
-        loaderPercent.textContent =
-            Math.floor(loaderProgress) + "%";
-    }
+if(loaderPercent){
+loaderPercent.textContent = Math.floor(loaderProgress) + "%";
+}
 
-    let messageIndex = 0;
+let messageIndex = 0;
 
-    if(loaderProgress >= 25) messageIndex = 1;
-    if(loaderProgress >= 50) messageIndex = 2;
-    if(loaderProgress >= 78) messageIndex = 3;
+if(loaderProgress >= 25) messageIndex = 1;
+if(loaderProgress >= 50) messageIndex = 2;
+if(loaderProgress >= 78) messageIndex = 3;
 
-    if(loaderStatus){
-        loaderStatus.textContent =
-            loaderMessages[messageIndex];
-    }
+if(loaderStatus){
+loaderStatus.textContent = loaderMessages[messageIndex];
+}
 
 }
 
 function finishLoader(){
 
-    if(loaderFinished) return;
+if(loaderFinished) return;
 
-    loaderFinished = true;
+loaderFinished = true;
 
-    clearInterval(loaderInterval);
-    clearTimeout(loaderFallback);
+clearInterval(loaderInterval);
+clearTimeout(loaderFallback);
 
-    if(loaderBar){
-        loaderBar.style.width = "100%";
-    }
+if(loaderBar){
+loaderBar.style.width = "100%";
+}
 
-    if(loaderPercent){
-        loaderPercent.textContent = "100%";
-    }
+if(loaderPercent){
+loaderPercent.textContent = "100%";
+}
 
-    if(loaderStatus){
-        loaderStatus.textContent =
-            "Welcome to Unique Water Technologies";
-    }
+if(loaderStatus){
+loaderStatus.textContent = "Welcome to Unique Water Technologies";
+}
 
-    function hideLoader(){
+function hideLoader(){
 
-        if(loader){
-            loader.classList.add("hide");
-        }
+if(loader){
+loader.classList.add("hide");
+}
 
-        document.body.classList.remove("loading-active");
+document.body.classList.remove("loading-active");
 
-    }
+}
 
-    if(reduceMotion){
-        hideLoader();
-    }else{
-        setTimeout(hideLoader,650);
-    }
+if(reduceMotion){
+hideLoader();
+}else{
+loaderHideTimeout = setTimeout(hideLoader,650);
+}
 
 }
 
 if(loader){
 
-    loaderInterval = setInterval(updateLoader,180);
+loaderInterval = setInterval(updateLoader,180);
 
-    if(document.readyState === "complete"){
-        finishLoader();
-    }else{
-        window.addEventListener("load",finishLoader,{once:true});
-    }
+/* Start finishing when the full page and its resources have loaded. */
+if(document.readyState === "complete"){
+finishLoader();
+}else{
+window.addEventListener("load",finishLoader,{once:true});
+}
 
-    /* Safety fallback if external resources load slowly */
-    loaderFallback = setTimeout(finishLoader,6000);
+/* Safety fallback in case an external image or resource takes too long. */
+loaderFallback = setTimeout(finishLoader,6000);
 
 }else{
 
-    document.body.classList.remove("loading-active");
+document.body.classList.remove("loading-active");
 
 }
-
 
 /* =========================================
    MOBILE NAVIGATION
@@ -1997,11 +1746,8 @@ function closeMobileMenu(){
 if(!navLinks || !menuToggle) return;
 
 navLinks.classList.remove("open");
-
 menuToggle.innerHTML = '<span aria-hidden="true">☰</span>';
-
 menuToggle.setAttribute("aria-expanded","false");
-
 menuToggle.setAttribute("aria-label","Open navigation menu");
 
 }
@@ -2038,11 +1784,11 @@ link.addEventListener("click",closeMobileMenu);
 }
 
 document.addEventListener("keydown",function(event){
-if(event.key==="Escape") closeMobileMenu();
+if(event.key === "Escape") closeMobileMenu();
 });
 
 window.addEventListener("resize",function(){
-if(window.innerWidth>850) closeMobileMenu();
+if(window.innerWidth > 850) closeMobileMenu();
 });
 
 /* =========================================
@@ -2060,22 +1806,22 @@ function updateScroll(){
 const scrollY = window.scrollY;
 
 const scrollable =
-document.documentElement.scrollHeight-window.innerHeight;
+document.documentElement.scrollHeight - window.innerHeight;
 
 if(header){
-header.classList.toggle("scrolled",scrollY>30);
+header.classList.toggle("scrolled",scrollY > 30);
 }
 
 if(backTop){
-backTop.classList.toggle("visible",scrollY>400);
+backTop.classList.toggle("visible",scrollY > 400);
 }
 
-const progress = scrollable>0
-? (scrollY/scrollable)*100
+const progress = scrollable > 0
+? (scrollY / scrollable) * 100
 : 0;
 
 if(pageProgress){
-pageProgress.style.width = Math.min(100,progress)+"%";
+pageProgress.style.width = Math.min(100,progress) + "%";
 }
 
 scrollScheduled = false;
@@ -2105,7 +1851,7 @@ event.preventDefault();
 
 window.scrollTo({
 top:0,
-behavior:reduceMotion?"auto":"smooth"
+behavior:reduceMotion ? "auto" : "smooth"
 });
 
 });
@@ -2129,7 +1875,6 @@ entries.forEach(function(entry){
 if(entry.isIntersecting){
 
 entry.target.classList.add("active");
-
 observer.unobserve(entry.target);
 
 }
@@ -2140,8 +1885,7 @@ observer.unobserve(entry.target);
 
 revealItems.forEach(function(item,index){
 
-item.style.transitionDelay = (index%4)*80+"ms";
-
+item.style.transitionDelay = (index % 4) * 80 + "ms";
 revealObserver.observe(item);
 
 });
@@ -2169,7 +1913,6 @@ entries.forEach(function(entry){
 if(entry.isIntersecting){
 
 entry.target.classList.add("show");
-
 observer.unobserve(entry.target);
 
 }
@@ -2180,8 +1923,7 @@ observer.unobserve(entry.target);
 
 productCards.forEach(function(card,index){
 
-card.style.transitionDelay = (index%3)*100+"ms";
-
+card.style.transitionDelay = (index % 3) * 100 + "ms";
 cardObserver.observe(card);
 
 });
@@ -2208,11 +1950,11 @@ card.addEventListener("pointermove",function(event){
 
 const rect = card.getBoundingClientRect();
 
-const x = event.clientX-rect.left;
-const y = event.clientY-rect.top;
+const x = event.clientX - rect.left;
+const y = event.clientY - rect.top;
 
-card.style.setProperty("--pointer-x",(x/rect.width)*100+"%");
-card.style.setProperty("--pointer-y",(y/rect.height)*100+"%");
+card.style.setProperty("--pointer-x",(x / rect.width) * 100 + "%");
+card.style.setProperty("--pointer-y",(y / rect.height) * 100 + "%");
 
 });
 
@@ -2274,23 +2016,23 @@ const selectedCategory = category.value;
 const requirement = message.value.trim();
 
 const subject = encodeURIComponent(
-"Product Enquiry - "+selectedCategory
+"Product Enquiry - " + selectedCategory
 );
 
 const body = encodeURIComponent(
-"PRODUCT ENQUIRY\n\n"+
-"Name: "+name+"\n"+
-"Company: "+(company||"Not provided")+"\n"+
-"Email: "+email+"\n"+
-"Phone: "+phone+"\n"+
-"Product Category: "+selectedCategory+"\n\n"+
-"Requirement Details:\n"+requirement
+"PRODUCT ENQUIRY\n\n" +
+"Name: " + name + "\n" +
+"Company: " + (company || "Not provided") + "\n" +
+"Email: " + email + "\n" +
+"Phone: " + phone + "\n" +
+"Product Category: " + selectedCategory + "\n\n" +
+"Requirement Details:\n" + requirement
 );
 
 const mailto =
-"mailto:daisy@uniquewater.in"+
-"?subject="+subject+
-"&body="+body;
+"mailto:daisy@uniquewater.in" +
+"?subject=" + subject +
+"&body=" + body;
 
 window.location.href = mailto;
 

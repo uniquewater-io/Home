@@ -6,1272 +6,1248 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#32145f">
 
-<title>Products | Unique Water Technologies</title>
+<title>Industries & Applications | Unique Water Technologies</title>
 
-<meta name="description" content="Explore RO spares, filter cartridges, industrial water treatment spares, filter housings, filtration media, dosing pumps, valves and accessories from Unique Water Technologies.">
+<meta name="description" content="Explore industrial applications of chemical dosing pumps, metering pumps, dosing systems and pump spares across water treatment, pharmaceuticals, chemicals, textiles, paper and pulp industries.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
 :root {
-    --primary:#32145f;
-    --secondary:#54269a;
-    --accent:#9865ed;
-    --light:#f6f2fc;
-    --ink:#201634;
-    --muted:#777083;
-    --white:#fff;
-    --line:#e9e2f2;
-    --gradient:linear-gradient(135deg,#32145f,#7040b5,#9865ed);
-    --shadow:0 20px 55px rgba(50,20,95,.12);
+    --primary: #32145f;
+    --secondary: #54269a;
+    --accent: #9865ed;
+    --light: #f7f3ff;
+    --soft: #eee5ff;
+    --text: #302449;
+    --muted: #766d86;
+    --white: #ffffff;
+    --border: #e9e1f4;
+    --shadow: 0 15px 45px rgba(50,20,95,.09);
+    --radius: 20px;
 }
 
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-    scroll-behavior:smooth;
-    scroll-padding-top:100px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
-    font-family:'DM Sans',sans-serif;
-    background:#fff;
-    color:var(--ink);
-    overflow-x:hidden;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: #fff;
+    overflow-x: hidden;
 }
 
 a {
-    text-decoration:none;
-    color:inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
-button {font-family:inherit;}
+button {
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
 
 .container {
-    width:min(1200px,92%);
-    margin:auto;
+    width: min(1180px, 91%);
+    margin: auto;
 }
 
-/* PAGE LOADER */
-
-.loader {
-    position:fixed;
-    inset:0;
-    background:#24103f;
-    z-index:99999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    transition:opacity .6s,visibility .6s;
+.section {
+    padding: 95px 0;
 }
 
-.loader.hide {
-    opacity:0;
-    visibility:hidden;
+.section-heading {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    text-align: center;
 }
 
-.loader-logo {
-    font-family:Manrope,sans-serif;
-    font-size:24px;
-    font-weight:800;
-    color:white;
-    letter-spacing:2px;
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 17px;
+    background: var(--soft);
+    color: var(--secondary);
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 17px;
 }
 
-.loader-line {
-    width:160px;
-    height:3px;
-    background:#594078;
-    margin-top:22px;
-    overflow:hidden;
-    border-radius:10px;
+.section-heading h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(29px, 4vw, 43px);
+    line-height: 1.2;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-weight: 800;
 }
 
-.loader-line::after {
-    content:"";
-    display:block;
-    width:50%;
-    height:100%;
-    background:#bd9bff;
-    animation:loading 1s infinite ease-in-out;
+.section-heading p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.85;
 }
 
-@keyframes loading {
-    from {transform:translateX(-100%)}
-    to {transform:translateX(200%)}
+.gradient-text {
+    background: linear-gradient(100deg, #54269a, #9865ed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-/* TOPBAR */
+/* TOP BAR */
 
 .topbar {
-    background:#251044;
-    color:#fff;
-    padding:10px 0;
-    font-size:12px;
+    background: var(--primary);
+    color: white;
+    padding: 9px 0;
+    font-size: 12px;
 }
 
 .topbar-inner {
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
 }
 
-.topbar a {color:#d9c2ff;}
+.topbar-info {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.topbar i {
+    color: #c5a7ff;
+    margin-right: 6px;
+}
 
 /* HEADER */
 
 header {
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(255,255,255,.94);
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid rgba(233,226,242,.8);
-    transition:.3s;
-}
-
-header.scrolled {
-    box-shadow:0 8px 35px rgba(50,20,95,.10);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
 }
 
 .navbar {
-    height:86px;
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-    position:relative;
+    min-height: 83px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.logo {
-    display:flex;
-    align-items:center;
-    gap:10px;
-    width:max-content;
-    font-family:Manrope,sans-serif;
-    font-weight:800;
-    color:var(--primary);
-    font-size:17px;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    flex-shrink: 0;
 }
 
-.logo img {
-    width:125px;
-    height:85px;
-    object-fit:contain;
+.brand img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
 }
 
-.logo small {
-    display:block;
-    font-size:9px;
-    letter-spacing:2px;
-    color:#8b8496;
+.brand-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+}
+
+.brand-name small {
+    display: block;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1.4px;
+    margin-top: 4px;
 }
 
 .nav-links {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:28px;
-    list-style:none;
-    font-size:12px;
-    font-weight:800;
-    color:#51485f;
+    display: flex;
+    align-items: center;
+    gap: 28px;
 }
 
 .nav-links a {
-    position:relative;
-    transition:.3s;
-    white-space:nowrap;
-}
-
-.nav-links a:not(.nav-cta)::after {
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-9px;
-    height:2px;
-    width:0;
-    background:var(--accent);
-    transition:.3s;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width:100%;
+    font-size: 13px;
+    font-weight: 700;
+    color: #514765;
+    transition: .3s;
+    position: relative;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    color:var(--accent);
+    color: var(--secondary);
 }
 
-.nav-cta {
-    background:var(--gradient);
-    color:white!important;
-    padding:13px 19px;
-    border-radius:8px;
-    box-shadow:0 7px 20px rgba(50,20,95,.2);
-    transition:.3s;
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
 }
 
-.nav-cta:hover {
-    transform:translateY(-3px);
-    box-shadow:0 12px 25px rgba(50,20,95,.3);
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 14px 23px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 800;
+    transition: .3s;
+    border: none;
+    cursor: pointer;
 }
 
-.nav-spacer {height:1px;}
+.btn-primary {
+    color: white;
+    background: linear-gradient(120deg, var(--primary), var(--secondary), var(--accent));
+    box-shadow: 0 8px 22px rgba(84,38,154,.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 27px rgba(84,38,154,.3);
+}
+
+.btn-outline {
+    color: var(--primary);
+    border: 1px solid #cbb9e8;
+    background: white;
+}
+
+.btn-outline:hover {
+    background: var(--soft);
+    transform: translateY(-3px);
+}
 
 .menu-toggle {
-    display:none;
-    border:0;
-    background:none;
-    font-size:27px;
-    color:var(--primary);
-    cursor:pointer;
+    display: none;
+    border: 0;
+    background: var(--soft);
+    color: var(--primary);
+    font-size: 21px;
+    width: 43px;
+    height: 43px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 /* HERO */
 
 .hero {
-    position:relative;
-    min-height:650px;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    color:white;
+    position: relative;
+    overflow: hidden;
     background:
-    linear-gradient(100deg,rgba(30,10,62,.98),rgba(50,20,95,.88) 52%,rgba(50,20,95,.38)),
-    url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=2000&q=85') center/cover;
+        radial-gradient(circle at 85% 20%, rgba(152,101,237,.22), transparent 30%),
+        linear-gradient(120deg, #f8f4ff 0%, #eee5ff 55%, #e5d8ff 100%);
+    padding: 90px 0 85px;
 }
 
 .hero::before {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(circle at 75% 35%,rgba(176,132,255,.32),transparent 28%),
-    linear-gradient(120deg,transparent 40%,rgba(255,255,255,.06));
-    animation:heroGlow 7s ease-in-out infinite alternate;
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border: 1px solid rgba(84,38,154,.12);
+    border-radius: 50%;
+    right: -120px;
+    top: -180px;
+    box-shadow: 0 0 0 45px rgba(84,38,154,.025),
+                0 0 0 90px rgba(84,38,154,.02);
 }
 
-.hero::after {
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-    background-size:65px 65px;
-    mask-image:linear-gradient(90deg,black,transparent);
-    pointer-events:none;
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 65px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
-.hero-orb {
-    position:absolute;
-    width:350px;
-    height:350px;
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,.12);
-    right:8%;
-    top:15%;
-    animation:float 9s ease-in-out infinite;
-}
-
-.hero-orb::before,
-.hero-orb::after {
-    content:"";
-    position:absolute;
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:50%;
-    inset:35px;
-}
-
-.hero-orb::after {inset:75px;}
-
-.hero-content {
-    position:relative;
-    z-index:2;
-    max-width:740px;
-    padding:110px 0;
-    animation:slideUp 1s both;
-}
-
-.eyebrow {
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    color:#ddc9ff;
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.2);
-    border-radius:30px;
-    padding:11px 18px;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    backdrop-filter:blur(10px);
-}
-
-.eyebrow::before {
-    content:"";
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#c3a1ff;
-    box-shadow:0 0 15px #c3a1ff;
-    animation:pulse 1.5s infinite;
+.hero-content .section-tag {
+    background: white;
 }
 
 .hero h1 {
-    font-family:Manrope,sans-serif;
-    font-size:clamp(40px,5.8vw,72px);
-    line-height:1.12;
-    letter-spacing:-2.5px;
-    margin:28px 0 22px;
-    font-weight:800;
+    font-family: 'Manrope', sans-serif;
+    color: var(--primary);
+    font-size: clamp(38px, 5.1vw, 62px);
+    line-height: 1.13;
+    font-weight: 800;
+    margin-bottom: 22px;
+    letter-spacing: -1.8px;
 }
 
-.hero h1 span {
-    display:block;
-    color:#c7a5ff;
-    text-shadow:0 0 35px rgba(199,165,255,.2);
-}
-
-.hero p {
-    font-size:15px;
-    color:#e4d9f5;
-    line-height:2;
-    max-width:610px;
+.hero-content > p {
+    max-width: 570px;
+    color: #655879;
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 28px;
 }
 
 .hero-buttons {
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-top:34px;
-}
-
-.btn {
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    padding:16px 24px;
-    border-radius:8px;
-    font-weight:800;
-    font-size:12px;
-    transition:.35s;
-    cursor:pointer;
-    border:1px solid transparent;
-}
-
-.btn-primary {
-    background:white;
-    color:var(--primary);
-}
-
-.btn-primary:hover {
-    transform:translateY(-5px);
-    box-shadow:0 15px 35px rgba(0,0,0,.2);
-}
-
-.btn-outline {
-    color:white;
-    border-color:rgba(255,255,255,.5);
-}
-
-.btn-outline:hover {
-    background:white;
-    color:var(--primary);
-    transform:translateY(-4px);
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+    margin-bottom: 33px;
 }
 
 .hero-points {
-    display:flex;
-    flex-wrap:wrap;
-    gap:24px;
-    margin-top:40px;
-    font-size:11px;
-    color:#e5d9f6;
-    font-weight:600;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.hero-points span::before {
-    content:"✓";
-    color:#c9a5ff;
-    margin-right:8px;
+.hero-points span {
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 800;
 }
 
-/* TRUST */
-
-.trust-strip {
-    background:white;
-    border-bottom:1px solid var(--line);
-    position:relative;
-    z-index:2;
+.hero-points i {
+    margin-right: 5px;
 }
 
-.trust-inner {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
+.hero-visual {
+    position: relative;
 }
 
-.trust-item {
-    padding:27px 15px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:13px;
-    border-right:1px solid var(--line);
-    transition:.3s;
+.hero-image {
+    width: 100%;
+    height: 410px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 25px 55px rgba(50,20,95,.2);
 }
 
-.trust-item:last-child {border:0;}
-
-.trust-item:hover {background:#faf7ff;}
-
-.trust-icon {
-    width:47px;
-    height:47px;
-    border-radius:14px;
-    display:grid;
-    place-items:center;
-    background:var(--light);
-    font-size:22px;
-    transition:.4s;
+.hero-float {
+    position: absolute;
+    bottom: 22px;
+    left: -25px;
+    padding: 18px 23px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 13px;
 }
 
-.trust-item:hover .trust-icon {
-    background:var(--gradient);
-    transform:rotate(8deg) scale(1.08);
+.hero-float-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: var(--soft);
+    color: var(--secondary);
+    display: grid;
+    place-items: center;
+    font-size: 21px;
 }
 
-.trust-item strong {
-    font-size:12px;
-    display:block;
-    color:var(--primary);
+.hero-float strong {
+    display: block;
+    color: var(--primary);
+    font-size: 13px;
 }
 
-.trust-item small {
-    font-size:10px;
-    color:var(--muted);
+.hero-float small {
+    color: var(--muted);
+    font-size: 11px;
 }
 
-/* SECTIONS */
+/* HIGHLIGHTS */
 
-section {padding:100px 0;}
-
-.section-heading {
-    text-align:center;
-    max-width:730px;
-    margin:0 auto 55px;
+.highlights {
+    position: relative;
+    margin-top: -1px;
+    padding: 35px 0;
+    background: white;
 }
 
-.section-tag {
-    display:inline-block;
-    color:var(--secondary);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:2.5px;
-    text-transform:uppercase;
-    margin-bottom:16px;
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-.section-heading h2 {
-    font-family:Manrope,sans-serif;
-    font-size:clamp(29px,4vw,44px);
-    line-height:1.25;
-    letter-spacing:-1.3px;
-    color:var(--primary);
-    margin-bottom:17px;
+.highlight {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 17px;
+    border-right: 1px solid var(--border);
 }
 
-.section-heading p {
-    color:var(--muted);
-    font-size:13px;
-    line-height:2;
+.highlight:last-child {
+    border: none;
 }
 
-/* PRODUCTS */
-
-.products-section {
-    background:
-    radial-gradient(circle at 5% 10%,rgba(139,92,246,.07),transparent 25%),
-    radial-gradient(circle at 95% 85%,rgba(139,92,246,.06),transparent 25%),
-    #faf8fd;
+.highlight i {
+    width: 45px;
+    height: 45px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    color: var(--secondary);
+    background: var(--soft);
+    font-size: 19px;
+    flex-shrink: 0;
 }
 
-.product-grid {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
+.highlight strong {
+    display: block;
+    font-size: 13px;
+    color: var(--primary);
 }
 
-.product-card {
-    background:white;
-    border:1px solid #eee8f5;
-    border-radius:17px;
-    overflow:hidden;
-    position:relative;
-    transition:transform .5s,box-shadow .5s,border-color .5s;
-    opacity:0;
-    transform:translateY(45px);
+.highlight small {
+    font-size: 11px;
+    color: var(--muted);
 }
 
-.product-card.show {
-    opacity:1;
-    transform:translateY(0);
+/* INDUSTRIES */
+
+.industries {
+    background: #fbf9ff;
 }
 
-.product-card:hover {
-    transform:translateY(-12px);
-    border-color:#c4a5ee;
-    box-shadow:0 25px 60px rgba(50,20,95,.15);
+.industry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
-.product-image {
-    height:240px;
-    position:relative;
-    overflow:hidden;
-    background:#eee9f6;
+.industry-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: .35s;
+    box-shadow: 0 5px 20px rgba(50,20,95,.035);
 }
 
-.product-image::after {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(0deg,rgba(35,13,72,.25),transparent 60%);
-    pointer-events:none;
+.industry-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow);
+    border-color: #c9b1f1;
 }
 
-.product-image img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:transform .9s cubic-bezier(.2,.7,.2,1);
+.industry-image {
+    height: 205px;
+    overflow: hidden;
+    position: relative;
 }
 
-.product-card:hover .product-image img {
-    transform:scale(1.12);
+.industry-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
 }
 
-.product-number {
-    position:absolute;
-    z-index:2;
-    top:17px;
-    left:17px;
-    background:rgba(255,255,255,.95);
-    color:var(--primary);
-    padding:9px 13px;
-    border-radius:6px;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:1px;
-    backdrop-filter:blur(10px);
+.industry-card:hover .industry-image img {
+    transform: scale(1.07);
 }
 
-.product-content {padding:27px;}
-
-.product-label {
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:1.8px;
-    color:#9166cb;
-    text-transform:uppercase;
+.industry-icon {
+    position: absolute;
+    bottom: -21px;
+    left: 23px;
+    width: 47px;
+    height: 47px;
+    border: 4px solid white;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 19px;
 }
 
-.product-content h3 {
-    font-family:Manrope,sans-serif;
-    font-size:20px;
-    line-height:1.4;
-    margin:12px 0;
-    color:var(--primary);
+.industry-body {
+    padding: 32px 24px 24px;
 }
 
-.product-content p {
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.9;
-    min-height:75px;
+.industry-body h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: var(--primary);
+    margin-bottom: 11px;
+    font-weight: 800;
 }
 
-.product-list {
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin:20px 0 23px;
+.industry-body p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 17px;
 }
 
-.product-list span {
-    font-size:9px;
-    background:#f5f0fb;
-    color:#594078;
-    padding:8px 10px;
-    border-radius:5px;
-    font-weight:700;
-    transition:.3s;
+.industry-list {
+    list-style: none;
+    display: grid;
+    gap: 9px;
+    margin-bottom: 19px;
 }
 
-.product-card:hover .product-list span {
-    background:#eee5fb;
+.industry-list li {
+    color: #554a68;
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    line-height: 1.5;
 }
 
-.product-link {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    border-top:1px solid #eee8f5;
-    padding-top:18px;
-    color:var(--secondary);
-    font-size:11px;
-    font-weight:800;
+.industry-list i {
+    color: var(--accent);
+    margin-top: 3px;
 }
 
-.product-link span:last-child {
-    font-size:22px;
-    transition:.3s;
+.card-link {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 800;
 }
 
-.product-link:hover span:last-child {
-    transform:translateX(8px);
+.card-link:hover {
+    gap: 13px;
 }
 
-/* ABOUT */
+/* APPLICATION DETAILS */
 
-.feature-section {background:white;}
-
-.feature-layout {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:75px;
-    align-items:center;
+.applications {
+    background: white;
 }
 
-.feature-image {
-    position:relative;
+.application-row {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 55px;
+    align-items: center;
+    margin-bottom: 70px;
 }
 
-.feature-image img {
-    width:100%;
-    height:470px;
-    object-fit:cover;
-    border-radius:20px;
-    box-shadow:var(--shadow);
+.application-row:last-child {
+    margin-bottom: 0;
 }
 
-.feature-image::after {
-    content:"";
-    position:absolute;
-    left:-16px;
-    bottom:-16px;
-    width:45%;
-    height:45%;
-    border:3px solid #b99be7;
-    border-radius:20px;
-    z-index:0;
+.application-row.reverse .application-image {
+    order: 2;
 }
 
-.feature-image img {position:relative;z-index:1;}
-
-.feature-text h2 {
-    font-family:Manrope,sans-serif;
-    font-size:clamp(30px,3.5vw,41px);
-    line-height:1.25;
-    color:var(--primary);
-    margin-bottom:22px;
+.application-image {
+    position: relative;
 }
 
-.feature-text > p {
-    color:var(--muted);
-    line-height:2;
-    font-size:13px;
+.application-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 22px;
+    box-shadow: var(--shadow);
 }
 
-.feature-points {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:22px;
-    margin:32px 0;
+.application-number {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    border-radius: 9px;
+    background: white;
+    color: var(--secondary);
+    font-weight: 800;
+    font-size: 12px;
 }
 
-.feature-point {
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
+.application-content .section-tag {
+    margin-bottom: 13px;
 }
 
-.check {
-    min-width:29px;
-    height:29px;
-    border-radius:9px;
-    display:grid;
-    place-items:center;
-    background:#eee5fb;
-    color:var(--secondary);
-    font-weight:900;
+.application-content h3 {
+    font-family: 'Manrope', sans-serif;
+    color: var(--primary);
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
-.feature-point strong {
-    font-size:11px;
-    color:var(--primary);
+.application-content > p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+    margin-bottom: 20px;
 }
 
-.feature-point small {
-    display:block;
-    color:var(--muted);
-    font-size:10px;
-    margin-top:6px;
-    line-height:1.6;
+.application-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
 }
 
-/* APPLICATIONS */
-
-.application-section {
-    background:#f7f3fc;
+.application-point {
+    padding: 12px;
+    background: #faf7ff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: #514567;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
-.application-grid {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
+.application-point i {
+    color: var(--accent);
+    margin-right: 6px;
 }
 
-.application {
-    background:white;
-    padding:32px 17px;
-    text-align:center;
-    border:1px solid #eee6f7;
-    border-radius:14px;
-    transition:.4s;
-    position:relative;
-    overflow:hidden;
+/* PUMP TYPES */
+
+.pumps {
+    background: linear-gradient(135deg, #f8f4ff, #eee6ff);
 }
 
-.application::before {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:var(--gradient);
-    opacity:0;
-    transition:.4s;
+.pump-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
 }
 
-.application:hover {
-    transform:translateY(-9px);
-    box-shadow:var(--shadow);
+.pump-card {
+    padding: 30px 25px;
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #e9dff7;
+    transition: .3s;
 }
 
-.application:hover::before {opacity:1;}
-
-.application .icon {
-    font-size:32px;
-    margin-bottom:15px;
-    position:relative;
-    z-index:1;
-    transition:.4s;
+.pump-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
 }
 
-.application h4 {
-    font-size:12px;
-    color:var(--primary);
-    position:relative;
-    z-index:1;
-    transition:.4s;
+.pump-icon {
+    width: 57px;
+    height: 57px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    margin-bottom: 21px;
 }
 
-.application:hover h4 {color:white;}
+.pump-card h3 {
+    font-family: 'Manrope', sans-serif;
+    color: var(--primary);
+    font-size: 17px;
+    margin-bottom: 12px;
+}
 
-.application:hover .icon {transform:scale(1.15);}
+.pump-card p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+.pump-card ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+}
+
+.pump-card li {
+    font-size: 12px;
+    color: #594d6c;
+}
+
+.pump-card li i {
+    color: var(--accent);
+    margin-right: 7px;
+}
+
+/* SPARES */
+
+.spares {
+    background: white;
+}
+
+.spares-intro {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 55px;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+.spares-intro img {
+    width: 100%;
+    height: 335px;
+    object-fit: cover;
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+}
+
+.spares-intro h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 29px;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.spares-intro p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+.spare-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px;
+}
+
+.spare-card {
+    border: 1px solid var(--border);
+    background: #fcfaff;
+    padding: 22px 18px;
+    border-radius: 14px;
+    transition: .3s;
+}
+
+.spare-card:hover {
+    background: var(--soft);
+    transform: translateY(-5px);
+    border-color: #c9b1f1;
+}
+
+.spare-card i {
+    font-size: 23px;
+    color: var(--secondary);
+    margin-bottom: 14px;
+}
+
+.spare-card h4 {
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.spare-card p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+}
 
 /* PROCESS */
 
+.process {
+    background: #faf8ff;
+}
+
 .process-grid {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:22px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .process-card {
-    position:relative;
-    padding:28px 22px;
-    background:#faf8fd;
-    border:1px solid var(--line);
-    border-radius:14px;
-    transition:.4s;
+    text-align: center;
+    padding: 28px 20px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    position: relative;
 }
 
-.process-card:hover {
-    transform:translateY(-8px);
-    box-shadow:var(--shadow);
-    background:white;
-}
-
-.process-number {
-    font-family:Manrope,sans-serif;
-    font-size:40px;
-    font-weight:800;
-    color:#d7c5ef;
+.process-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    font-size: 23px;
 }
 
 .process-card h3 {
-    color:var(--primary);
-    font-size:14px;
-    margin:13px 0 10px;
+    color: var(--primary);
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 
 .process-card p {
-    color:var(--muted);
-    font-size:11px;
-    line-height:1.9;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
 }
 
 /* CTA */
 
-.cta-section {
-    padding:85px 0;
-    background:var(--gradient);
-    color:white;
-    position:relative;
-    overflow:hidden;
+.cta {
+    padding: 75px 0;
+    background: linear-gradient(120deg, #32145f, #54269a 65%, #8050c9);
+    position: relative;
+    overflow: hidden;
 }
 
-.cta-section::before,
-.cta-section::after {
-    content:"";
-    position:absolute;
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,.15);
-    animation:float 8s infinite ease-in-out;
-}
-
-.cta-section::before {
-    right:10%;
-    top:-180px;
-    width:350px;
-    height:350px;
-}
-
-.cta-section::after {
-    right:-80px;
-    bottom:-260px;
-    width:450px;
-    height:450px;
+.cta::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+    top: -240px;
+    right: 5%;
+    box-shadow: 0 0 0 45px rgba(255,255,255,.025),
+                0 0 0 90px rgba(255,255,255,.025);
 }
 
 .cta-inner {
-    position:relative;
-    z-index:2;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
 }
 
-.cta-inner h2 {
-    font-family:Manrope,sans-serif;
-    font-size:clamp(25px,3vw,36px);
-    margin-bottom:13px;
+.cta h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(26px, 3.5vw, 38px);
+    color: white;
+    margin-bottom: 12px;
 }
 
-.cta-inner p {
-    color:#e4d8f7;
-    font-size:12px;
-    line-height:1.9;
+.cta p {
+    color: #e1d3fa;
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 650px;
 }
 
-/* CONTACT */
-
-.contact-section {background:#faf8fd;}
-
-.contact-layout {
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:35px;
+.cta .btn {
+    background: white;
+    color: var(--primary);
+    white-space: nowrap;
 }
 
-.contact-info {
-    background:var(--gradient);
-    color:white;
-    padding:42px;
-    border-radius:18px;
-    position:relative;
-    overflow:hidden;
-}
-
-.contact-info::after {
-    content:"";
-    position:absolute;
-    width:200px;
-    height:200px;
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:50%;
-    right:-90px;
-    bottom:-90px;
-}
-
-.contact-info h2 {
-    font-family:Manrope,sans-serif;
-    font-size:29px;
-    margin-bottom:15px;
-}
-
-.contact-info > p {
-    color:#e0d3f2;
-    font-size:12px;
-    line-height:1.9;
-}
-
-.contact-detail {
-    display:flex;
-    gap:15px;
-    margin-top:30px;
-    align-items:flex-start;
-    position:relative;
-    z-index:1;
-}
-
-.contact-detail .icon {font-size:22px;}
-
-.contact-detail strong {font-size:12px;}
-
-.contact-detail p {
-    color:#e0d3f2;
-    font-size:11px;
-    margin-top:6px;
-    word-break:break-word;
-}
-
-.enquiry-form {
-    background:white;
-    padding:38px;
-    border:1px solid var(--line);
-    border-radius:18px;
-    box-shadow:0 12px 35px rgba(50,20,95,.04);
-}
-
-.enquiry-form h3 {
-    font-family:Manrope,sans-serif;
-    font-size:23px;
-    color:var(--primary);
-    margin-bottom:8px;
-}
-
-.enquiry-form > p {
-    color:var(--muted);
-    font-size:11px;
-    margin-bottom:26px;
-}
-
-.form-grid {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-}
-
-.form-group {
-    display:flex;
-    flex-direction:column;
-    gap:9px;
-}
-
-.form-group.full {grid-column:1/-1;}
-
-.form-group label {
-    color:#49385d;
-    font-size:10px;
-    font-weight:800;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width:100%;
-    padding:14px;
-    border:1px solid #e6deef;
-    background:#fdfcff;
-    border-radius:8px;
-    font-family:inherit;
-    font-size:11px;
-    outline:none;
-    transition:.3s;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color:var(--accent);
-    box-shadow:0 0 0 4px rgba(139,92,246,.09);
-}
-
-.form-group textarea {
-    resize:vertical;
-    min-height:115px;
-}
-
-.submit-btn {
-    margin-top:21px;
-    width:100%;
-    background:var(--gradient);
-    color:white;
-    padding:16px;
-    border:0;
-    border-radius:8px;
-    font-size:12px;
-    font-weight:800;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.submit-btn:hover {
-    box-shadow:0 12px 25px rgba(50,20,95,.22);
-    transform:translateY(-3px);
-}
-
-.form-note {
-    margin-top:13px;
-    font-size:10px;
-    color:#91899a;
-    text-align:center;
+.cta .btn:hover {
+    background: var(--soft);
+    transform: translateY(-3px);
 }
 
 /* FOOTER */
 
 footer {
-    background:#1e1035;
-    color:white;
-    padding:70px 0 0;
+    background: #20103e;
+    color: white;
+    padding: 65px 0 0;
 }
 
 .footer-grid {
-    display:grid;
-    grid-template-columns:1.4fr 1fr 1fr 1fr;
-    gap:40px;
-    padding-bottom:50px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.1fr;
+    gap: 40px;
+    padding-bottom: 45px;
 }
 
-.footer-brand .logo {
-    color:white;
-    margin-bottom:20px;
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
-.footer-brand .logo small {color:#b9a9d0;}
-
-.footer-brand p {
-    font-size:11px;
-    color:#c2b6d2;
-    line-height:2;
-    max-width:300px;
+.footer-brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background: white;
+    border-radius: 9px;
 }
 
-.footer-col h4 {
-    font-size:12px;
-    margin-bottom:23px;
-    color:#d7baff;
+.footer-brand strong {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
 }
 
-.footer-col a {
-    display:block;
-    color:#c2b6d2;
-    font-size:11px;
-    margin-bottom:15px;
-    transition:.3s;
+.footer-about p {
+    color: #c6b9d8;
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 300px;
 }
 
-.footer-col a:hover {
-    color:white;
-    transform:translateX(5px);
+.footer-column h4 {
+    font-size: 14px;
+    margin-bottom: 22px;
+    color: white;
+}
+
+.footer-column ul {
+    list-style: none;
+    display: grid;
+    gap: 13px;
+}
+
+.footer-column li,
+.footer-column a {
+    font-size: 12px;
+    color: #c6b9d8;
+    transition: .3s;
+}
+
+.footer-column a:hover {
+    color: #c5a7ff;
+    padding-left: 4px;
+}
+
+.footer-column i {
+    color: #b28af8;
+    width: 18px;
+    margin-right: 5px;
 }
 
 .footer-bottom {
-    border-top:1px solid rgba(255,255,255,.12);
-    padding:23px 0;
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
-    font-size:10px;
-    color:#a99bbd;
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-/* BACK TO TOP */
+.footer-bottom p {
+    color: #b9accd;
+    font-size: 11px;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+}
+
+.socials a {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,.1);
+    color: white;
+    border-radius: 9px;
+    transition: .3s;
+}
+
+.socials a:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* WHATSAPP / TOP BUTTON */
+
+.whatsapp {
+    position: fixed;
+    right: 23px;
+    bottom: 85px;
+    width: 51px;
+    height: 51px;
+    background: #25d366;
+    color: white;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 26px;
+    z-index: 999;
+    box-shadow: 0 5px 20px rgba(0,0,0,.18);
+    transition: .3s;
+}
+
+.whatsapp:hover {
+    transform: scale(1.1);
+}
 
 .back-top {
-    position:fixed;
-    bottom:25px;
-    right:24px;
-    width:47px;
-    height:47px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    background:var(--gradient);
-    color:white;
-    font-size:22px;
-    z-index:900;
-    box-shadow:0 6px 20px rgba(50,20,95,.3);
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(15px);
-    transition:.3s;
+    position: fixed;
+    right: 28px;
+    bottom: 23px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: var(--secondary);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    z-index: 999;
 }
 
-.back-top.visible {
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
+.back-top.show {
+    opacity: 1;
+    visibility: visible;
 }
-
-.back-top:hover {transform:translateY(-5px);}
 
 /* SCROLL REVEAL */
 
 .reveal {
-    opacity:0;
-    transform:translateY(35px);
-    transition:opacity .8s ease,transform .8s ease;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
 }
 
-.reveal.active {
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ANIMATIONS */
-
-@keyframes slideUp {
-    from {opacity:0;transform:translateY(40px)}
-    to {opacity:1;transform:translateY(0)}
-}
-
-@keyframes float {
-    0%,100% {transform:translateY(0) rotate(0deg)}
-    50% {transform:translateY(-20px) rotate(8deg)}
-}
-
-@keyframes pulse {
-    0%,100% {box-shadow:0 0 5px #c3a1ff}
-    50% {box-shadow:0 0 18px #c3a1ff}
-}
-
-@keyframes heroGlow {
-    from {opacity:.6;transform:scale(1)}
-    to {opacity:1;transform:scale(1.08)}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* RESPONSIVE */
 
-@media(max-width:1100px) {
-    .nav-links {gap:16px;}
-    .nav-links {font-size:11px;}
-    .logo img {width:100px;}
-    .product-grid {gap:18px;}
-    .feature-layout {gap:40px;}
-}
-
-@media(max-width:850px) {
-    .navbar {
-        grid-template-columns:1fr auto;
+@media(max-width: 1000px) {
+    .nav-links {
+        gap: 16px;
     }
 
-    .nav-spacer {display:none;}
+    .nav-links a {
+        font-size: 12px;
+    }
 
-    .menu-toggle {display:block;}
+    .nav-cta {
+        display: none;
+    }
+
+    .industry-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .spare-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 760px) {
+    .topbar-inner {
+        justify-content: center;
+    }
+
+    .topbar-info {
+        justify-content: center;
+        gap: 8px 17px;
+    }
+
+    .navbar {
+        min-height: 72px;
+    }
+
+    .menu-toggle {
+        display: grid;
+        place-items: center;
+    }
 
     .nav-links {
-        position:absolute;
-        top:86px;
-        left:0;
-        width:100%;
-        background:white;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:0;
-        padding:0 5%;
-        max-height:0;
-        overflow:hidden;
-        opacity:0;
-        visibility:hidden;
-        transition:max-height .4s,opacity .3s,padding .4s;
-        box-shadow:0 15px 25px rgba(0,0,0,.07);
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        padding: 22px 5%;
+        background: white;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 21px;
+        box-shadow: 0 15px 25px rgba(50,20,95,.1);
+        border-top: 1px solid var(--border);
     }
 
     .nav-links.open {
-        max-height:450px;
-        opacity:1;
-        visibility:visible;
-        padding:15px 5% 25px;
+        display: flex;
     }
 
-    .nav-links li {width:100%;text-align:center;}
-
-    .nav-links li a {
-        display:block;
-        padding:15px;
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+        display: none;
     }
 
-    .nav-links a::after {display:none;}
-
-    .nav-cta {
-        margin-top:8px;
-        display:inline-block!important;
-        width:100%;
+    .hero {
+        padding: 65px 0;
     }
 
-    .product-grid {grid-template-columns:repeat(2,1fr);}
-    .feature-layout {gap:35px;}
-    .footer-grid {grid-template-columns:repeat(2,1fr);}
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+    }
+
+    .hero-image {
+        height: 310px;
+    }
+
+    .hero-float {
+        left: 12px;
+        bottom: 12px;
+    }
+
+    .highlight-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .highlight {
+        border-right: none;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .application-row,
+    .spares-intro {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .application-row.reverse .application-image {
+        order: 0;
+    }
+
+    .application-image img {
+        height: 290px;
+    }
+
+    .pump-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
-@media(max-width:760px) {
-    .topbar-inner {justify-content:center;text-align:center;}
-    .navbar {height:76px;}
-    .logo img {width:85px;height:70px;}
-    .nav-links {top:76px;}
-    .hero {min-height:570px;background-position:65% center;}
-    .hero h1 {letter-spacing:-1.5px;}
-    .hero-content {padding:85px 0;}
-    .trust-inner {grid-template-columns:1fr 1fr;}
-    .trust-item:nth-child(2) {border-right:0;}
-    .trust-item {justify-content:flex-start;padding:18px 10px;}
-    section {padding:70px 0;}
-    .product-grid {grid-template-columns:1fr;}
-    .product-image {height:260px;}
-    .feature-layout {grid-template-columns:1fr;}
-    .feature-image img {height:340px;}
-    .application-grid {grid-template-columns:repeat(2,1fr);}
-    .process-grid {grid-template-columns:repeat(2,1fr);}
-    .cta-inner {flex-direction:column;align-items:flex-start;}
-    .contact-layout {grid-template-columns:1fr;}
-    .contact-info {padding:32px;}
-}
+@media(max-width: 520px) {
+    .brand-name {
+        font-size: 13px;
+    }
 
-@media(max-width:480px) {
-    .hero-buttons {flex-direction:column;align-items:stretch;}
-    .hero-points {gap:13px;flex-direction:column;}
-    .trust-item {gap:8px;}
-    .trust-item small {font-size:9px;}
-    .feature-points {grid-template-columns:1fr;}
-    .process-grid {grid-template-columns:1fr;}
-    .form-grid {grid-template-columns:1fr;}
-    .form-group.full {grid-column:auto;}
-    .enquiry-form {padding:23px;}
-    .footer-grid {grid-template-columns:1fr 1fr;gap:28px 18px;}
-    .footer-brand {grid-column:1/-1;}
-    .footer-bottom {flex-direction:column;text-align:center;}
-}
+    .brand img {
+        width: 44px;
+        height: 44px;
+    }
 
-@media(prefers-reduced-motion:reduce) {
-    *,*::before,*::after {
-        scroll-behavior:auto!important;
-        animation:none!important;
-        transition:none!important;
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .hero-content > p {
+        font-size: 14px;
+    }
+
+    .hero-points {
+        gap: 12px;
+    }
+
+    .highlight-grid {
+        gap: 8px;
+    }
+
+    .highlight {
+        padding: 10px 5px;
+    }
+
+    .highlight i {
+        width: 37px;
+        height: 37px;
+        font-size: 15px;
+    }
+
+    .industry-grid,
+    .pump-grid,
+    .process-grid,
+    .spare-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .industry-image {
+        height: 215px;
+    }
+
+    .application-points {
+        grid-template-columns: 1fr;
+    }
+
+    .application-content h3 {
+        font-size: 24px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .cta .btn {
+        width: 100%;
     }
 }
 </style>
@@ -1279,604 +1255,1150 @@ footer {
 
 <body>
 
-<!-- LOADER -->
-
-<div class="loader" id="loader">
-    <div class="loader-logo">UNIQUE WATER</div>
-    <div class="loader-line"></div>
-</div>
-
-<!-- TOPBAR -->
+<!-- TOP BAR -->
 
 <div class="topbar">
     <div class="container topbar-inner">
-        <span>Water Treatment Components. Dependable Supply. Practical Support.</span>
-        <span>Product Enquiries: <a href="mailto:daisy@uniquewater.in">daisy@uniquewater.in</a></span>
+        <div class="topbar-info">
+            <span><i class="fa-solid fa-envelope"></i> daisy@uniquewater.in</span>
+            <span><i class="fa-solid fa-location-dot"></i> Bengaluru, Karnataka, India</span>
+        </div>
+        <span>Industrial Dosing & Water Treatment Solutions</span>
     </div>
 </div>
 
 <!-- HEADER -->
 
-<header id="header">
-<nav class="container navbar">
+<header>
+    <div class="container navbar">
 
-    <a href="https://uniquewater-io.github.io/Home" class="logo">
-        <img src="logo/unique logo.png" alt="Unique Water Technologies Logo">
-    </a>
+        <a href="/Home/" class="brand">
+            <img src="/Home/logo/unique%20logo.png"
+                 alt="Unique Water Technologies Logo">
+            <div class="brand-name">
+                UNIQUE WATER TECHNOLOGIES
+                <small>PURE SOLUTIONS. RELIABLE PERFORMANCE.</small>
+            </div>
+        </a>
 
-    <ul class="nav-links" id="navLinks">
-        <li><a href="https://uniquewater-io.github.io/Home">Home</a></li>
-        <li><a href="products.html" class="active">Products</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#applications">Industries</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#contact" class="nav-cta">Send an Enquiry ↗</a></li>
-    </ul>
+        <nav class="nav-links" id="navLinks">
+            <a href="/Home/">Home</a>
+            <a href="/Home/products/products">Products</a>
+            <a href="/Home/about/about">About Us</a>
+            <a href="/Home/industries/industries" class="active">Industries</a>
+            <a href="/Home/contact/contact">Contact</a>
+        </nav>
 
-    <div class="nav-spacer"></div>
+        <a class="btn btn-primary nav-cta"
+           href="mailto:daisy@uniquewater.in?subject=Industrial%20Dosing%20Pump%20Enquiry">
+            Send an Enquiry <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
 
-    <button class="menu-toggle" id="menuToggle"
-    aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-</nav>
+    </div>
 </header>
 
 <!-- HERO -->
 
 <section class="hero">
-<div class="hero-orb"></div>
-<div class="container">
+    <div class="container hero-grid">
 
-    <div class="hero-content">
+        <div class="hero-content reveal">
 
-        <span class="eyebrow">Our Product Portfolio</span>
+            <span class="section-tag">
+                <i class="fa-solid fa-industry"></i>
+                Industries & Applications
+            </span>
 
-        <h1>
-            Complete Solutions for
-            <span>Water Treatment</span>
-            & Filtration.
-        </h1>
+            <h1>
+                Precision Dosing.
+                <span class="gradient-text">Reliable Industrial Performance.</span>
+            </h1>
 
-        <p>
-            Your trusted sourcing partner for RO spares, industrial
-            water treatment components, filter cartridges, filtration
-            media, dosing pumps and accessories. Quality components
-            for reliable water treatment operations.
-        </p>
+            <p>
+                Delivering dependable chemical dosing pumps, metering pumps,
+                dosing systems and industrial pump spares for critical processes
+                across water treatment, pharmaceutical, chemical, textile,
+                paper and pulp and other industrial sectors.
+            </p>
 
-        <div class="hero-buttons">
-            <a href="#products" class="btn btn-primary">Explore Products ↓</a>
-            <a href="#contact" class="btn btn-outline">Request a Quote ↗</a>
+            <div class="hero-buttons">
+                <a href="#industries" class="btn btn-primary">
+                    Explore Industries <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="#spares" class="btn btn-outline">
+                    Explore Pump Spares
+                </a>
+            </div>
+
+            <div class="hero-points">
+                <span><i class="fa-solid fa-circle-check"></i> Industrial Applications</span>
+                <span><i class="fa-solid fa-circle-check"></i> Dosing Solutions</span>
+                <span><i class="fa-solid fa-circle-check"></i> Spare Parts</span>
+            </div>
+
         </div>
 
-        <div class="hero-points">
-            <span>Industrial & Commercial Applications</span>
-            <span>Requirement-Based Sourcing</span>
-            <span>Product Enquiry Assistance</span>
+        <div class="hero-visual reveal">
+
+            <img class="hero-image"
+                 src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1100&q=85"
+                 alt="Industrial engineering and process equipment">
+
+            <div class="hero-float">
+                <div class="hero-float-icon">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+                <div>
+                    <strong>Industrial Dosing Solutions</strong>
+                    <small>Designed around process requirements</small>
+                </div>
+            </div>
+
         </div>
 
     </div>
-</div>
 </section>
 
-<!-- TRUST STRIP -->
+<!-- HIGHLIGHTS -->
 
-<div class="trust-strip">
-<div class="container trust-inner">
+<section class="highlights">
+    <div class="container highlight-grid">
 
-    <div class="trust-item">
-        <div class="trust-icon">💧</div>
-        <div>
-            <strong>RO Components</strong>
-            <small>Plant spares & accessories</small>
+        <div class="highlight">
+            <i class="fa-solid fa-droplet"></i>
+            <div>
+                <strong>Water Treatment</strong>
+                <small>WTP, ETP, STP & RO</small>
+            </div>
         </div>
-    </div>
 
-    <div class="trust-item">
-        <div class="trust-icon">⚙️</div>
-        <div>
-            <strong>Industrial Spares</strong>
-            <small>Equipment components</small>
+        <div class="highlight">
+            <i class="fa-solid fa-flask"></i>
+            <div>
+                <strong>Chemical Dosing</strong>
+                <small>Accurate chemical injection</small>
+            </div>
         </div>
-    </div>
 
-    <div class="trust-item">
-        <div class="trust-icon">🔬</div>
-        <div>
-            <strong>Filtration Products</strong>
-            <small>Filters & media</small>
+        <div class="highlight">
+            <i class="fa-solid fa-industry"></i>
+            <div>
+                <strong>Industrial Processes</strong>
+                <small>Multiple industry sectors</small>
+            </div>
         </div>
-    </div>
 
-    <div class="trust-item">
-        <div class="trust-icon">🛠️</div>
-        <div>
-            <strong>Technical Assistance</strong>
-            <small>Requirement-based support</small>
+        <div class="highlight">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <div>
+                <strong>Pump Spares</strong>
+                <small>Maintenance components</small>
+            </div>
         </div>
-    </div>
-
-</div>
-</div>
-
-<!-- PRODUCTS -->
-
-<section class="products-section" id="products">
-
-<div class="container">
-
-    <div class="section-heading reveal">
-        <span class="section-tag">Explore Our Products</span>
-        <h2>Components for Cleaner, Better Water</h2>
-        <p>
-            Discover our range of water treatment consumables,
-            replacement components and industrial filtration
-            products for plant maintenance and new installations.
-        </p>
-    </div>
-
-    <div class="product-grid">
-
-        <article class="product-card">
-            <div class="product-image">
-                <img src="https://5.imimg.com/data5/SELLER/Default/2023/1/DA/TI/HS/2463572/ro-spare-parts.jpg"
-                     alt="RO system components and industrial water treatment equipment" loading="lazy">
-                <span class="product-number">01 / RO SYSTEMS</span>
-            </div>
-            <div class="product-content">
-                <span class="product-label">RO SYSTEM COMPONENTS</span>
-                <h3>RO Spares & Components</h3>
-                <p>
-                    Essential replacement components and accessories
-                    for reverse osmosis plants, commercial RO systems
-                    and industrial water purification equipment.
-                </p>
-                <div class="product-list">
-                    <span>RO Membranes</span><span>Membrane Housing</span>
-                    <span>Pressure Gauges</span><span>Flow Meters</span>
-                    <span>Connectors</span><span>RO Accessories</span>
-                </div>
-                <a href="#contact" class="product-link" data-category="RO Spares & Components">
-                    Enquire About RO Spares <span>→</span>
-                </a>
-            </div>
-        </article>
-
-        <article class="product-card">
-            <div class="product-image">
-                <img src="https://m.media-amazon.com/images/I/81IC1VIaFlL.jpg"
-                     alt="Industrial filter cartridges and filtration products" loading="lazy">
-                <span class="product-number">02 / FILTRATION</span>
-            </div>
-            <div class="product-content">
-                <span class="product-label">FILTRATION SOLUTIONS</span>
-                <h3>Filter Cartridges</h3>
-                <p>
-                    Filter cartridges designed for sediment removal,
-                    particulate filtration, pre-filtration and
-                    industrial process water applications.
-                </p>
-                <div class="product-list">
-                    <span>PP Spun Cartridges</span><span>String Wound</span>
-                    <span>Pleated Filters</span><span>Activated Carbon</span>
-                    <span>Micron Filters</span><span>DOE / SOE</span>
-                </div>
-                <a href="#contact" class="product-link" data-category="Filter Cartridges">
-                    Enquire About Cartridges <span>→</span>
-                </a>
-            </div>
-        </article>
-
-        <article class="product-card">
-            <div class="product-image">
-                <img src="https://images.romegamart.com/media/maincategory_image/industrial_spares.jpeg"
-                     alt="Industrial water treatment machinery and spares" loading="lazy">
-                <span class="product-number">03 / INDUSTRIAL</span>
-            </div>
-            <div class="product-content">
-                <span class="product-label">INDUSTRIAL SOLUTIONS</span>
-                <h3>Industrial Water Treatment Spares</h3>
-                <p>
-                    Industrial-grade replacement spares, accessories
-                    and equipment components for water treatment
-                    plants and process filtration systems.
-                </p>
-                <div class="product-list">
-                    <span>FRP Accessories</span><span>Valves</span>
-                    <span>Pressure Gauges</span><span>Flow Meters</span>
-                    <span>Fittings</span><span>Plant Spares</span>
-                </div>
-                <a href="#contact" class="product-link" data-category="Industrial Water Treatment Spares">
-                    Enquire About Industrial Spares <span>→</span>
-                </a>
-            </div>
-        </article>
-
-        <article class="product-card">
-            <div class="product-image">
-                <img src="https://www.parker.com/content/dam/Parker-com/Online/Product-Images/Domnick-Hunter-Process-Filtration-Division/zoom_1000x1000/SF_Multi-CartridgeFilterVessel_zm.jpg"
-                     alt="Industrial filter housings and pressure vessels" loading="lazy">
-                <span class="product-number">04 / PRE-TREATMENT</span>
-            </div>
-            <div class="product-content">
-                <span class="product-label">FILTER HOUSINGS</span>
-                <h3>Filter Housings & Vessels</h3>
-                <p>
-                    Filter housings and pressure vessels for
-                    industrial filtration, pretreatment,
-                    water conditioning and purification systems.
-                </p>
-                <div class="product-list">
-                    <span>Bag Filter Housing</span><span>Cartridge Housing</span>
-                    <span>FRP Vessels</span><span>SS Housing</span>
-                    <span>Multiport Valves</span><span>Accessories</span>
-                </div>
-                <a href="#contact" class="product-link" data-category="Filter Housings & Vessels">
-                    Enquire About Housings <span>→</span>
-                </a>
-            </div>
-        </article>
-
-        <article class="product-card">
-            <div class="product-image">
-                <img src="https://amberwaterpros.com/oak/files/images/stock/water-testing/water-quality-testing-8.jpg"
-                     alt="Water filtration treatment media and materials" loading="lazy">
-                <span class="product-number">05 / CONSUMABLES</span>
-            </div>
-            <div class="product-content">
-                <span class="product-label">WATER TREATMENT MEDIA</span>
-                <h3>Water Treatment Media</h3>
-                <p>
-                    Selected filtration and water conditioning
-                    media for sediment removal, adsorption,
-                    softening and specialised treatment processes.
-                </p>
-                <div class="product-list">
-                    <span>Activated Carbon</span><span>Quartz Sand</span>
-                    <span>Silica Sand</span><span>Resin</span>
-                    <span>Anthracite</span><span>Filter Gravel</span>
-                </div>
-                <a href="#contact" class="product-link" data-category="Water Treatment Media">
-                    Enquire About Media <span>→</span>
-                </a>
-            </div>
-        </article>
-
-        <article class="product-card">
-            <div class="product-image">
-                <img src="https://m.media-amazon.com/images/I/81-jteaXZPL._AC_UF1000,1000_QL80_.jpg"
-                     alt="Industrial dosing pumps valves and accessories" loading="lazy">
-                <span class="product-number">06 / MAINTENANCE</span>
-            </div>
-            <div class="product-content">
-                <span class="product-label">DOSING & FLOW CONTROL</span>
-                <h3>Dosing Pumps, Valves & Accessories</h3>
-                <p>
-                    Chemical dosing equipment, flow control
-                    components and related accessories for
-                    industrial water treatment installations.
-                </p>
-                <div class="product-list">
-                    <span>Dosing Pumps</span><span>Solenoid Valves</span>
-                    <span>Back Pressure Valves</span><span>Injection Valves</span>
-                    <span>Calibration Pots</span><span>Accessories</span>
-                </div>
-                <a href="#contact" class="product-link" data-category="Dosing Pumps, Valves & Accessories">
-                    Enquire About Pumps & Valves <span>→</span>
-                </a>
-            </div>
-        </article>
 
     </div>
-</div>
 </section>
 
-<!-- ABOUT -->
+<!-- INDUSTRIES -->
 
-<section class="feature-section" id="about">
-<div class="container feature-layout">
+<section class="section industries" id="industries">
+    <div class="container">
 
-    <div class="feature-image reveal">
-        <img src="https://us.ionexchangeglobal.com/assets/countries/gen/us-hero.jpg"
-             alt="Industrial water treatment equipment and engineering" loading="lazy">
-    </div>
+        <div class="section-heading reveal">
+            <span class="section-tag">Industries We Serve</span>
 
-    <div class="feature-text reveal">
-        <span class="section-tag">About Unique Water Technologies</span>
-        <h2>Your Partner for Water Treatment Components.</h2>
-        <p>
-            Unique Water Technologies focuses on supplying
-            components and spares used in water treatment,
-            reverse osmosis and industrial filtration systems.
-            We aim to simplify product sourcing by understanding
-            your technical requirements and helping identify
-            suitable components for your application.
-        </p>
+            <h2>
+                Supporting Critical Processes
+                <span class="gradient-text">Across Industries</span>
+            </h2>
 
-        <div class="feature-points">
-            <div class="feature-point">
-                <span class="check">✓</span>
-                <div><strong>RO Plant Components</strong><small>Replacement parts and accessories.</small></div>
-            </div>
-            <div class="feature-point">
-                <span class="check">✓</span>
-                <div><strong>Filtration Products</strong><small>Cartridges, housings and media.</small></div>
-            </div>
-            <div class="feature-point">
-                <span class="check">✓</span>
-                <div><strong>Industrial Spares</strong><small>Components for plant operations.</small></div>
-            </div>
-            <div class="feature-point">
-                <span class="check">✓</span>
-                <div><strong>Enquiry Assistance</strong><small>Requirement-based product sourcing.</small></div>
-            </div>
+            <p>
+                Chemical dosing pumps and metering equipment play an essential
+                role in process control, water purification, chemical treatment
+                and industrial operations. Explore the industries where these
+                solutions are commonly applied.
+            </p>
         </div>
 
-        <a href="#contact" class="btn" style="background:var(--gradient);color:white">
-            Discuss Your Requirement ↗
-        </a>
-    </div>
+        <div class="industry-grid">
 
-</div>
+            <!-- WATER TREATMENT -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=850&q=80"
+                         alt="Water treatment laboratory and equipment">
+                    <span class="industry-icon"><i class="fa-solid fa-droplet"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Water Treatment Plants (WTP)</h3>
+
+                    <p>
+                        Chemical dosing and metering solutions for raw water
+                        treatment, purification, conditioning and distribution
+                        systems.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> Chlorine and sodium hypochlorite dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Alum and PAC dosing</li>
+                        <li><i class="fa-solid fa-check"></i> pH correction using acid and alkali</li>
+                        <li><i class="fa-solid fa-check"></i> Antiscalant and coagulant dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Disinfection and water conditioning</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss WTP Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- ETP -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=850&q=80"
+                         alt="Industrial wastewater treatment facility">
+                    <span class="industry-icon"><i class="fa-solid fa-recycle"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Effluent Treatment Plants (ETP)</h3>
+
+                    <p>
+                        Controlled chemical injection for industrial wastewater
+                        treatment, neutralization, coagulation and effluent
+                        management.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> Acid and alkali dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Coagulant and flocculant dosing</li>
+                        <li><i class="fa-solid fa-check"></i> pH neutralization systems</li>
+                        <li><i class="fa-solid fa-check"></i> Defoamer and chemical dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Sludge treatment chemicals</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss ETP Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- STP -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=850&q=80"
+                         alt="Wastewater infrastructure">
+                    <span class="industry-icon"><i class="fa-solid fa-water"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Sewage Treatment Plants (STP)</h3>
+
+                    <p>
+                        Metering and chemical dosing equipment for sewage
+                        treatment, disinfection, odour management and treated
+                        water quality improvement.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> Sodium hypochlorite dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Chlorination and disinfection</li>
+                        <li><i class="fa-solid fa-check"></i> pH adjustment</li>
+                        <li><i class="fa-solid fa-check"></i> Coagulant and polymer dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Treated water conditioning</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss STP Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- PHARMA -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=850&q=80"
+                         alt="Pharmaceutical laboratory">
+                    <span class="industry-icon"><i class="fa-solid fa-capsules"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Pharmaceutical Industries</h3>
+
+                    <p>
+                        Chemical metering and process dosing applications
+                        supporting pharmaceutical manufacturing, purified
+                        water systems and wastewater treatment.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> RO and purified water treatment</li>
+                        <li><i class="fa-solid fa-check"></i> Boiler water chemical dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Cooling tower treatment</li>
+                        <li><i class="fa-solid fa-check"></i> CIP chemical dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Effluent treatment applications</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss Pharma Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- CHEMICAL -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1565608438257-fac3c27beb36?auto=format&fit=crop&w=850&q=80"
+                         alt="Chemical manufacturing plant">
+                    <span class="industry-icon"><i class="fa-solid fa-flask"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Chemical Industries</h3>
+
+                    <p>
+                        Precision metering and controlled chemical transfer
+                        applications for chemical manufacturing, processing
+                        and treatment operations.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> Acid and alkali metering</li>
+                        <li><i class="fa-solid fa-check"></i> Corrosive chemical dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Process additive injection</li>
+                        <li><i class="fa-solid fa-check"></i> Batch chemical preparation</li>
+                        <li><i class="fa-solid fa-check"></i> Chemical process control</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss Chemical Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- TEXTILE -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=850&q=80"
+                         alt="Textile and apparel manufacturing">
+                    <span class="industry-icon"><i class="fa-solid fa-shirt"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Apparel & Textile Industries</h3>
+
+                    <p>
+                        Chemical dosing solutions for textile processing,
+                        fabric treatment, dyeing, washing and wastewater
+                        treatment operations.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> Dyeing chemical dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Bleaching chemical injection</li>
+                        <li><i class="fa-solid fa-check"></i> pH adjustment</li>
+                        <li><i class="fa-solid fa-check"></i> Textile ETP applications</li>
+                        <li><i class="fa-solid fa-check"></i> Coagulant and flocculant dosing</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss Textile Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- PAPER -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?auto=format&fit=crop&w=850&q=80"
+                         alt="Paper manufacturing and production">
+                    <span class="industry-icon"><i class="fa-solid fa-scroll"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Paper & Pulp Industries</h3>
+
+                    <p>
+                        Dosing pumps support chemical preparation, pulp
+                        processing, paper production, process water management
+                        and wastewater treatment.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> Retention aid and polymer dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Starch and additive dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Biocide injection</li>
+                        <li><i class="fa-solid fa-check"></i> pH correction</li>
+                        <li><i class="fa-solid fa-check"></i> Boiler and cooling water treatment</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss Paper Industry Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- FOOD -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=850&q=80"
+                         alt="Food and beverage processing">
+                    <span class="industry-icon"><i class="fa-solid fa-utensils"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Food & Beverage Industries</h3>
+
+                    <p>
+                        Chemical dosing systems for process water, utility
+                        treatment, cleaning operations and wastewater
+                        management in food production facilities.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> Process water conditioning</li>
+                        <li><i class="fa-solid fa-check"></i> CIP cleaning chemical dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Boiler water treatment</li>
+                        <li><i class="fa-solid fa-check"></i> Cooling tower dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Wastewater treatment</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss Food Industry Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- POWER -->
+
+            <article class="industry-card reveal">
+                <div class="industry-image">
+                    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=850&q=80"
+                         alt="Power generation facility">
+                    <span class="industry-icon"><i class="fa-solid fa-bolt"></i></span>
+                </div>
+
+                <div class="industry-body">
+                    <h3>Power Plants & Utilities</h3>
+
+                    <p>
+                        Chemical injection and metering applications for
+                        boiler feed water, cooling systems and industrial
+                        utility water treatment.
+                    </p>
+
+                    <ul class="industry-list">
+                        <li><i class="fa-solid fa-check"></i> Boiler water chemical dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Oxygen scavenger injection</li>
+                        <li><i class="fa-solid fa-check"></i> Antiscalant dosing</li>
+                        <li><i class="fa-solid fa-check"></i> Cooling tower treatment</li>
+                        <li><i class="fa-solid fa-check"></i> pH and corrosion control</li>
+                    </ul>
+
+                    <a href="#contact" class="card-link">
+                        Discuss Power Plant Applications <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </div>
 </section>
 
-<!-- APPLICATIONS -->
+<!-- DETAILED APPLICATIONS -->
 
-<section class="application-section" id="applications">
-<div class="container">
+<section class="section applications">
+    <div class="container">
 
-    <div class="section-heading reveal">
-        <span class="section-tag">Industries We Serve</span>
-        <h2>Supporting Water Needs Across Industries</h2>
-        <p>
-            Our product portfolio supports water treatment,
-            process filtration and maintenance requirements
-            across various industrial and commercial sectors.
-        </p>
+        <div class="section-heading reveal">
+            <span class="section-tag">Application Areas</span>
+
+            <h2>
+                Where Are Dosing Pumps
+                <span class="gradient-text">Used?</span>
+            </h2>
+
+            <p>
+                Dosing pumps are designed to deliver controlled quantities
+                of chemicals into a process. Their application depends on
+                flow rate, discharge pressure, chemical compatibility
+                and process requirements.
+            </p>
+        </div>
+
+        <!-- APPLICATION 1 -->
+
+        <div class="application-row reveal">
+
+            <div class="application-image">
+                <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c6d2c4?auto=format&fit=crop&w=1000&q=85"
+                     alt="Industrial chemical dosing equipment">
+                <span class="application-number">APPLICATION 01</span>
+            </div>
+
+            <div class="application-content">
+                <span class="section-tag">Chemical Injection</span>
+
+                <h3>Industrial Chemical Dosing & Metering</h3>
+
+                <p>
+                    Metering pumps are used to inject precise quantities of
+                    liquid chemicals into pipelines, tanks and process
+                    equipment. They help maintain the required chemical
+                    concentration and process conditions.
+                </p>
+
+                <div class="application-points">
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Acid and alkali dosing
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Chemical transfer
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Polymer injection
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Process additives
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- APPLICATION 2 -->
+
+        <div class="application-row reverse reveal">
+
+            <div class="application-image">
+                <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=1000&q=85"
+                     alt="Industrial water treatment">
+                <span class="application-number">APPLICATION 02</span>
+            </div>
+
+            <div class="application-content">
+                <span class="section-tag">Water Treatment</span>
+
+                <h3>RO Plants & Water Purification Systems</h3>
+
+                <p>
+                    Chemical dosing pumps are used in reverse osmosis and
+                    water purification plants to control scaling, fouling,
+                    pH and disinfection. Proper chemical dosing helps protect
+                    membranes and maintain plant performance.
+                </p>
+
+                <div class="application-points">
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Antiscalant dosing
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        SMBS dosing
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Chlorine dosing
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        pH correction
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- APPLICATION 3 -->
+
+        <div class="application-row reveal">
+
+            <div class="application-image">
+                <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1000&q=85"
+                     alt="Industrial production and processing">
+                <span class="application-number">APPLICATION 03</span>
+            </div>
+
+            <div class="application-content">
+                <span class="section-tag">Process Industries</span>
+
+                <h3>Manufacturing & Process Chemical Applications</h3>
+
+                <p>
+                    Industrial dosing systems provide controlled chemical
+                    addition for manufacturing processes, process water,
+                    surface treatment, cleaning and production operations.
+                </p>
+
+                <div class="application-points">
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Chemical preparation
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Batch process dosing
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Surface treatment
+                    </div>
+                    <div class="application-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Process chemical injection
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-
-    <div class="application-grid">
-        <div class="application reveal"><div class="icon">🏭</div><h4>Manufacturing & Process</h4></div>
-        <div class="application reveal"><div class="icon">💧</div><h4>RO & Water Purification</h4></div>
-        <div class="application reveal"><div class="icon">🧪</div><h4>Chemical & Pharmaceutical</h4></div>
-        <div class="application reveal"><div class="icon">🏢</div><h4>Commercial Facilities</h4></div>
-        <div class="application reveal"><div class="icon">⚡</div><h4>Power & Utilities</h4></div>
-        <div class="application reveal"><div class="icon">🍽️</div><h4>Food & Beverage</h4></div>
-        <div class="application reveal"><div class="icon">🚰</div><h4>Water & Wastewater</h4></div>
-        <div class="application reveal"><div class="icon">🔧</div><h4>Plant Maintenance</h4></div>
-    </div>
-
-</div>
 </section>
 
-<!-- PROCESS -->
+<!-- DOSING PUMP TYPES -->
 
-<section>
-<div class="container">
+<section class="section pumps" id="dosing-pumps">
+    <div class="container">
 
-    <div class="section-heading reveal">
-        <span class="section-tag">Simple Enquiry Process</span>
-        <h2>From Requirement to the Right Component</h2>
-        <p>
-            A simple process to help us understand your
-            application and identify suitable products.
+        <div class="section-heading reveal">
+            <span class="section-tag">Dosing Pump Solutions</span>
+
+            <h2>
+                Types of Dosing Pumps
+                <span class="gradient-text">For Industrial Applications</span>
+            </h2>
+
+            <p>
+                Different pump technologies are selected according to
+                chemical characteristics, operating pressure, required
+                capacity, accuracy and process conditions.
+            </p>
+        </div>
+
+        <div class="pump-grid">
+
+            <div class="pump-card reveal">
+                <div class="pump-icon">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+
+                <h3>Mechanical Diaphragm Dosing Pumps</h3>
+
+                <p>
+                    Mechanical diaphragm metering pumps provide controlled
+                    chemical dosing through a reciprocating diaphragm
+                    mechanism.
+                </p>
+
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Water treatment</li>
+                    <li><i class="fa-solid fa-check"></i> Chemical processing</li>
+                    <li><i class="fa-solid fa-check"></i> Industrial utilities</li>
+                </ul>
+            </div>
+
+            <div class="pump-card reveal">
+                <div class="pump-icon">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+
+                <h3>Hydraulic Diaphragm Dosing Pumps</h3>
+
+                <p>
+                    Hydraulic diaphragm pumps use hydraulic actuation to
+                    deliver metered chemicals in demanding process
+                    applications.
+                </p>
+
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> High-pressure dosing</li>
+                    <li><i class="fa-solid fa-check"></i> Chemical plants</li>
+                    <li><i class="fa-solid fa-check"></i> Process industries</li>
+                </ul>
+            </div>
+
+            <div class="pump-card reveal">
+                <div class="pump-icon">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                </div>
+
+                <h3>Packed Plunger Dosing Pumps</h3>
+
+                <p>
+                    Reciprocating plunger pumps provide metered liquid
+                    delivery for applications requiring suitable pressure
+                    and flow characteristics.
+                </p>
+
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Industrial chemical dosing</li>
+                    <li><i class="fa-solid fa-check"></i> Process injection</li>
+                    <li><i class="fa-solid fa-check"></i> High-pressure applications</li>
+                </ul>
+            </div>
+
+            <div class="pump-card reveal">
+                <div class="pump-icon">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+
+                <h3>Solenoid Operated Dosing Pumps</h3>
+
+                <p>
+                    Compact electronically controlled pumps suitable for
+                    controlled chemical injection in smaller water
+                    treatment systems.
+                </p>
+
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> RO plants</li>
+                    <li><i class="fa-solid fa-check"></i> Water purification</li>
+                    <li><i class="fa-solid fa-check"></i> Small dosing systems</li>
+                </ul>
+            </div>
+
+            <div class="pump-card reveal">
+                <div class="pump-icon">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+
+                <h3>Electronic & Digital Metering Pumps</h3>
+
+                <p>
+                    Electronically controlled dosing pumps offer adjustable
+                    operating settings and can support automated process
+                    control arrangements.
+                </p>
+
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Automatic dosing</li>
+                    <li><i class="fa-solid fa-check"></i> Process control</li>
+                    <li><i class="fa-solid fa-check"></i> Water treatment</li>
+                </ul>
+            </div>
+
+            <div class="pump-card reveal">
+                <div class="pump-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <h3>Complete Chemical Dosing Systems</h3>
+
+                <p>
+                    Engineered assemblies combine dosing pumps, tanks,
+                    mixers, pipework, valves and instrumentation according
+                    to application requirements.
+                </p>
+
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Chemical preparation skids</li>
+                    <li><i class="fa-solid fa-check"></i> Dosing panels</li>
+                    <li><i class="fa-solid fa-check"></i> Multiple chemical systems</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PUMP SPARES -->
+
+<section class="section spares" id="spares">
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="section-tag">Industrial Pump Spares</span>
+
+            <h2>
+                Essential Dosing Pump
+                <span class="gradient-text">Spare Parts & Accessories</span>
+            </h2>
+
+            <p>
+                Reliable pump operation depends on proper maintenance,
+                compatible replacement components and periodic inspection.
+                We support sourcing requirements for dosing pump spares
+                and associated accessories.
+            </p>
+        </div>
+
+        <div class="spares-intro reveal">
+
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=85"
+                 alt="Industrial mechanical components and engineering">
+
+            <div>
+                <span class="section-tag">Maintenance & Replacement</span>
+
+                <h3>Keep Your Dosing Systems Performing Reliably</h3>
+
+                <p>
+                    Dosing pumps operate under varying pressure,
+                    temperature and chemical conditions. Over time,
+                    components such as diaphragms, seals, valves and
+                    injection accessories may require inspection
+                    and replacement.
+                </p>
+
+                <p>
+                    Selecting the correct spare part requires checking
+                    the pump make, model, series, material compatibility
+                    and operating specifications.
+                </p>
+
+                <a href="mailto:daisy@uniquewater.in?subject=Dosing%20Pump%20Spares%20Enquiry"
+                   class="btn btn-primary">
+                    Enquire About Pump Spares
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="spare-grid">
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-circle-nodes"></i>
+                <h4>Diaphragms</h4>
+                <p>Replacement diaphragm components for compatible mechanical and hydraulic diaphragm dosing pumps.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-arrows-spin"></i>
+                <h4>Check Valve Assemblies</h4>
+                <p>Suction and discharge valve assemblies designed for controlled pump operation and chemical metering.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-ring"></i>
+                <h4>O-Rings & Seals</h4>
+                <p>Sealing components selected according to fluid compatibility, temperature and operating conditions.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-circle-dot"></i>
+                <h4>Ball Valves & Valve Seats</h4>
+                <p>Valve balls, seats and related internal components used in dosing pump assemblies.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-compress"></i>
+                <h4>Plunger & Piston Assemblies</h4>
+                <p>Replacement metering components for compatible packed plunger and piston dosing pump models.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-filter"></i>
+                <h4>Suction Strainers & Filters</h4>
+                <p>Strainers and filtration accessories to help protect pump suction systems from contaminants.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-faucet"></i>
+                <h4>Injection Valves</h4>
+                <p>Injection fittings and valves for chemical delivery into process pipelines and treatment systems.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h4>Maintenance Kits</h4>
+                <p>Application-specific service and maintenance kits containing compatible replacement components.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-gauge"></i>
+                <h4>Pressure Relief Valves</h4>
+                <p>Pressure protection accessories selected for the required dosing system operating conditions.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-plug"></i>
+                <h4>Solenoid Coils & Accessories</h4>
+                <p>Electrical components and accessories for compatible solenoid-operated dosing pumps.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-tube"></i>
+                <h4>Injection Tubing & Fittings</h4>
+                <p>Chemical-compatible tubing, connectors and fittings for dosing line installations.</p>
+            </div>
+
+            <div class="spare-card reveal">
+                <i class="fa-solid fa-gear"></i>
+                <h4>Drive & Mechanical Parts</h4>
+                <p>Selected mechanical components and accessories for compatible metering pump assemblies.</p>
+            </div>
+
+        </div>
+
+        <p style="text-align:center;color:#766d86;font-size:12px;margin-top:25px;line-height:1.8;">
+            Spare part availability and compatibility are subject to pump model,
+            manufacturer, series and technical specifications.
         </p>
-    </div>
 
-    <div class="process-grid">
-        <div class="process-card reveal">
-            <div class="process-number">01</div>
-            <h3>Tell Us What You Need</h3>
-            <p>Share the product name, application or a brief description of your requirement.</p>
-        </div>
-        <div class="process-card reveal">
-            <div class="process-number">02</div>
-            <h3>Share Specifications</h3>
-            <p>Include dimensions, model numbers, micron ratings, material or reference photos.</p>
-        </div>
-        <div class="process-card reveal">
-            <div class="process-number">03</div>
-            <h3>Requirement Review</h3>
-            <p>Our team can review your requirements and help identify suitable product options.</p>
-        </div>
-        <div class="process-card reveal">
-            <div class="process-number">04</div>
-            <h3>Receive a Quotation</h3>
-            <p>Get in touch with our team to discuss product availability and quotation details.</p>
-        </div>
     </div>
+</section>
 
-</div>
+<!-- INDUSTRIAL DOSING PROCESS -->
+
+<section class="section process">
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="section-tag">Our Approach</span>
+
+            <h2>
+                Finding the Right
+                <span class="gradient-text">Dosing Solution</span>
+            </h2>
+
+            <p>
+                Every industrial application has different operating
+                requirements. The right pump and spare parts are selected
+                after understanding the process and technical details.
+            </p>
+        </div>
+
+        <div class="process-grid">
+
+            <div class="process-card reveal">
+                <div class="process-icon">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+                <h3>Understand Requirements</h3>
+                <p>Identify the application, chemical characteristics and process requirements.</p>
+            </div>
+
+            <div class="process-card reveal">
+                <div class="process-icon">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <h3>Review Specifications</h3>
+                <p>Review flow rate, discharge pressure, temperature and material compatibility.</p>
+            </div>
+
+            <div class="process-card reveal">
+                <div class="process-icon">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+                <h3>Product Selection</h3>
+                <p>Identify suitable dosing pumps, systems, accessories and replacement spares.</p>
+            </div>
+
+            <div class="process-card reveal">
+                <div class="process-icon">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+                <h3>Enquiry & Quotation</h3>
+                <p>Share your requirements with our team for product information and quotation assistance.</p>
+            </div>
+
+        </div>
+
+    </div>
 </section>
 
 <!-- CTA -->
 
-<section class="cta-section">
-<div class="container cta-inner">
-    <div>
-        <h2>Looking for a Specific Spare or Filter?</h2>
-        <p>
-            Send us your product name, model number or technical
-            specifications. We are ready to discuss your requirement.
-        </p>
+<section class="cta" id="contact">
+    <div class="container cta-inner">
+
+        <div>
+            <h2>Looking for Dosing Pumps or Industrial Spares?</h2>
+            <p>
+                Whether you need chemical dosing pumps, metering systems,
+                replacement diaphragms, valve assemblies or industrial
+                pump accessories, share your requirement with Unique Water
+                Technologies.
+            </p>
+        </div>
+
+        <a href="mailto:daisy@uniquewater.in?subject=Industrial%20Dosing%20Pump%20and%20Spares%20Enquiry"
+           class="btn">
+            Send an Enquiry <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
     </div>
-    <a href="#contact" class="btn btn-primary">Get Product Assistance ↗</a>
-</div>
 </section>
-
-
 
 <!-- FOOTER -->
 
 <footer>
-<div class="container">
+    <div class="container">
 
-    <div class="footer-grid">
+        <div class="footer-grid">
 
-        <div class="footer-brand">
-            <a href="index.html" class="logo">
-                <img src="logo/unique logo.png" alt="Unique Water Technologies">
-                <span><small></small>
-                </span>
-            </a>
+            <div class="footer-about">
+
+                <div class="footer-brand">
+                    <img src="/Home/logo/unique%20logo.png"
+                         alt="Unique Water Technologies">
+                    <strong>UNIQUE WATER TECHNOLOGIES</strong>
+                </div>
+
+                <p>
+                    Your sourcing partner for industrial water treatment
+                    components, chemical dosing pumps, metering equipment,
+                    pump spares and filtration solutions. Supporting
+                    industrial applications with dependable products
+                    and practical assistance.
+                </p>
+
+            </div>
+
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="/Home/">Home</a></li>
+                    <li><a href="/Home/products/products">Products</a></li>
+                    <li><a href="/Home/about/about">About Us</a></li>
+                    <li><a href="/Home/industries/industries">Industries & Applications</a></li>
+                    <li><a href="/Home/contact/contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Applications</h4>
+                <ul>
+                    <li><a href="#industries">Water Treatment Plants</a></li>
+                    <li><a href="#industries">ETP & STP</a></li>
+                    <li><a href="#industries">Pharmaceutical</a></li>
+                    <li><a href="#industries">Chemical Industries</a></li>
+                    <li><a href="#industries">Apparel & Textile</a></li>
+                    <li><a href="#industries">Paper & Pulp</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact Information</h4>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:daisy@uniquewater.in">daisy@uniquewater.in</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Bengaluru, Karnataka, India
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-globe"></i>
+                        <a href="/Home/">www.uniquewater.in</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
 
             <p>
-                Your sourcing partner for water treatment
-                industrial spares, RO components, filtration
-                products, cartridges and water treatment solutions.
+                © <span id="year"></span> Unique Water Technologies.
+                All Rights Reserved.
             </p>
-        </div>
 
-        <div class="footer-col">
-            <h4>Explore</h4>
-            <a href="index.html">Home</a>
-            <a href="#products">Our Products</a>
-            <a href="#about">About Us</a>
-            <a href="#applications">Industries</a>
-            <a href="#contact">Contact Us</a>
-        </div>
+            <div class="socials">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
 
-        <div class="footer-col">
-            <h4>Our Products</h4>
-            <a href="#products">RO Spares</a>
-            <a href="#products">Filter Cartridges</a>
-            <a href="#products">Industrial Spares</a>
-            <a href="#products">Filter Housings</a>
-            <a href="#products">Treatment Media</a>
-            <a href="#products">Pumps & Valves</a>
-        </div>
-
-        <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="mailto:daisy@uniquewater.in">daisy@uniquewater.in</a>
-            <a href="https://uniquewater.in">www.uniquewater.in</a>
-            <a href="#contact">Product Enquiries</a>
-            <a href="#contact">Request a Quotation</a>
         </div>
 
     </div>
-
-    <div class="footer-bottom">
-        <span>© <span id="year"></span> Unique Water Technologies. All Rights Reserved.</span>
-        <span>Water Treatment Spares • RO • Filters • Cartridges</span>
-    </div>
-
-</div>
 </footer>
 
-<a href="#" class="back-top" id="backTop" aria-label="Back to top">↑</a>
+<!-- WHATSAPP -->
 
-<!-- JAVASCRIPT -->
+<a href="https://wa.me/?text=Hello%20Unique%20Water%20Technologies%2C%20I%20am%20looking%20for%20industrial%20dosing%20pumps%20and%20spares."
+   target="_blank" rel="noopener noreferrer"
+   class="whatsapp" aria-label="Contact on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- BACK TO TOP -->
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
 
 <script>
-
-// PAGE LOADER
-
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        document.getElementById("loader").classList.add("hide");
-    }, 500);
-});
 
 // MOBILE NAVIGATION
 
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
+menuToggle.addEventListener("click", function() {
+
     const isOpen = navLinks.classList.toggle("open");
-    menuToggle.textContent = isOpen ? "×" : "☰";
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+    menuToggle.setAttribute("aria-expanded", isOpen);
+
+    menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+
 });
 
 document.querySelectorAll(".nav-links a").forEach(link => {
+
     link.addEventListener("click", () => {
+
         navLinks.classList.remove("open");
-        menuToggle.textContent = "☰";
         menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+
     });
+
 });
 
-// HEADER SCROLL EFFECT
+// CURRENT YEAR
 
-const header = document.getElementById("header");
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-window.addEventListener("scroll", () => {
-    header.classList.toggle("scrolled", window.scrollY > 30);
-});
+// SCROLL REVEAL
 
-// PRODUCT CARD ANIMATION
+const observer = new IntersectionObserver((entries) => {
 
-const cardObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-            cardObserver.unobserve(entry.target);
+
+        if(entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
         }
-    });
-}, {threshold:0.12});
 
-document.querySelectorAll(".product-card").forEach((card,index) => {
-    card.style.transitionDelay = `${(index % 3) * 120}ms`;
-    cardObserver.observe(card);
+    });
+
+}, {
+    threshold: 0.12
 });
 
-// GENERAL SCROLL REVEAL
-
-const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, {threshold:0.12});
-
-document.querySelectorAll(".reveal, .application, .process-card").forEach((item,index) => {
-    item.style.transitionDelay = `${(index % 4) * 80}ms`;
-    revealObserver.observe(item);
-});
-
-// PRODUCT ENQUIRY AUTO SELECTION
-
-document.querySelectorAll(".product-link").forEach(link => {
-    link.addEventListener("click", () => {
-        const category = link.dataset.category;
-        document.getElementById("category").value = category;
-    });
-});
-
-// ENQUIRY FORM - MAILTO
-
-document.getElementById("enquiryForm").addEventListener("submit", function(e) {
-
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const company = document.getElementById("company").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const category = document.getElementById("category").value;
-    const message = document.getElementById("message").value.trim();
-
-    if (!this.reportValidity()) return;
-
-    const subject = encodeURIComponent("Product Enquiry - " + category);
-
-    const body = encodeURIComponent(
-        "PRODUCT ENQUIRY\n\n" +
-        "Name: " + name + "\n" +
-        "Company: " + company + "\n" +
-        "Email: " + email + "\n" +
-        "Phone: " + phone + "\n" +
-        "Product Category: " + category + "\n\n" +
-        "Requirement Details:\n" + message
-    );
-
-    window.location.href =
-        "mailto:daisy@uniquewater.in?subject=" +
-        subject + "&body=" + body;
-
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
 });
 
 // BACK TO TOP
@@ -1884,12 +2406,23 @@ document.getElementById("enquiryForm").addEventListener("submit", function(e) {
 const backTop = document.getElementById("backTop");
 
 window.addEventListener("scroll", () => {
-    backTop.classList.toggle("visible", window.scrollY > 400);
+
+    if(window.scrollY > 450) {
+        backTop.classList.add("show");
+    } else {
+        backTop.classList.remove("show");
+    }
+
 });
 
-// FOOTER YEAR
+backTop.addEventListener("click", () => {
 
-document.getElementById("year").textContent = new Date().getFullYear();
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
 
 </script>
 

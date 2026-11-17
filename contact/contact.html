@@ -61,17 +61,27 @@ button, input, select, textarea {
     margin: auto;
 }
 
-/* LOADER */
+
+/* =========================================
+   MACOS-INSPIRED LOADING SCREEN
+========================================= */
 
 #pageLoader {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    background: #21103f;
     display: flex;
-    justify-content: center;
     align-items: center;
-    transition: opacity .6s ease, visibility .6s ease;
+    justify-content: center;
+    padding: 20px;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(135,95,205,.38), transparent 45%),
+        radial-gradient(ellipse at 80% 80%, rgba(83,53,145,.45), transparent 45%),
+        linear-gradient(135deg,#170b2b,#32145f 55%,#21103f);
+    backdrop-filter: blur(25px);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .7s ease, visibility .7s ease;
 }
 
 #pageLoader.hide {
@@ -81,43 +91,161 @@ button, input, select, textarea {
 }
 
 .loader-content {
+    width: 100%;
+    max-width: 390px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 19px;
+    background: rgba(255,255,255,.93);
+    border: 1px solid rgba(255,255,255,.65);
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.35),
+        0 0 60px rgba(179,135,255,.16);
+    color: var(--ink);
     text-align: center;
-    color: white;
+    animation: macWindowOpen .7s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes macWindowOpen {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.92);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* macOS Window Header */
+
+.loader-titlebar {
+    height: 43px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: linear-gradient(#f9f8fb,#eeedf2);
+    border-bottom: 1px solid #e4e0e9;
+}
+
+.mac-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+}
+
+.mac-dot.red { background: #ff5f57; }
+.mac-dot.yellow { background: #febc2e; }
+.mac-dot.green { background: #28c840; }
+
+.loader-window-title {
+    flex: 1;
+    margin-right: 34px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #777181;
+    letter-spacing: .5px;
+}
+
+/* Loader Body */
+
+.loader-body {
+    padding: 35px 30px 29px;
 }
 
 .loader-logo {
-    font-family: Manrope, sans-serif;
-    font-weight: 800;
-    font-size: 20px;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
+    width: 190px;
+    max-width: 100%;
+    height: 65px;
+    object-fit: contain;
+    margin: 0 auto 23px;
+    animation: logoFloat 3s ease-in-out infinite;
 }
 
-.loader-logo span {
-    color: #bd9af2;
+@keyframes logoFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
+
+.loader-content h2 {
+    font-family: Manrope,sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .3px;
+    margin-bottom: 8px;
+    color: #21103f;
+}
+
+.loader-content > p {
+    font-size: 10px;
+    color: #898197;
+    letter-spacing: 1.3px;
+    margin-bottom: 27px;
+}
+
+/* Animated Loader */
 
 .loader-spinner {
-    width: 42px;
-    height: 42px;
-    margin: auto;
-    border: 3px solid rgba(255,255,255,.18);
-    border-top-color: #c6a6ff;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 22px;
+    border: 3px solid #e9e1f4;
+    border-top-color: #7545b8;
     border-radius: 50%;
-    animation: spin .8s linear infinite;
-}
-
-.loader-content p {
-    margin-top: 20px;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #d4c4eb;
-    text-transform: uppercase;
+    animation: spin .75s linear infinite;
 }
 
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* Progress Bar */
+
+.loader-track {
+    width: 100%;
+    height: 5px;
+    background: #eae5f0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 11px;
+}
+
+.loader-progress {
+    width: 0%;
+    height: 100%;
+    display: block;
+    border-radius: 20px;
+    background: linear-gradient(90deg,#32145f,#a879ef);
+    transition: width .25s ease;
+}
+
+.loader-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #827990;
+    font-size: 10px;
+}
+
+.loader-status strong {
+    color: #7545b8;
+    font-size: 11px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+@media(max-width:480px) {
+    .loader-content {
+        max-width: 340px;
+    }
+
+    .loader-body {
+        padding: 30px 23px 25px;
+    }
+}
+
 
 /* HEADER */
 
@@ -221,6 +349,32 @@ header {
     color: var(--ink);
     cursor: pointer;
 }
+
+
+
+/* HEADER LOGO */
+
+.brand {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.brand-logo {
+    width: 205px;
+    height: 65px;
+    object-fit: contain;
+    display: block;
+}
+
+@media(max-width:700px) {
+    .brand-logo {
+        width: 175px;
+        height: 55px;
+    }
+}
+
+
 
 /* HERO */
 
@@ -767,27 +921,22 @@ section.content-section {
     transform: translateY(-3px);
 }
 
-/* FOOTER */
 
-footer {
-    padding: 49px 20px 23px;
-    background: #1b0d32;
-    color: white;
+/* FOOTER LOGO */
+
+.footer-logo-link {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 17px;
 }
 
-.footer-inner {
-    max-width: 1190px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 35px;
-}
-
-.footer-brand h3 {
-    font-family: Manrope,sans-serif;
-    font-size: 17px;
-    margin-bottom: 13px;
+.footer-logo {
+    width: 215px;
+    height: 75px;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 8px 13px;
+    border-radius: 9px;
 }
 
 .footer-brand p {
@@ -797,36 +946,6 @@ footer {
     line-height: 1.9;
 }
 
-.footer-column h4 {
-    color: #d0b3f7;
-    font-size: 12px;
-    margin-bottom: 17px;
-}
-
-.footer-column a {
-    display: block;
-    margin-bottom: 11px;
-    color: #c4b7d5;
-    font-size: 11px;
-    transition: .2s;
-}
-
-.footer-column a:hover {
-    color: white;
-}
-
-.footer-bottom {
-    max-width: 1190px;
-    margin: auto;
-    padding-top: 21px;
-    border-top: 1px solid rgba(255,255,255,.12);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    color: #a99ab9;
-    font-size: 10px;
-}
 
 /* SUCCESS POPUP */
 
@@ -1110,28 +1229,74 @@ footer {
 
 <body>
 
-<!-- PAGE LOADER -->
+
+
+<!-- MACOS STYLE PAGE LOADER -->
+
 <div id="pageLoader">
+
     <div class="loader-content">
-        <div class="loader-logo">
-            UNIQUE WATER <span>TECHNOLOGIES</span>
+
+        <div class="loader-titlebar">
+            <span class="mac-dot red"></span>
+            <span class="mac-dot yellow"></span>
+            <span class="mac-dot green"></span>
+
+            <span class="loader-window-title">
+                Unique Water Technologies
+            </span>
         </div>
-        <div class="loader-spinner"></div>
-        <p>Preparing your experience</p>
+
+        <div class="loader-body">
+
+            <img
+                src="logo/unique logo.png"
+                alt="Unique Water Technologies"
+                class="loader-logo"
+            >
+
+            <h2>UNIQUE WATER TECHNOLOGIES</h2>
+
+            <p>PURE SOLUTIONS. RELIABLE PERFORMANCE.</p>
+
+            <div class="loader-spinner"></div>
+
+            <div class="loader-track">
+                <span class="loader-progress"
+                      id="loaderProgress"></span>
+            </div>
+
+            <div class="loader-status">
+                <span id="loaderMessage">
+                    Preparing your experience...
+                </span>
+
+                <strong id="loaderPercent">0%</strong>
+            </div>
+
+        </div>
+
     </div>
+
 </div>
+
+
 
 <!-- HEADER -->
 <header>
 <nav class="navbar">
 
-    <a href="https://uniquewater-io.github.io/Home/" class="brand">
-        <div class="brand-icon">💧</div>
-        <div class="brand-name">
-            UNIQUE WATER TECHNOLOGIES
-            <small>PURE SOLUTIONS. RELIABLE PERFORMANCE.</small>
-        </div>
-    </a>
+
+<a href="https://uniquewater-io.github.io/Home/" class="brand">
+
+    <img
+        src="logo/unique logo.png"
+        alt="Unique Water Technologies Logo"
+        class="brand-logo"
+    >
+
+</a>
+
 
     <!-- CENTER ALIGNED NAVIGATION -->
     <div class="nav-links" id="navLinks">
@@ -1545,14 +1710,28 @@ footer {
 
     <div class="footer-inner">
 
-        <div class="footer-brand">
-            <h3>UNIQUE WATER TECHNOLOGIES</h3>
-            <p>
-                Water treatment industrial spares, RO components,
-                filters and cartridges for water purification
-                and process filtration requirements.
-            </p>
-        </div>
+
+<div class="footer-brand">
+
+    <a href="https://uniquewater-io.github.io/Home/"
+       class="footer-logo-link">
+
+        <img
+            src="logo/unique logo.png"
+            alt="Unique Water Technologies Logo"
+            class="footer-logo"
+        >
+
+    </a>
+
+    <p>
+        Water treatment industrial spares, RO components,
+        filters and cartridges for water purification
+        and process filtration requirements.
+    </p>
+
+</div>
+
 
         <div class="footer-column">
             <h4>Explore</h4>

@@ -44,219 +44,306 @@ a{text-decoration:none;color:inherit}
 button,input,select,textarea{font-family:inherit}
 .container{width:min(1200px,92%);margin:auto}
 
+
 /* =========================================
-   MACOS STARTUP LOADER - INDEX PAGE STYLE
+   macOS STYLE STARTUP LOADER
 ========================================= */
 
 .loader{
-position:fixed;
-inset:0;
-z-index:999999;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-background:
-radial-gradient(ellipse at 50% 43%,rgba(139,92,246,.23),transparent 42%),
-radial-gradient(ellipse at 15% 85%,rgba(102,55,175,.16),transparent 40%),
-linear-gradient(145deg,#10091d,#24103f 48%,#160b29);
-opacity:1;
-visibility:visible;
-transition:opacity .85s ease,visibility .85s ease;
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:
+        radial-gradient(ellipse at 50% 45%,rgba(137,93,184,.42),transparent 55%),
+        linear-gradient(135deg,#281044,#351653 50%,#24103f);
+    opacity:1;
+    visibility:visible;
+    transition:opacity .7s ease,visibility .7s ease;
 }
 
 .loader.hide{
-opacity:0;
-visibility:hidden;
-pointer-events:none;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 }
 
 .loader::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-background-size:55px 55px;
-mask-image:radial-gradient(ellipse at center,black,transparent 75%);
--webkit-mask-image:radial-gradient(ellipse at center,black,transparent 75%);
-animation:macGrid 30s linear infinite;
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(ellipse at 20% 20%,rgba(255,255,255,.035),transparent 45%),
+        radial-gradient(ellipse at 80% 80%,rgba(0,0,0,.15),transparent 50%);
+    pointer-events:none;
 }
 
 .loader-glow{
-position:absolute;
-width:420px;
-height:420px;
-border-radius:50%;
-background:rgba(151,102,235,.15);
-filter:blur(90px);
-animation:macGlow 5s ease-in-out infinite alternate;
-pointer-events:none;
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:rgba(183,139,235,.17);
+    filter:blur(100px);
+    animation:macGlow 5s ease-in-out infinite alternate;
+    pointer-events:none;
 }
 
 .loader-content{
-position:relative;
-z-index:2;
-width:min(360px,88%);
-display:flex;
-align-items:center;
-flex-direction:column;
-text-align:center;
-animation:macAppear 1s ease both;
+    position:relative;
+    z-index:2;
+    width:min(390px,calc(100% - 36px));
+    min-height:350px;
+    padding:0 28px 26px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:20px;
+    background:rgba(255,255,255,.105);
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.25),
+        inset 0 1px 1px rgba(255,255,255,.2);
+    animation:macWindowAppear .85s cubic-bezier(.2,.8,.2,1) both;
 }
+
+/* macOS WINDOW TITLE BAR */
+
+.loader-windowbar{
+    width:calc(100% + 56px);
+    height:43px;
+    padding:0 15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    border-bottom:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.075);
+    border-radius:20px 20px 0 0;
+}
+
+.loader-window-controls{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.window-dot{
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    display:block;
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.2);
+}
+
+.window-dot.red{background:#ff5f57}
+.window-dot.yellow{background:#febc2e}
+.window-dot.green{background:#28c840}
+
+.loader-window-title{
+    color:rgba(255,255,255,.72);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+/* APP ICON */
 
 .loader-symbol{
-width:112px;
-height:112px;
-position:relative;
-display:grid;
-place-items:center;
-margin-bottom:30px;
-}
-
-.loader-symbol .ring{
-position:absolute;
-inset:0;
-border:1px solid rgba(255,255,255,.17);
-border-radius:32px;
-transform:rotate(0deg);
-animation:macRotate 9s linear infinite;
-}
-
-.loader-symbol .ring::before{
-content:"";
-position:absolute;
-width:9px;
-height:9px;
-background:#d9c0ff;
-border-radius:50%;
-top:9px;
-left:50%;
-transform:translateX(-50%);
-box-shadow:0 0 18px #c59bff;
-}
-
-.loader-symbol .ring-two{
-inset:10px;
-border:1px solid rgba(192,154,255,.4);
-border-radius:25px;
-animation:macRotateReverse 7s linear infinite;
-}
-
-.loader-symbol .ring-two::before{
-width:6px;
-height:6px;
-background:#fff;
-top:8px;
+    width:73px;
+    height:73px;
+    margin-top:35px;
+    margin-bottom:22px;
+    display:grid;
+    place-items:center;
+    position:relative;
 }
 
 .loader-icon{
-width:74px;
-height:74px;
-border-radius:24px;
-display:grid;
-place-items:center;
-background:linear-gradient(145deg,rgba(255,255,255,.20),rgba(255,255,255,.045));
-border:1px solid rgba(255,255,255,.24);
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
-box-shadow:
-0 15px 45px rgba(0,0,0,.25),
-inset 0 1px 1px rgba(255,255,255,.3),
-0 0 35px rgba(164,115,255,.2);
-position:relative;
-z-index:2;
-animation:macIconFloat 3s ease-in-out infinite;
+    width:73px;
+    height:73px;
+    display:grid;
+    place-items:center;
+    border-radius:21px;
+    background:linear-gradient(145deg,#fff,#e8ddf8);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.18),
+        inset 0 1px 2px rgba(255,255,255,.9);
+    animation:macIconFloat 3s ease-in-out infinite;
 }
 
 .loader-drop{
-font-size:35px;
-filter:drop-shadow(0 0 12px rgba(198,158,255,.7));
+    width:39px;
+    height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
+.loader-drop svg{
+    width:39px;
+    height:46px;
+    filter:drop-shadow(0 3px 3px rgba(0,0,0,.16));
+}
+
+/* BRAND */
+
 .loader-brand{
-font-family:Manrope,sans-serif;
-font-size:22px;
-font-weight:800;
-letter-spacing:3px;
-color:white;
+    font-family:Manrope,sans-serif;
+    font-size:23px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#fff;
 }
 
 .loader-subtitle{
-margin-top:9px;
-font-size:10px;
-letter-spacing:4px;
-text-transform:uppercase;
-color:#c4b2df;
+    margin-top:6px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
+    color:rgba(255,255,255,.65);
 }
 
+/* LOADING BAR */
+
 .loader-progress{
-width:190px;
-height:3px;
-margin-top:33px;
-background:rgba(255,255,255,.13);
-border-radius:30px;
-overflow:hidden;
-box-shadow:0 0 10px rgba(255,255,255,.05);
+    width:100%;
+    height:5px;
+    margin-top:29px;
+    background:rgba(255,255,255,.18);
+    border-radius:20px;
+    overflow:hidden;
 }
 
 .loader-progress span{
-display:block;
-width:0;
-height:100%;
-border-radius:30px;
-background:linear-gradient(90deg,#9865ed,#d5baff,#fff);
-box-shadow:0 0 14px #c49aff;
-transition:width .3s ease;
+    display:block;
+    width:0;
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#c39af5,#fff);
+    box-shadow:0 0 12px rgba(220,190,255,.65);
+    transition:width .25s ease;
+}
+
+/* STATUS */
+
+.loader-status-row{
+    width:100%;
+    margin-top:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    color:rgba(255,255,255,.76);
+    font-size:10px;
+    font-weight:600;
 }
 
 .loader-status{
-margin-top:15px;
-font-size:10px;
-letter-spacing:1px;
-color:#c2b2d9;
-min-height:15px;
+    text-align:left;
 }
+
+.loader-percent{
+    font-weight:800;
+    white-space:nowrap;
+}
+
+/* FOOTER SPINNER */
 
 .loader-footer{
-position:absolute;
-bottom:35px;
-left:0;
-width:100%;
-text-align:center;
-color:rgba(255,255,255,.35);
-font-size:9px;
-letter-spacing:2px;
+    margin-top:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:rgba(255,255,255,.48);
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:2px;
 }
 
-@keyframes macRotate{
-to{transform:rotate(360deg)}
+.loader-spinner{
+    width:15px;
+    height:15px;
+    border:2px solid rgba(255,255,255,.2);
+    border-top-color:#e1caff;
+    border-radius:50%;
+    animation:macSpinner .8s linear infinite;
+    flex-shrink:0;
 }
 
-@keyframes macRotateReverse{
-to{transform:rotate(-360deg)}
+/* ANIMATIONS */
+
+@keyframes macSpinner{
+    to{transform:rotate(360deg)}
 }
 
 @keyframes macIconFloat{
-0%,100%{transform:translateY(0) scale(1)}
-50%{transform:translateY(-6px) scale(1.035)}
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-4px)}
 }
 
 @keyframes macGlow{
-from{transform:scale(.8);opacity:.5}
-to{transform:scale(1.25);opacity:1}
+    from{transform:scale(.85);opacity:.5}
+    to{transform:scale(1.2);opacity:1}
 }
 
-@keyframes macAppear{
-from{opacity:0;transform:translateY(20px) scale(.97)}
-to{opacity:1;transform:translateY(0) scale(1)}
+@keyframes macWindowAppear{
+    from{
+        opacity:0;
+        transform:translateY(18px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
 }
 
-@keyframes macGrid{
-from{background-position:0 0}
-to{background-position:55px 55px}
+/* MOBILE */
+
+@media(max-width:480px){
+    .loader-content{
+        width:calc(100% - 36px);
+        min-height:335px;
+        padding:0 22px 24px;
+    }
+
+    .loader-windowbar{
+        width:calc(100% + 44px);
+    }
+
+    .loader-symbol{
+        margin-top:31px;
+    }
+
+    .loader-brand{
+        font-size:21px;
+    }
+
+    .loader-footer{
+        font-size:8px;
+        letter-spacing:1.5px;
+    }
 }
+
+@media(prefers-reduced-motion:reduce){
+    .loader *,
+    .loader::before{
+        animation:none!important;
+        transition:none!important;
+    }
+}
+
 
 /* SCROLL PROGRESS */
 
@@ -1222,43 +1309,81 @@ transition:none!important;
 
 <body class="loading-active">
 
-<!-- MACOS STARTUP LOADER -->
+
+<!-- macOS STYLE STARTUP LOADER -->
 
 <div class="loader" id="loader" aria-label="Loading website" role="status">
 
-<div class="loader-glow"></div>
+    <div class="loader-glow"></div>
 
-<div class="loader-content">
+    <div class="loader-content">
 
-<div class="loader-symbol">
-<div class="ring"></div>
-<div class="ring ring-two"></div>
+        <!-- macOS WINDOW BAR -->
+        <div class="loader-windowbar">
 
-<div class="loader-icon">
-<div class="loader-drop">💧</div>
+            <div class="loader-window-controls">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+            </div>
+
+            <span class="loader-window-title">WELCOME</span>
+
+        </div>
+
+        <!-- UNIQUE WATER APP ICON -->
+        <div class="loader-symbol">
+
+            <div class="loader-icon">
+
+                <div class="loader-drop">
+                    <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20 3C20 3 7 23 7 31C7 38.2 12.8 44 20 44C27.2 44 33 38.2 33 31C33 23 20 3 20 3Z"
+                            fill="#12B9E8"
+                            stroke="#15111C"
+                            stroke-width="2.5"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BRAND -->
+        <div class="loader-brand">UNIQUE WATER</div>
+        <div class="loader-subtitle">TECHNOLOGIES</div>
+
+        <!-- PROGRESS BAR -->
+        <div class="loader-progress">
+            <span id="loaderBar"></span>
+        </div>
+
+        <!-- LOADING STATUS -->
+        <div class="loader-status-row">
+
+            <span class="loader-status" id="loaderStatus">
+                Preparing your experience
+            </span>
+
+            <span class="loader-percent" id="loaderPercent">
+                Loading...
+            </span>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="loader-footer">
+            <span class="loader-spinner"></span>
+            <span>QUALITY · TRUST · EXCELLENCE</span>
+        </div>
+
+    </div>
+
 </div>
-</div>
 
-<div class="loader-brand">UNIQUE WATER</div>
-<div class="loader-subtitle">TECHNOLOGIES</div>
-
-<div class="loader-progress">
-<span id="loaderBar"></span>
-</div>
-
-<div class="loader-status" id="loaderStatus">
-Starting your experience...
-</div>
-
-</div>
-
-<div class="loader-footer">
-WATER TREATMENT • FILTRATION • TECHNOLOGY
-</div>
-
-</div>
-
-<div id="pageProgress"></div>
 
 <!-- TOPBAR -->
 
@@ -1766,13 +1891,15 @@ document.addEventListener("DOMContentLoaded",function(){
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+
 /* =========================================
-   MACOS LOADER - SAME INDEX PAGE BEHAVIOUR
+   macOS STARTUP LOADER
 ========================================= */
 
 const loader = document.getElementById("loader");
 const loaderBar = document.getElementById("loaderBar");
 const loaderStatus = document.getElementById("loaderStatus");
+const loaderPercent = document.getElementById("loaderPercent");
 
 let loaderProgress = 0;
 let loaderFinished = false;
@@ -1780,90 +1907,102 @@ let loaderInterval = null;
 let loaderFallback = null;
 
 const loaderMessages = [
-"Starting your experience...",
-"Preparing product collection...",
-"Loading water treatment solutions...",
-"Almost ready..."
+    "Preparing your experience",
+    "Loading product collection",
+    "Preparing water treatment solutions",
+    "Almost ready"
 ];
-
-let messageIndex = 0;
 
 function updateLoader(){
 
-if(loaderFinished) return;
+    if(loaderFinished) return;
 
-loaderProgress = Math.min(
-loaderProgress + Math.random()*9 + 3,
-90
-);
+    loaderProgress = Math.min(
+        loaderProgress + Math.random() * 5 + 2,
+        90
+    );
 
-if(loaderBar){
-loaderBar.style.width = loaderProgress + "%";
-}
+    if(loaderBar){
+        loaderBar.style.width = loaderProgress + "%";
+    }
 
-if(loaderProgress > 30 && messageIndex < 1){
-messageIndex = 1;
-}else if(loaderProgress > 55 && messageIndex < 2){
-messageIndex = 2;
-}else if(loaderProgress > 78 && messageIndex < 3){
-messageIndex = 3;
-}
+    if(loaderPercent){
+        loaderPercent.textContent =
+            Math.floor(loaderProgress) + "%";
+    }
 
-if(loaderStatus){
-loaderStatus.textContent = loaderMessages[messageIndex];
-}
+    let messageIndex = 0;
+
+    if(loaderProgress >= 25) messageIndex = 1;
+    if(loaderProgress >= 50) messageIndex = 2;
+    if(loaderProgress >= 78) messageIndex = 3;
+
+    if(loaderStatus){
+        loaderStatus.textContent =
+            loaderMessages[messageIndex];
+    }
 
 }
 
 function finishLoader(){
 
-if(loaderFinished) return;
+    if(loaderFinished) return;
 
-loaderFinished = true;
+    loaderFinished = true;
 
-clearInterval(loaderInterval);
-clearTimeout(loaderFallback);
+    clearInterval(loaderInterval);
+    clearTimeout(loaderFallback);
 
-if(loaderBar){
-loaderBar.style.width = "100%";
+    if(loaderBar){
+        loaderBar.style.width = "100%";
+    }
+
+    if(loaderPercent){
+        loaderPercent.textContent = "100%";
+    }
+
+    if(loaderStatus){
+        loaderStatus.textContent =
+            "Welcome to Unique Water Technologies";
+    }
+
+    function hideLoader(){
+
+        if(loader){
+            loader.classList.add("hide");
+        }
+
+        document.body.classList.remove("loading-active");
+
+    }
+
+    if(reduceMotion){
+        hideLoader();
+    }else{
+        setTimeout(hideLoader,650);
+    }
+
 }
-
-if(loaderStatus){
-loaderStatus.textContent = "Welcome to Unique Water Technologies";
-}
-
-function hideLoader(){
 
 if(loader){
-loader.classList.add("hide");
-}
 
-document.body.classList.remove("loading-active");
+    loaderInterval = setInterval(updateLoader,180);
 
-}
+    if(document.readyState === "complete"){
+        finishLoader();
+    }else{
+        window.addEventListener("load",finishLoader,{once:true});
+    }
 
-if(reduceMotion){
-hideLoader();
-}else{
-setTimeout(hideLoader,500);
-}
-
-}
-
-if(loader){
-
-loaderInterval = setInterval(updateLoader,180);
-
-window.addEventListener("load",finishLoader,{once:true});
-
-/* Fallback if external resources are slow or fail */
-loaderFallback = setTimeout(finishLoader,6000);
+    /* Safety fallback if external resources load slowly */
+    loaderFallback = setTimeout(finishLoader,6000);
 
 }else{
 
-document.body.classList.remove("loading-active");
+    document.body.classList.remove("loading-active");
 
 }
+
 
 /* =========================================
    MOBILE NAVIGATION

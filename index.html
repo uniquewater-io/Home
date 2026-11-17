@@ -482,7 +482,7 @@ header.scrolled .nav {
 
     object-fit:contain;
 
-    transition:transform .35s;
+    transition: transform .35s ease, background .35s ease;
 
 }
 
@@ -4411,6 +4411,111 @@ footer::before {
 
 
 
+<!-- CONTACT SECTION -->
+<section class="contact" id="contact">
+    <div class="container contact-grid">
+
+        <div class="contact-info reveal-left">
+            <div class="kicker">Get in touch</div>
+            <h2>Let's find the right solution for your water treatment needs.</h2>
+
+            <p>
+                Looking for RO components, industrial spares, filter cartridges
+                or water treatment accessories? Send us your requirement.
+                Our team will assist you.
+            </p>
+
+            <div class="contact-detail">
+                <div class="ci">✉</div>
+                <div>
+                    <small>Email Enquiries</small>
+                    <strong>daisy@uniquewater.in</strong>
+                </div>
+            </div>
+
+            <div class="contact-detail">
+                <div class="ci">🌐</div>
+                <div>
+                    <small>Website</small>
+                    <strong>uniquewater.in</strong>
+                </div>
+            </div>
+
+            <div class="contact-detail">
+                <div class="ci">💧</div>
+                <div>
+                    <small>Our Specialization</small>
+                    <strong>RO Components & Industrial Filtration</strong>
+                </div>
+            </div>
+        </div>
+
+        <form id="enquiryForm" class="reveal-right">
+
+            <div class="form-row">
+                <div class="field">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Your name" required>
+                </div>
+
+                <div class="field">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company"
+                           placeholder="Company name">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="field">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Your email" required>
+                </div>
+
+                <div class="field">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="Your phone number"
+                           pattern="[+]?[0-9\s()-]{7,20}" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="category">Product Category *</label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option>RO Spares & Components</option>
+                    <option>Filter Cartridges</option>
+                    <option>Industrial Water Treatment Spares</option>
+                    <option>Filter Housings & Vessels</option>
+                    <option>Water Treatment Media</option>
+                    <option>Pumps, Valves & Accessories</option>
+                    <option>Other Requirements</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="message">Requirement Details *</label>
+                <textarea id="message" name="message"
+                          placeholder="Describe your product requirement..."
+                          required></textarea>
+            </div>
+
+            <button type="submit" class="btn">
+                Send Enquiry <span>↗</span>
+            </button>
+
+            <p class="form-note" id="formNote" aria-live="polite">
+                Please provide accurate product details so we can assist you.
+            </p>
+
+        </form>
+
+    </div>
+</section>
+
+
 
 
 
@@ -4519,483 +4624,304 @@ footer::before {
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    "use strict";
 
+    /* =====================================
+       GLOBAL SETTINGS
+    ===================================== */
 
-    const loader = document.getElementById("pageLoader");
+    const reducedMotion =
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const progress = document.getElementById("loaderProgress");
+    const finePointer =
+        window.matchMedia("(pointer: fine)").matches;
 
-    const percentage = document.getElementById("loaderPercent");
+    const $ = (selector, parent = document) =>
+        parent.querySelector(selector);
 
-
-
-    const menuBtn = document.getElementById("menuBtn");
-
-    const navLinks = document.getElementById("navLinks");
-
-    const header = document.getElementById("siteHeader");
-
-    const scrollBar = document.getElementById("scrollProgress");
-
-
-
-    let loaderClosed = false;
-
-    let loaderValue = 0;
-
-    let loaderTimer;
-
+    const $$ = (selector, parent = document) =>
+        Array.from(parent.querySelectorAll(selector));
 
 
     /* =====================================
-
-       SAFE LOADER
-
-       Maximum duration: 2500ms
-
+       LOADING SCREEN
     ===================================== */
 
+    const loader = $("#pageLoader");
+    const loaderProgress = $("#loaderProgress");
+    const loaderPercent = $("#loaderPercent");
 
+    let loaderValue = 0;
+    let loaderClosed = false;
 
     function hideLoader() {
 
-
-
         if (loaderClosed) return;
-
-
 
         loaderClosed = true;
 
-
-
         clearInterval(loaderTimer);
 
-
-
-        if (progress) progress.style.width = "100%";
-
-        if (percentage) percentage.textContent = "100%";
-
-
+        if (loaderProgress) loaderProgress.style.width = "100%";
+        if (loaderPercent) loaderPercent.textContent = "100%";
 
         document.body.style.overflow = "";
-
-
 
         setTimeout(function () {
 
             if (loader) loader.classList.add("loader-hidden");
 
-        }, 200);
-
-
-
+        }, 250);
     }
 
-
-
-    loaderTimer = setInterval(function () {
-
-
+    const loaderTimer = setInterval(function () {
 
         loaderValue = Math.min(
-
-            loaderValue + Math.floor(Math.random() * 9) + 4,
-
-            95
-
+            loaderValue + Math.floor(Math.random() * 8) + 3,
+            94
         );
 
+        if (loaderProgress)
+            loaderProgress.style.width = loaderValue + "%";
 
-
-        if (progress) progress.style.width = loaderValue + "%";
-
-        if (percentage) percentage.textContent = loaderValue + "%";
-
-
+        if (loaderPercent)
+            loaderPercent.textContent = loaderValue + "%";
 
     }, 100);
 
-
-
     const loaderTimeout = setTimeout(hideLoader, 2500);
 
+    window.addEventListener("load", function () {
 
+        clearTimeout(loaderTimeout);
+        hideLoader();
 
-    requestAnimationFrame(function () {
+    }, { once: true });
 
-        setTimeout(function () {
-
-            clearTimeout(loaderTimeout);
-
-            hideLoader();
-
-        }, 500);
-
-    });
-
+    if (document.readyState === "complete") {
+        clearTimeout(loaderTimeout);
+        hideLoader();
+    }
 
 
     /* =====================================
-
        CURRENT YEAR
-
     ===================================== */
 
+    const year = $("#year");
 
-
-    document.getElementById("year").textContent =
-
-        new Date().getFullYear();
-
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
 
 
     /* =====================================
-
        MOBILE NAVIGATION
-
     ===================================== */
 
-
+    const menuBtn = $("#menuBtn");
+    const navLinks = $("#navLinks");
 
     function closeMenu() {
 
-
+        if (!menuBtn || !navLinks) return;
 
         navLinks.classList.remove("open");
 
+        menuBtn.textContent = "☰";
         menuBtn.setAttribute("aria-expanded", "false");
-
         menuBtn.setAttribute("aria-label", "Open navigation");
 
-        menuBtn.textContent = "☰";
-
-
-
         document.body.classList.remove("menu-open");
-
-
-
     }
 
+    if (menuBtn && navLinks) {
 
+        menuBtn.addEventListener("click", function () {
 
-    menuBtn.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
 
+            menuBtn.textContent = isOpen ? "×" : "☰";
 
+            menuBtn.setAttribute("aria-expanded", String(isOpen));
 
-        const isOpen = navLinks.classList.toggle("open");
+            menuBtn.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
+            );
 
+            document.body.classList.toggle("menu-open", isOpen);
 
+        });
 
-        menuBtn.setAttribute("aria-expanded", String(isOpen));
+        $$("a", navLinks).forEach(function (link) {
 
-        menuBtn.setAttribute(
+            link.addEventListener("click", closeMenu);
 
-            "aria-label",
+        });
 
-            isOpen ? "Close navigation" : "Open navigation"
+        document.addEventListener("click", function (event) {
 
-        );
+            if (
+                !navLinks.contains(event.target) &&
+                !menuBtn.contains(event.target)
+            ) {
+                closeMenu();
+            }
 
+        });
 
+        document.addEventListener("keydown", function (event) {
 
-        menuBtn.textContent = isOpen ? "×" : "☰";
+            if (event.key === "Escape") closeMenu();
 
+        });
 
+        window.addEventListener("resize", function () {
 
-        document.body.classList.toggle("menu-open", isOpen);
+            if (window.innerWidth > 760) closeMenu();
 
+        });
 
-
-    });
-
-
-
-    navLinks.querySelectorAll("a").forEach(function (link) {
-
-        link.addEventListener("click", closeMenu);
-
-    });
-
-
-
-    document.addEventListener("click", function (event) {
-
-
-
-        if (
-
-            !navLinks.contains(event.target) &&
-
-            !menuBtn.contains(event.target)
-
-        ) {
-
-            closeMenu();
-
-        }
-
-
-
-    });
-
-
-
-    window.addEventListener("resize", function () {
-
-
-
-        if (window.innerWidth > 760) {
-
-            closeMenu();
-
-        }
-
-
-
-    });
-
+    }
 
 
     /* =====================================
-
-       HEADER SCROLL EFFECT
-
+       HEADER & SCROLL PROGRESS
     ===================================== */
 
+    const header = $("#siteHeader");
+    const scrollBar = $("#scrollProgress");
 
+    let scrollFrame = null;
 
     function handleScroll() {
 
+        if (scrollFrame) return;
 
+        scrollFrame = requestAnimationFrame(function () {
 
-        const scrollTop = window.scrollY;
+            const scrollTop = window.scrollY;
 
+            if (header) {
+                header.classList.toggle("scrolled", scrollTop > 30);
+            }
 
+            if (scrollBar) {
 
-        header.classList.toggle("scrolled", scrollTop > 30);
+                const totalHeight =
+                    document.documentElement.scrollHeight -
+                    window.innerHeight;
 
+                const percentage = totalHeight > 0
+                    ? (scrollTop / totalHeight) * 100
+                    : 0;
 
+                scrollBar.style.width =
+                    Math.min(100, percentage) + "%";
+            }
 
-        const scrollHeight =
+            scrollFrame = null;
 
-            document.documentElement.scrollHeight - window.innerHeight;
-
-
-
-        const scrollPercentage = scrollHeight > 0
-
-            ? (scrollTop / scrollHeight) * 100
-
-            : 0;
-
-
-
-        scrollBar.style.width = scrollPercentage + "%";
-
-
+        });
 
     }
 
-
-
     window.addEventListener("scroll", handleScroll, {
-
         passive: true
-
     });
-
-
 
     handleScroll();
 
 
-
     /* =====================================
-
-       SCROLL REVEAL
-
+       SCROLL REVEAL ANIMATIONS
     ===================================== */
 
-
-
-    const revealElements = document.querySelectorAll(
-
-        ".reveal,.reveal-left,.reveal-right"
-
+    const revealElements = $$(
+        ".reveal, .reveal-left, .reveal-right"
     );
 
+    if (reducedMotion || !("IntersectionObserver" in window)) {
 
-
-    if ("IntersectionObserver" in window) {
-
-
-
-        const revealObserver = new IntersectionObserver(
-
-            function (entries, observer) {
-
-
-
-                entries.forEach(function (entry) {
-
-
-
-                    if (entry.isIntersecting) {
-
-
-
-                        entry.target.classList.add("visible");
-
-
-
-                        observer.unobserve(entry.target);
-
-
-
-                    }
-
-
-
-                });
-
-
-
-            },
-
-            {
-
-                threshold: 0.08,
-
-                rootMargin: "0px 0px -30px 0px"
-
-            }
-
-        );
-
-
-
-        revealElements.forEach(function (element, index) {
-
-
-
-            element.style.setProperty(
-
-                "--delay",
-
-                (index % 4) * 80 + "ms"
-
-            );
-
-
-
-            revealObserver.observe(element);
-
-
-
+        revealElements.forEach(function (element) {
+            element.classList.add("visible");
         });
-
-
 
     } else {
 
+        const revealObserver = new IntersectionObserver(
+            function (entries, observer) {
 
+                entries.forEach(function (entry) {
 
-        revealElements.forEach(function (element) {
+                    if (entry.isIntersecting) {
 
-            element.classList.add("visible");
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.08,
+                rootMargin: "0px 0px -30px 0px"
+            }
+        );
+
+        revealElements.forEach(function (element, index) {
+
+            element.style.setProperty(
+                "--delay",
+                (index % 4) * 80 + "ms"
+            );
+
+            revealObserver.observe(element);
 
         });
-
-
 
     }
 
 
-
     /* =====================================
-
-       ACTIVE NAVIGATION
-
+       ACTIVE SECTION NAVIGATION
     ===================================== */
 
+    const sections = $$("main section[id]");
 
-
-    const sections = document.querySelectorAll(
-
-        "main section[id]"
-
-    );
-
-
-
-    const sectionLinks = document.querySelectorAll(
-
+    const sectionLinks = $$(
         '.nav-links a[href^="#"]'
-
     );
-
-
 
     if ("IntersectionObserver" in window) {
 
-
-
         const activeObserver = new IntersectionObserver(
-
             function (entries) {
-
-
 
                 entries.forEach(function (entry) {
 
+                    if (!entry.isIntersecting) return;
 
+                    sectionLinks.forEach(function (link) {
 
-                    if (entry.isIntersecting) {
+                        link.classList.toggle(
+                            "active",
+                            link.getAttribute("href") ===
+                            "#" + entry.target.id
+                        );
 
-
-
-                        sectionLinks.forEach(function (link) {
-
-
-
-                            link.classList.toggle(
-
-                                "active",
-
-                                link.getAttribute("href") ===
-
-                                "#" + entry.target.id
-
-                            );
-
-
-
-                        });
-
-
-
-                    }
-
-
+                    });
 
                 });
 
-
-
             },
-
             {
-
                 rootMargin: "-35% 0px -55% 0px"
-
             }
-
         );
-
-
 
         sections.forEach(function (section) {
 
@@ -5003,65 +4929,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+    }
 
+
+    /* =====================================
+       HERO PARTICLES
+    ===================================== */
+
+    const hero = $(".hero");
+
+    if (hero && !reducedMotion) {
+
+        const particleCount =
+            window.innerWidth <= 760 ? 12 : 28;
+
+        const fragment = document.createDocumentFragment();
+
+        for (let i = 0; i < particleCount; i++) {
+
+            const particle = document.createElement("span");
+
+            particle.className = "hero-particle";
+
+            particle.style.left =
+                Math.random() * 100 + "%";
+
+            particle.style.top =
+                (40 + Math.random() * 60) + "%";
+
+            particle.style.animationDuration =
+                (5 + Math.random() * 9) + "s";
+
+            particle.style.animationDelay =
+                (-Math.random() * 12) + "s";
+
+            fragment.appendChild(particle);
+
+        }
+
+        hero.appendChild(fragment);
 
     }
 
 
-
     /* =====================================
-
-       PRODUCT CARD TILT
-
+       PRODUCT CARD 3D EFFECT
     ===================================== */
-
-
-
-    const finePointer = window.matchMedia("(pointer: fine)").matches;
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-
 
     if (finePointer && !reducedMotion) {
 
-
-
-        document.querySelectorAll(".product-card").forEach(function (card) {
-
-
+        $$(".product-card").forEach(function (card) {
 
             card.addEventListener("mousemove", function (event) {
 
-
-
                 const rect = card.getBoundingClientRect();
 
-
-
                 const x = event.clientX - rect.left;
-
                 const y = event.clientY - rect.top;
 
-
-
                 const rotateX = (rect.height / 2 - y) / 45;
-
                 const rotateY = (x - rect.width / 2) / 45;
 
-
+                card.style.setProperty("--mouse-x", x + "px");
+                card.style.setProperty("--mouse-y", y + "px");
 
                 card.style.transform =
-
-                    "translateY(-8px) perspective(1000px) rotateX(" +
-
-                    rotateX + "deg) rotateY(" + rotateY + "deg)";
-
-
+                    "translateY(-8px) perspective(1000px) " +
+                    "rotateX(" + rotateX + "deg) " +
+                    "rotateY(" + rotateY + "deg)";
 
             });
-
-
 
             card.addEventListener("mouseleave", function () {
 
@@ -5069,242 +5006,264 @@ document.addEventListener("DOMContentLoaded", function () {
 
             });
 
-
-
         });
-
-
 
     }
 
 
-
     /* =====================================
-        INDUSTRY IMAGE SLIDER
+       INDUSTRY IMAGE SLIDER
     ===================================== */
-    const industrySlider = document.querySelector(".industry-slider");
+
+    const industrySlider = $(".industry-slider");
+
     if (industrySlider) {
-        const track = industrySlider.querySelector(".industry-track");
-        const slides = Array.from(track.querySelectorAll(".industry-slide"));
-        const prevBtn = industrySlider.querySelector(".prev");
-        const nextBtn = industrySlider.querySelector(".next");
-        const dotsWrap = industrySlider.querySelector(".industry-slider-dots");
+
+        const track = $(".industry-track", industrySlider);
+        const slides = $$(".industry-slide", track);
+
+        const prevBtn = $(".prev", industrySlider);
+        const nextBtn = $(".next", industrySlider);
+        const dotsWrap = $(".industry-slider-dots", industrySlider);
+
         let currentSlide = 0;
-        let sliderTimer;
         let visibleSlides = 3;
+        let sliderTimer = null;
 
         function getVisibleSlides() {
+
             if (window.innerWidth <= 600) return 1;
             if (window.innerWidth <= 900) return 2;
+
             return 3;
         }
 
-        slides.forEach(function (_, index) {
-            const dot = document.createElement("button");
-            dot.type = "button";
-            dot.setAttribute("aria-label", "Show industry " + (index + 1));
-            dot.addEventListener("click", function () {
-                currentSlide = Math.min(index, slides.length - visibleSlides);
-                updateIndustrySlider();
-                restartIndustryAutoplay();
-            });
-            dotsWrap.appendChild(dot);
-        });
+        function getMaxIndex() {
 
-        function updateIndustrySlider() {
+            return Math.max(
+                0,
+                slides.length - visibleSlides
+            );
+
+        }
+
+        function createDots() {
+
+            dotsWrap.innerHTML = "";
+
+            const totalDots = getMaxIndex() + 1;
+
+            for (let i = 0; i < totalDots; i++) {
+
+                const dot = document.createElement("button");
+
+                dot.type = "button";
+
+                dot.setAttribute(
+                    "aria-label",
+                    "Show industry position " + (i + 1)
+                );
+
+                dot.addEventListener("click", function () {
+
+                    currentSlide = i;
+
+                    updateSlider();
+                    restartAutoplay();
+
+                });
+
+                dotsWrap.appendChild(dot);
+
+            }
+
+        }
+
+        function updateSlider() {
+
             visibleSlides = getVisibleSlides();
-            const maxIndex = Math.max(0, slides.length - visibleSlides);
-            currentSlide = Math.max(0, Math.min(currentSlide, maxIndex));
-            const slideWidth = slides[0].getBoundingClientRect().width;
-            const gap = parseFloat(getComputedStyle(track).gap) || 0;
-            track.style.transform = "translateX(-" + (currentSlide * (slideWidth + gap)) + "px)";
-            Array.from(dotsWrap.children).forEach(function (dot, index) {
-                dot.classList.toggle("active", index === currentSlide);
-                dot.setAttribute("aria-current", index === currentSlide ? "true" : "false");
-            });
+
+            currentSlide = Math.min(
+                currentSlide,
+                getMaxIndex()
+            );
+
+            const slideWidth =
+                slides[0].getBoundingClientRect().width;
+
+            const gap =
+                parseFloat(getComputedStyle(track).gap) || 0;
+
+            track.style.transform =
+                "translate3d(-" +
+                currentSlide * (slideWidth + gap) +
+                "px, 0, 0)";
+
+            Array.from(dotsWrap.children).forEach(
+                function (dot, index) {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === currentSlide
+                    );
+
+                    dot.setAttribute(
+                        "aria-current",
+                        index === currentSlide ? "true" : "false"
+                    );
+
+                }
+            );
+
+            if (prevBtn) {
+                prevBtn.disabled = getMaxIndex() === 0;
+            }
+
+            if (nextBtn) {
+                nextBtn.disabled = getMaxIndex() === 0;
+            }
+
         }
 
         function nextIndustry() {
-            const maxIndex = Math.max(0, slides.length - getVisibleSlides());
-            currentSlide = currentSlide >= maxIndex ? 0 : currentSlide + 1;
-            updateIndustrySlider();
+
+            currentSlide =
+                currentSlide >= getMaxIndex()
+                    ? 0
+                    : currentSlide + 1;
+
+            updateSlider();
+
         }
 
         function previousIndustry() {
-            const maxIndex = Math.max(0, slides.length - getVisibleSlides());
-            currentSlide = currentSlide <= 0 ? maxIndex : currentSlide - 1;
-            updateIndustrySlider();
+
+            currentSlide =
+                currentSlide <= 0
+                    ? getMaxIndex()
+                    : currentSlide - 1;
+
+            updateSlider();
+
         }
 
-        function startIndustryAutoplay() {
-            if (reducedMotion) return;
-            sliderTimer = setInterval(nextIndustry, 4200);
-        }
+        function stopAutoplay() {
 
-        function restartIndustryAutoplay() {
             clearInterval(sliderTimer);
-            startIndustryAutoplay();
+
         }
 
-        prevBtn.addEventListener("click", function () {
-            previousIndustry();
-            restartIndustryAutoplay();
-        });
-        nextBtn.addEventListener("click", function () {
-            nextIndustry();
-            restartIndustryAutoplay();
-        });
-        industrySlider.addEventListener("mouseenter", function () {
-            clearInterval(sliderTimer);
-        });
-        industrySlider.addEventListener("mouseleave", startIndustryAutoplay);
-        window.addEventListener("resize", updateIndustrySlider);
+        function startAutoplay() {
 
-        updateIndustrySlider();
-        startIndustryAutoplay();
-    }
+            stopAutoplay();
 
-    /* =====================================
+            if (reducedMotion || getMaxIndex() === 0) return;
 
-       ENQUIRY FORM
+            if (document.hidden) return;
 
-    ===================================== */
+            sliderTimer = setInterval(
+                nextIndustry,
+                4200
+            );
 
-
-
-    const enquiryForm = document.getElementById("enquiryForm");
-
-    const formNote = document.getElementById("formNote");
-
-
-
-    enquiryForm.addEventListener("submit", function (event) {
-
-
-
-        event.preventDefault();
-
-
-
-        if (!enquiryForm.reportValidity()) return;
-
-
-
-        const data = new FormData(enquiryForm);
-
-
-
-        const subject = encodeURIComponent(
-
-            "Product Enquiry - Unique Water Technologies"
-
-        );
-
-
-
-        const body = encodeURIComponent(
-
-            "Name: " + data.get("name") + "\n" +
-
-            "Company: " + data.get("company") + "\n" +
-
-            "Email: " + data.get("email") + "\n" +
-
-            "Phone: " + data.get("phone") + "\n" +
-
-            "Product Category: " + data.get("category") + "\n\n" +
-
-            "Requirement Details:\n" + data.get("message")
-
-        );
-
-
-
-        formNote.textContent =
-
-            "Opening your email application…";
-
-
-
-        window.location.href =
-
-            "mailto:daisy@uniquewater.in?subject=" +
-
-            subject + "&body=" + body;
-
-
-
-    });
-
-
-
-});
-
-
-
-
-/* ==========================================
-   ADVANCED INTERACTIVE ANIMATION ENGINE
-========================================== */
-
-if (!reducedMotion) {
-
-    /* HERO FLOATING PARTICLES */
-
-    const hero = document.querySelector(".hero");
-
-    if (hero) {
-        const particleCount = window.innerWidth <= 760 ? 12 : 28;
-
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement("span");
-
-            particle.className = "hero-particle";
-
-            particle.style.left = Math.random() * 100 + "%";
-            particle.style.top = (40 + Math.random() * 60) + "%";
-            particle.style.animationDuration =
-                (5 + Math.random() * 9) + "s";
-
-            particle.style.animationDelay =
-                (-Math.random() * 12) + "s";
-
-            particle.style.opacity = Math.random() * .7;
-
-            hero.appendChild(particle);
         }
-    }
 
-    /* INTERACTIVE CARD LIGHTING */
+        function restartAutoplay() {
 
-    if (finePointer) {
+            startAutoplay();
 
-        document.querySelectorAll(
-            ".product-card, .industry-slide, .process"
-        ).forEach(function (card) {
+        }
 
-            card.addEventListener("mousemove", function (event) {
+        if (prevBtn) {
 
-                const rect = card.getBoundingClientRect();
+            prevBtn.addEventListener("click", function () {
 
-                const x = event.clientX - rect.left;
-                const y = event.clientY - rect.top;
-
-                card.style.setProperty("--mouse-x", x + "px");
-                card.style.setProperty("--mouse-y", y + "px");
+                previousIndustry();
+                restartAutoplay();
 
             });
 
+        }
+
+        if (nextBtn) {
+
+            nextBtn.addEventListener("click", function () {
+
+                nextIndustry();
+                restartAutoplay();
+
+            });
+
+        }
+
+        industrySlider.addEventListener("mouseenter", stopAutoplay);
+
+        industrySlider.addEventListener("mouseleave", startAutoplay);
+
+        document.addEventListener("visibilitychange", startAutoplay);
+
+        let touchStartX = 0;
+
+        industrySlider.addEventListener("touchstart", function (event) {
+
+            touchStartX = event.changedTouches[0].clientX;
+
+        }, { passive: true });
+
+        industrySlider.addEventListener("touchend", function (event) {
+
+            const difference =
+                touchStartX - event.changedTouches[0].clientX;
+
+            if (Math.abs(difference) < 45) return;
+
+            if (difference > 0) {
+                nextIndustry();
+            } else {
+                previousIndustry();
+            }
+
+            restartAutoplay();
+
+        }, { passive: true });
+
+        let resizeTimer;
+
+        window.addEventListener("resize", function () {
+
+            clearTimeout(resizeTimer);
+
+            resizeTimer = setTimeout(function () {
+
+                const previousVisible = visibleSlides;
+
+                visibleSlides = getVisibleSlides();
+
+                if (previousVisible !== visibleSlides) {
+                    createDots();
+                }
+
+                updateSlider();
+
+            }, 150);
+
         });
+
+        createDots();
+        updateSlider();
+        startAutoplay();
 
     }
 
-    /* HERO ORB MOUSE MOVEMENT */
 
-    if (finePointer) {
+    /* =====================================
+       HERO ORB INTERACTION
+    ===================================== */
 
-        const heroArt = document.querySelector(".hero-art");
-        const waterOrb = document.querySelector(".water-orb");
+    if (finePointer && !reducedMotion) {
+
+        const heroArt = $(".hero-art");
+        const waterOrb = $(".water-orb");
 
         if (heroArt && waterOrb) {
 
@@ -5312,56 +5271,75 @@ if (!reducedMotion) {
 
                 const rect = heroArt.getBoundingClientRect();
 
-                const x = (event.clientX - rect.left) / rect.width - .5;
-                const y = (event.clientY - rect.top) / rect.height - .5;
+                const x =
+                    (event.clientX - rect.left) / rect.width - 0.5;
+
+                const y =
+                    (event.clientY - rect.top) / rect.height - 0.5;
 
                 waterOrb.style.transform =
-                    "translate3d(" + (x * 15) + "px," +
-                    (y * 15) + "px,0) scale(1.04)";
+                    "translate3d(" +
+                    x * 15 + "px," +
+                    y * 15 + "px,0) scale(1.04)";
 
             });
 
             heroArt.addEventListener("mouseleave", function () {
+
                 waterOrb.style.transform = "";
+
             });
 
         }
+
     }
 
-    /* BUTTON MAGNETIC HOVER */
 
-    if (finePointer) {
+    /* =====================================
+       BUTTON MAGNETIC EFFECT
+    ===================================== */
 
-        document.querySelectorAll(
-            ".btn, .nav-cta"
-        ).forEach(function (button) {
+    if (finePointer && !reducedMotion) {
+
+        $$(".btn, .nav-cta").forEach(function (button) {
 
             button.addEventListener("mousemove", function (event) {
 
                 const rect = button.getBoundingClientRect();
 
-                const x = event.clientX - rect.left - rect.width / 2;
-                const y = event.clientY - rect.top - rect.height / 2;
+                const x =
+                    event.clientX - rect.left - rect.width / 2;
+
+                const y =
+                    event.clientY - rect.top - rect.height / 2;
 
                 button.style.transform =
-                    "translate(" + (x * .07) + "px," +
-                    (y * .07) + "px)";
+                    "translate(" +
+                    x * 0.06 + "px," +
+                    y * 0.06 + "px)";
 
             });
 
             button.addEventListener("mouseleave", function () {
+
                 button.style.transform = "";
+
             });
 
         });
 
     }
 
-    /* CURSOR FOLLOW SPOTLIGHT */
 
-    if (finePointer) {
+    /* =====================================
+       CURSOR SPOTLIGHT
+    ===================================== */
+
+    if (finePointer && !reducedMotion) {
 
         const spotlight = document.createElement("div");
+
+        spotlight.className = "cursor-spotlight";
 
         spotlight.style.cssText = `
             position:fixed;
@@ -5385,20 +5363,18 @@ if (!reducedMotion) {
         document.body.appendChild(spotlight);
 
         let spotlightFrame = null;
-        let mouseX = 0;
-        let mouseY = 0;
 
         document.addEventListener("mousemove", function (event) {
 
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-
             if (spotlightFrame) return;
+
+            const x = event.clientX;
+            const y = event.clientY;
 
             spotlightFrame = requestAnimationFrame(function () {
 
-                spotlight.style.left = mouseX + "px";
-                spotlight.style.top = mouseY + "px";
+                spotlight.style.left = x + "px";
+                spotlight.style.top = y + "px";
                 spotlight.style.opacity = ".9";
 
                 spotlightFrame = null;
@@ -5408,43 +5384,96 @@ if (!reducedMotion) {
         });
 
         document.addEventListener("mouseleave", function () {
+
             spotlight.style.opacity = "0";
+
         });
 
     }
 
-    /* SCROLL-BASED PARALLAX */
 
-    let parallaxFrame = null;
+    /* =====================================
+       SCROLL PARALLAX
+    ===================================== */
 
-    function updateParallax() {
+    if (!reducedMotion) {
 
-        if (parallaxFrame) return;
+        let parallaxFrame = null;
 
-        parallaxFrame = requestAnimationFrame(function () {
+        window.addEventListener("scroll", function () {
 
-            const scrollY = window.scrollY;
+            if (parallaxFrame) return;
 
-            const glow = document.querySelector(".hero-glow");
+            parallaxFrame = requestAnimationFrame(function () {
 
-            if (glow && scrollY < window.innerHeight) {
+                const glow = $(".hero-glow");
 
-                glow.style.transform =
-                    "translateY(" + (scrollY * .12) + "px)";
+                if (glow && window.scrollY < window.innerHeight) {
+
+                    glow.style.transform =
+                        "translate3d(0," +
+                        window.scrollY * 0.12 +
+                        "px,0)";
+
+                }
+
+                parallaxFrame = null;
+
+            });
+
+        }, { passive: true });
+
+    }
+
+
+    /* =====================================
+       ENQUIRY FORM
+    ===================================== */
+
+    const enquiryForm = $("#enquiryForm");
+    const formNote = $("#formNote");
+
+    if (enquiryForm) {
+
+        enquiryForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            if (!enquiryForm.reportValidity()) return;
+
+            const data = new FormData(enquiryForm);
+
+            const subject = encodeURIComponent(
+                "Product Enquiry - Unique Water Technologies"
+            );
+
+            const body = encodeURIComponent(
+
+                "Name: " + data.get("name") + "\n" +
+                "Company: " + (data.get("company") || "Not provided") + "\n" +
+                "Email: " + data.get("email") + "\n" +
+                "Phone: " + data.get("phone") + "\n" +
+                "Product Category: " + data.get("category") + "\n\n" +
+                "Requirement Details:\n" + data.get("message")
+
+            );
+
+            if (formNote) {
+
+                formNote.textContent =
+                    "Opening your email application...";
 
             }
 
-            parallaxFrame = null;
+            window.location.href =
+                "mailto:daisy@uniquewater.in?subject=" +
+                subject + "&body=" + body;
 
         });
 
     }
 
-    window.addEventListener("scroll", updateParallax, {
-        passive: true
-    });
-
-}
+});
 
 
 

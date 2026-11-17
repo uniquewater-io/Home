@@ -1304,7 +1304,267 @@
             transition:none!important;
         }
     }
-    </style>
+    
+
+/* =========================================================
+   ADVANCED MOTION LAYER — preserves the existing page design
+   ========================================================= */
+
+/* Slim scroll progress indicator */
+#pageProgress {
+    position:fixed;
+    top:0;
+    left:0;
+    width:0;
+    height:3px;
+    z-index:100000;
+    background:linear-gradient(90deg,#c7a5ff,#9865ed,#e5d5ff);
+    box-shadow:0 0 12px rgba(199,165,255,.7);
+    pointer-events:none;
+    transition:width .08s linear;
+}
+
+/* Richer hero atmosphere */
+.hero {
+    isolation:isolate;
+    background-size:cover;
+    background-attachment:scroll;
+}
+.hero::before {
+    transform-origin:75% 35%;
+    will-change:transform,opacity;
+}
+.hero::after {
+    animation:gridDrift 24s linear infinite;
+    opacity:.75;
+}
+.hero-orb {
+    box-shadow:0 0 80px rgba(178,135,255,.08),
+               inset 0 0 60px rgba(178,135,255,.035);
+    will-change:transform;
+}
+.hero-orb::before {
+    animation:orbitSpin 28s linear infinite;
+}
+.hero-orb::after {
+    animation:orbitSpin 19s linear infinite reverse;
+}
+.hero-content > * {
+    animation:heroContentIn .85s both;
+}
+.hero-content .eyebrow {animation-delay:.08s;}
+.hero-content h1 {animation-delay:.2s;}
+.hero-content > p {animation-delay:.34s;}
+.hero-content .hero-buttons {animation-delay:.48s;}
+.hero-content .hero-points {animation-delay:.62s;}
+
+@keyframes gridDrift {
+    from {background-position:0 0,0 0;}
+    to {background-position:65px 65px,65px 65px;}
+}
+@keyframes orbitSpin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+@keyframes heroContentIn {
+    from {opacity:0;transform:translate3d(0,24px,0);filter:blur(5px);}
+    to {opacity:1;transform:translate3d(0,0,0);filter:blur(0);}
+}
+
+/* Soft animated glow behind the product collection */
+.products-section {
+    background-size:140% 140%;
+    animation:sectionAura 16s ease-in-out infinite alternate;
+}
+@keyframes sectionAura {
+    0% {background-position:0% 0%;}
+    100% {background-position:100% 100%;}
+}
+
+/* Product cards: subtle lift, edge glow and pointer-following light */
+.product-card {
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+    will-change:transform,opacity;
+}
+.product-card::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:3;
+    border-radius:inherit;
+    pointer-events:none;
+    opacity:0;
+    background:radial-gradient(
+        380px circle at var(--pointer-x,50%) var(--pointer-y,50%),
+        rgba(169,126,239,.17),
+        transparent 42%
+    );
+    transition:opacity .35s ease;
+}
+.product-card:hover::before {opacity:1;}
+.product-card:hover {
+    transform:translateY(-12px) perspective(900px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg));
+}
+.product-image img {
+    will-change:transform;
+}
+.product-image::before {
+    content:"";
+    position:absolute;
+    z-index:1;
+    top:-80%;
+    left:-65%;
+    width:42%;
+    height:260%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);
+    transform:rotate(25deg);
+    transition:left .85s ease;
+    pointer-events:none;
+}
+.product-card:hover .product-image::before {left:135%;}
+.product-number {
+    transition:transform .35s ease,background .35s ease;
+}
+.product-card:hover .product-number {
+    transform:translateY(-3px);
+    background:#fff;
+}
+
+/* Animated chips */
+.product-list span {
+    position:relative;
+    overflow:hidden;
+}
+.product-list span::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    transform:translateX(-120%);
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.8),transparent);
+    transition:transform .65s ease;
+}
+.product-card:hover .product-list span::after {transform:translateX(120%);}
+
+/* Trust and application tiles */
+.trust-item,
+.application,
+.process-card,
+.feature-image img,
+.contact-info,
+.enquiry-form {
+    will-change:transform;
+}
+.trust-item:hover .trust-icon {
+    animation:iconPop .55s cubic-bezier(.2,.8,.2,1);
+}
+.application::after {
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) scale(.35);
+    opacity:0;
+    transition:transform .6s ease,opacity .6s ease;
+}
+.application:hover::after {
+    transform:translate(-50%,-50%) scale(1.7);
+    opacity:1;
+}
+.application .icon {display:inline-block;}
+.application:hover .icon {animation:iconPop .55s ease;}
+@keyframes iconPop {
+    0% {transform:scale(1) rotate(0);}
+    45% {transform:scale(1.22) rotate(-8deg);}
+    75% {transform:scale(.96) rotate(4deg);}
+    100% {transform:scale(1) rotate(0);}
+}
+
+/* Feature image depth */
+.feature-image {
+    transform:translateZ(0);
+}
+.feature-image img {
+    transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease;
+}
+.feature-image:hover img {
+    transform:scale(1.025);
+    filter:saturate(1.08);
+}
+
+/* CTA ambient light */
+.cta-section {
+    background-size:180% 180%;
+    animation:ctaFlow 12s ease infinite alternate;
+}
+@keyframes ctaFlow {
+    0% {background-position:0% 50%;}
+    100% {background-position:100% 50%;}
+}
+
+/* Buttons get a refined shine without changing their shape */
+.btn,
+.nav-cta,
+.submit-btn {
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+}
+.btn::after,
+.nav-cta::after,
+.submit-btn::after {
+    content:"";
+    position:absolute;
+    inset:-2px auto -2px -65%;
+    width:42%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);
+    transform:skewX(-20deg);
+    transition:left .7s ease;
+    pointer-events:none;
+}
+.btn:hover::after,
+.nav-cta:hover::after,
+.submit-btn:hover::after {left:130%;}
+
+/* Smoothly animate header elevation when the existing JS adds .scrolled */
+#header {
+    transition:background .35s ease,box-shadow .35s ease;
+}
+#header.scrolled {
+    background:rgba(255,255,255,.96);
+    box-shadow:0 10px 30px rgba(35,13,72,.09);
+    backdrop-filter:blur(14px);
+}
+
+/* Better focus visibility for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline:3px solid rgba(152,101,237,.55);
+    outline-offset:3px;
+}
+
+/* Motion-safe fallback */
+@media (prefers-reduced-motion:reduce) {
+    #pageProgress {display:none;}
+    .hero::after,
+    .hero-orb::before,
+    .hero-orb::after,
+    .products-section,
+    .cta-section {animation:none!important;}
+    .hero-content > * {animation:none!important;}
+    .product-card,
+    .product-image img,
+    .feature-image img {will-change:auto;}
+}
+
+</style>
     </head>
 
     <body>
@@ -2009,7 +2269,67 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    </script>
+    
+
+    // ADVANCED MOTION LAYER
+    // Scroll progress indicator
+    const pageProgress = document.createElement("div");
+    pageProgress.id = "pageProgress";
+    pageProgress.setAttribute("aria-hidden", "true");
+    document.body.appendChild(pageProgress);
+
+    let scrollTicking = false;
+    function updateMotionProgress() {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+        pageProgress.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+        scrollTicking = false;
+    }
+    window.addEventListener("scroll", () => {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(updateMotionProgress);
+            scrollTicking = true;
+        }
+    }, { passive: true });
+    updateMotionProgress();
+
+    // Gentle pointer-following light on desktop product cards
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (finePointer.matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.querySelectorAll(".product-card").forEach(card => {
+            card.addEventListener("pointermove", event => {
+                const rect = card.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                const px = (x / rect.width) * 100;
+                const py = (y / rect.height) * 100;
+                const tiltX = ((px - 50) / 50) * 1.15;
+                const tiltY = ((50 - py) / 50) * 1.15;
+                card.style.setProperty("--pointer-x", `${px}%`);
+                card.style.setProperty("--pointer-y", `${py}%`);
+                card.style.setProperty("--tilt-x", `${tiltX}deg`);
+                card.style.setProperty("--tilt-y", `${tiltY}deg`);
+            });
+            card.addEventListener("pointerleave", () => {
+                card.style.setProperty("--tilt-x", "0deg");
+                card.style.setProperty("--tilt-y", "0deg");
+                card.style.setProperty("--pointer-x", "50%");
+                card.style.setProperty("--pointer-y", "50%");
+            });
+        });
+    }
+
+    // Animate product-card entrance with a refined stagger
+    document.querySelectorAll(".product-card").forEach((card, index) => {
+        card.style.transitionDelay = `${(index % 3) * 110}ms`;
+    });
+
+    // Pause decorative motion when the page is in a background tab
+    document.addEventListener("visibilitychange", () => {
+        document.body.classList.toggle("page-inactive", document.hidden);
+    });
+
+</script>
 
     </body>
     </html>

@@ -44,22 +44,25 @@ a{text-decoration:none;color:inherit}
 button,input,select,textarea{font-family:inherit}
 .container{width:min(1200px,92%);margin:auto}
 
-/* ==================================
-   MACOS INSPIRED LOADING SCREEN
-================================== */
+/* =========================================
+   MACOS INSPIRED STARTUP LOADER
+========================================= */
 
 .loader{
 position:fixed;
 inset:0;
 z-index:999999;
 display:flex;
-justify-content:center;
 align-items:center;
-flex-direction:column;
+justify-content:center;
+overflow:hidden;
 background:
-radial-gradient(ellipse at 50% 42%,rgba(130,76,202,.25),transparent 40%),
-linear-gradient(145deg,#160b29,#24103f 55%,#10091d);
-transition:opacity .8s ease,visibility .8s ease;
+radial-gradient(ellipse at 50% 43%,rgba(139,92,246,.23),transparent 42%),
+radial-gradient(ellipse at 15% 85%,rgba(102,55,175,.16),transparent 40%),
+linear-gradient(145deg,#10091d,#24103f 48%,#160b29);
+opacity:1;
+visibility:visible;
+transition:opacity .85s ease,visibility .85s ease;
 }
 
 .loader.hide{
@@ -68,114 +71,190 @@ visibility:hidden;
 pointer-events:none;
 }
 
+.loader::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+background-size:55px 55px;
+mask-image:radial-gradient(ellipse at center,black,transparent 75%);
+animation:macGrid 30s linear infinite;
+}
+
+.loader-glow{
+position:absolute;
+width:420px;
+height:420px;
+border-radius:50%;
+background:rgba(151,102,235,.15);
+filter:blur(90px);
+animation:macGlow 5s ease-in-out infinite alternate;
+pointer-events:none;
+}
+
 .loader-content{
-width:min(340px,85%);
+position:relative;
+z-index:2;
+width:min(360px,88%);
 display:flex;
 align-items:center;
 flex-direction:column;
 text-align:center;
+animation:macAppear 1s ease both;
 }
 
 .loader-symbol{
-width:82px;
-height:82px;
+width:112px;
+height:112px;
+position:relative;
 display:grid;
 place-items:center;
-position:relative;
-margin-bottom:27px;
+margin-bottom:30px;
 }
 
-.loader-symbol::before{
-content:"";
+.loader-symbol .ring{
 position:absolute;
 inset:0;
-border:2px solid rgba(255,255,255,.12);
-border-top-color:#d3b4ff;
-border-right-color:#a77ae9;
-border-radius:24px;
-animation:loaderRotate 2.5s linear infinite;
+border:1px solid rgba(255,255,255,.17);
+border-radius:32px;
+transform:rotate(0deg);
+animation:macRotate 9s linear infinite;
 }
 
-.loader-symbol::after{
+.loader-symbol .ring::before{
 content:"";
 position:absolute;
-inset:9px;
-border:1px solid rgba(255,255,255,.12);
-border-radius:19px;
-box-shadow:0 0 30px rgba(170,120,255,.25);
+width:9px;
+height:9px;
+background:#d9c0ff;
+border-radius:50%;
+top:9px;
+left:50%;
+transform:translateX(-50%);
+box-shadow:0 0 18px #c59bff;
+}
+
+.loader-symbol .ring-two{
+inset:10px;
+border:1px solid rgba(192,154,255,.4);
+border-radius:25px;
+animation:macRotateReverse 7s linear infinite;
+}
+
+.loader-symbol .ring-two::before{
+width:6px;
+height:6px;
+background:#fff;
+top:8px;
+}
+
+.loader-icon{
+width:74px;
+height:74px;
+border-radius:24px;
+display:grid;
+place-items:center;
+background:linear-gradient(145deg,rgba(255,255,255,.20),rgba(255,255,255,.045));
+border:1px solid rgba(255,255,255,.24);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+box-shadow:
+0 15px 45px rgba(0,0,0,.25),
+inset 0 1px 1px rgba(255,255,255,.3),
+0 0 35px rgba(164,115,255,.2);
+position:relative;
+z-index:2;
+animation:macIconFloat 3s ease-in-out infinite;
 }
 
 .loader-drop{
 font-size:35px;
-position:relative;
-z-index:2;
-animation:dropPulse 2s ease-in-out infinite;
-filter:drop-shadow(0 0 14px rgba(197,160,255,.6));
+filter:drop-shadow(0 0 12px rgba(198,158,255,.7));
 }
 
 .loader-brand{
 font-family:Manrope,sans-serif;
 font-size:22px;
 font-weight:800;
-letter-spacing:2px;
-color:#fff;
+letter-spacing:3px;
+color:white;
 }
 
 .loader-subtitle{
-font-size:10px;
-letter-spacing:3px;
-color:#bba8d6;
 margin-top:9px;
+font-size:10px;
+letter-spacing:4px;
 text-transform:uppercase;
+color:#c4b2df;
 }
 
 .loader-progress{
 width:190px;
 height:3px;
-background:rgba(255,255,255,.14);
-border-radius:20px;
+margin-top:33px;
+background:rgba(255,255,255,.13);
+border-radius:30px;
 overflow:hidden;
-margin-top:30px;
+box-shadow:0 0 10px rgba(255,255,255,.05);
 }
 
 .loader-progress span{
 display:block;
 width:0;
 height:100%;
-border-radius:20px;
-background:linear-gradient(90deg,#9160dc,#d5baff,#fff);
-box-shadow:0 0 15px #b994f4;
-transition:width .2s ease;
+border-radius:30px;
+background:linear-gradient(90deg,#9865ed,#d5baff,#fff);
+box-shadow:0 0 14px #c49aff;
+transition:width .3s ease;
 }
 
 .loader-status{
-margin-top:13px;
+margin-top:15px;
 font-size:10px;
-color:#bcaad3;
 letter-spacing:1px;
+color:#c2b2d9;
+min-height:15px;
 }
 
-.loader-glow{
+.loader-footer{
 position:absolute;
-width:320px;
-height:320px;
-border-radius:50%;
-background:rgba(140,92,215,.07);
-filter:blur(70px);
-pointer-events:none;
-animation:loaderGlow 5s ease-in-out infinite alternate;
+bottom:35px;
+left:0;
+width:100%;
+text-align:center;
+color:rgba(255,255,255,.35);
+font-size:9px;
+letter-spacing:2px;
 }
 
-@keyframes loaderRotate{
+@keyframes macRotate{
 to{transform:rotate(360deg)}
 }
-@keyframes dropPulse{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.14)}
+
+@keyframes macRotateReverse{
+to{transform:rotate(-360deg)}
 }
-@keyframes loaderGlow{
-from{transform:scale(.8);opacity:.4}
-to{transform:scale(1.3);opacity:1}
+
+@keyframes macIconFloat{
+0%,100%{transform:translateY(0) scale(1)}
+50%{transform:translateY(-6px) scale(1.035)}
+}
+
+@keyframes macGlow{
+from{transform:scale(.8);opacity:.5}
+to{transform:scale(1.25);opacity:1}
+}
+
+@keyframes macAppear{
+from{opacity:0;transform:translateY(20px) scale(.97)}
+to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@keyframes macGrid{
+from{background-position:0 0}
+to{background-position:55px 55px}
 }
 
 /* SCROLL PROGRESS */
@@ -262,10 +341,7 @@ font-weight:800;
 color:#51485f;
 }
 
-.nav-links a{
-transition:.3s;
-position:relative;
-}
+.nav-links a{transition:.3s;position:relative}
 
 .nav-links a:hover,
 .nav-links a.active{color:var(--accent)}
@@ -483,6 +559,7 @@ margin-right:8px;
 
 .trust-strip{background:white;border-bottom:1px solid var(--line)}
 .trust-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+
 .trust-item{
 padding:27px 15px;
 display:flex;
@@ -492,8 +569,10 @@ gap:13px;
 border-right:1px solid var(--line);
 transition:.3s;
 }
+
 .trust-item:last-child{border:0}
 .trust-item:hover{background:#faf7ff}
+
 .trust-icon{
 width:47px;
 height:47px;
@@ -504,6 +583,7 @@ background:var(--light);
 font-size:22px;
 transition:.4s;
 }
+
 .trust-item:hover .trust-icon{background:var(--gradient);transform:rotate(8deg) scale(1.08)}
 .trust-item strong{font-size:12px;display:block;color:var(--primary)}
 .trust-item small{font-size:10px;color:var(--muted)}
@@ -537,11 +617,7 @@ color:var(--primary);
 margin-bottom:17px;
 }
 
-.section-heading p{
-color:var(--muted);
-font-size:13px;
-line-height:2;
-}
+.section-heading p{color:var(--muted);font-size:13px;line-height:2}
 
 /* PRODUCTS */
 
@@ -1039,7 +1115,6 @@ to{background-position:65px 65px,65px 65px}
 @media(max-width:850px){
 
 .navbar{grid-template-columns:1fr auto;gap:10px}
-
 .nav-spacer{display:none}
 .menu-toggle{display:flex;grid-column:2;grid-row:1}
 
@@ -1130,11 +1205,13 @@ section{padding:70px 0}
 /* ACCESSIBILITY */
 
 @media(prefers-reduced-motion:reduce){
+
 *,*::before,*::after{
 scroll-behavior:auto!important;
 animation:none!important;
 transition:none!important;
 }
+
 .reveal,.product-card{opacity:1;transform:none}
 #pageProgress{display:none}
 }
@@ -1144,29 +1221,42 @@ transition:none!important;
 
 <body class="loading-active">
 
-<!-- MACOS STYLE LOADER -->
+<!-- MACOS STARTUP LOADER -->
 
-<div class="loader" id="loader" aria-label="Loading website">
+<div class="loader" id="loader" aria-label="Loading website" role="status">
 
 <div class="loader-glow"></div>
 
 <div class="loader-content">
 
 <div class="loader-symbol">
+
+<div class="ring"></div>
+<div class="ring ring-two"></div>
+
+<div class="loader-icon">
 <div class="loader-drop">💧</div>
 </div>
 
-<div class="loader-brand">UNIQUE WATER</div>
+</div>
 
-<div class="loader-subtitle">Technologies</div>
+<div class="loader-brand">UNIQUE WATER</div>
+<div class="loader-subtitle">TECHNOLOGIES</div>
 
 <div class="loader-progress">
 <span id="loaderBar"></span>
 </div>
 
-<div class="loader-status" id="loaderStatus">Initializing experience...</div>
+<div class="loader-status" id="loaderStatus">
+Starting your experience...
+</div>
 
 </div>
+
+<div class="loader-footer">
+WATER TREATMENT • FILTRATION • TECHNOLOGY
+</div>
+
 </div>
 
 <div id="pageProgress"></div>
@@ -1686,9 +1776,9 @@ document.addEventListener("DOMContentLoaded",function(){
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ==================================
+/* =========================================
    MACOS LOADING SCREEN
-================================== */
+========================================= */
 
 const loader = document.getElementById("loader");
 const loaderBar = document.getElementById("loaderBar");
@@ -1696,60 +1786,90 @@ const loaderStatus = document.getElementById("loaderStatus");
 
 let loaderProgress = 0;
 let loaderFinished = false;
+let loaderInterval = null;
+let loaderFallback = null;
+
+const loaderMessages = [
+"Starting your experience...",
+"Preparing product collection...",
+"Loading water treatment solutions...",
+"Almost ready..."
+];
+
+let messageIndex = 0;
 
 function updateLoader(){
+
 if(loaderFinished) return;
 
-loaderProgress = Math.min(loaderProgress + Math.random()*12 + 4,90);
+loaderProgress = Math.min(
+loaderProgress + Math.random()*9 + 3,
+90
+);
 
 if(loaderBar){
 loaderBar.style.width = loaderProgress + "%";
 }
 
-if(loaderStatus){
-if(loaderProgress < 35){
-loaderStatus.textContent = "Initializing experience...";
-}else if(loaderProgress < 65){
-loaderStatus.textContent = "Preparing products...";
-}else{
-loaderStatus.textContent = "Almost ready...";
-}
-}
+if(loaderProgress > 30 && messageIndex < 1){
+messageIndex = 1;
+}else if(loaderProgress > 55 && messageIndex < 2){
+messageIndex = 2;
+}else if(loaderProgress > 78 && messageIndex < 3){
+messageIndex = 3;
 }
 
-const loaderInterval = setInterval(updateLoader,180);
+if(loaderStatus){
+loaderStatus.textContent = loaderMessages[messageIndex];
+}
+
+}
 
 function finishLoader(){
 
 if(loaderFinished) return;
 
 loaderFinished = true;
+
 clearInterval(loaderInterval);
+clearTimeout(loaderFallback);
 
-if(loaderBar) loaderBar.style.width = "100%";
-if(loaderStatus) loaderStatus.textContent = "Welcome to Unique Water Technologies";
+if(loaderBar){
+loaderBar.style.width = "100%";
+}
 
-const hide = function(){
+if(loaderStatus){
+loaderStatus.textContent = "Welcome to Unique Water Technologies";
+}
+
+const hideLoader = function(){
+
+if(!loader) return;
+
 loader.classList.add("hide");
 document.body.classList.remove("loading-active");
+
 };
 
 if(reduceMotion){
-hide();
+hideLoader();
 }else{
-setTimeout(hide,350);
+setTimeout(hideLoader,500);
 }
+
 }
 
-window.addEventListener("load",finishLoader);
+loaderInterval = setInterval(updateLoader,180);
 
-/* Fallback for slow or failed external images */
+window.addEventListener("load",finishLoader,{once:true});
 
-setTimeout(finishLoader,5000);
+/* Fallback for slow networks or failed external resources */
 
-/* ==================================
+loaderFallback = setTimeout(finishLoader,6000);
+
+/* =========================================
    MOBILE NAVIGATION
-================================== */
+========================================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
@@ -1761,6 +1881,7 @@ navLinks.classList.remove("open");
 menuToggle.innerHTML = '<span aria-hidden="true">☰</span>';
 
 menuToggle.setAttribute("aria-expanded","false");
+
 menuToggle.setAttribute("aria-label","Open navigation menu");
 
 }
@@ -1785,20 +1906,26 @@ isOpen ? "Close navigation menu" : "Open navigation menu"
 menuToggle.addEventListener("click",toggleMobileMenu);
 
 navLinks.querySelectorAll("a").forEach(function(link){
+
 link.addEventListener("click",closeMobileMenu);
+
 });
 
 document.addEventListener("keydown",function(event){
+
 if(event.key==="Escape") closeMobileMenu();
+
 });
 
 window.addEventListener("resize",function(){
+
 if(window.innerWidth>850) closeMobileMenu();
+
 });
 
-/* ==================================
+/* =========================================
    HEADER SCROLL
-================================== */
+========================================= */
 
 const header = document.getElementById("header");
 const backTop = document.getElementById("backTop");
@@ -1809,7 +1936,9 @@ let scrollScheduled = false;
 function updateScroll(){
 
 const scrollY = window.scrollY;
-const scrollable = document.documentElement.scrollHeight-window.innerHeight;
+
+const scrollable =
+document.documentElement.scrollHeight-window.innerHeight;
 
 header.classList.toggle("scrolled",scrollY>30);
 
@@ -1828,30 +1957,35 @@ scrollScheduled = false;
 window.addEventListener("scroll",function(){
 
 if(!scrollScheduled){
+
 requestAnimationFrame(updateScroll);
+
 scrollScheduled = true;
+
 }
 
 },{passive:true});
 
 updateScroll();
 
-/* ==================================
+/* =========================================
    BACK TO TOP
-================================== */
+========================================= */
 
 backTop.addEventListener("click",function(event){
+
 event.preventDefault();
 
 window.scrollTo({
 top:0,
 behavior:reduceMotion?"auto":"smooth"
 });
+
 });
 
-/* ==================================
+/* =========================================
    SCROLL REVEAL
-================================== */
+========================================= */
 
 const revealItems = document.querySelectorAll(
 ".reveal,.application,.process-card"
@@ -1886,14 +2020,16 @@ revealObserver.observe(item);
 }else{
 
 revealItems.forEach(function(item){
+
 item.classList.add("active");
+
 });
 
 }
 
-/* ==================================
+/* =========================================
    PRODUCT CARD ANIMATIONS
-================================== */
+========================================= */
 
 const productCards = document.querySelectorAll(".product-card");
 
@@ -1926,14 +2062,16 @@ cardObserver.observe(card);
 }else{
 
 productCards.forEach(function(card){
+
 card.classList.add("show");
+
 });
 
 }
 
-/* ==================================
+/* =========================================
    PRODUCT POINTER EFFECT
-================================== */
+========================================= */
 
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
@@ -1964,9 +2102,9 @@ card.style.setProperty("--pointer-y","50%");
 
 }
 
-/* ==================================
+/* =========================================
    PRODUCT ENQUIRY AUTO SELECTION
-================================== */
+========================================= */
 
 const category = document.getElementById("category");
 const message = document.getElementById("message");
@@ -1989,9 +2127,9 @@ message.focus({preventScroll:true});
 
 });
 
-/* ==================================
+/* =========================================
    ENQUIRY FORM
-================================== */
+========================================= */
 
 const enquiryForm = document.getElementById("enquiryForm");
 
@@ -2031,16 +2169,16 @@ window.location.href = mailto;
 
 });
 
-/* ==================================
+/* =========================================
    FOOTER YEAR
-================================== */
+========================================= */
 
 document.getElementById("year").textContent =
 new Date().getFullYear();
 
-/* ==================================
+/* =========================================
    PAUSE ANIMATIONS IN BACKGROUND
-================================== */
+========================================= */
 
 document.addEventListener("visibilitychange",function(){
 

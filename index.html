@@ -710,6 +710,74 @@ header.scrolled .nav {
 
 
 
+/* Premium slider button states */
+.industry-slider-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+/* Better mobile form and layout */
+#enquiryForm {
+    min-width: 0;
+}
+
+#enquiryForm .btn {
+    width: 100%;
+}
+
+.cursor-spotlight {
+    will-change: left, top;
+}
+
+/* Prevent animation conflicts */
+.hero-art,
+.water-orb,
+.product-card,
+.btn,
+.nav-cta {
+    will-change: transform;
+}
+
+/* Mobile overflow protection */
+@media(max-width:760px) {
+    .nav-links {
+        z-index: 1002;
+        max-height: calc(100dvh - 100px);
+        overflow-y: auto;
+    }
+
+    .industry-slider {
+        touch-action: pan-y;
+    }
+
+    .cursor-spotlight {
+        display: none;
+    }
+
+    .hero-particle {
+        pointer-events: none;
+    }
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce) {
+    .hero-particle,
+    .whatsapp,
+    .footer-glow {
+        animation: none !important;
+    }
+
+    .product-card,
+    .water-orb,
+    .btn,
+    .nav-cta {
+        transform: none !important;
+    }
+}
+
+
+
+
 /* ================= HERO ================= */
 
 

@@ -70,7 +70,7 @@ button {
 }
 
 /* =========================================
-   MACOS-INSPIRED LOADING SCREEN
+   MACOS STYLE LOADER
 ========================================= */
 
 #pageLoader {
@@ -105,9 +105,8 @@ button {
     border-radius:19px;
     background:rgba(255,255,255,.95);
     border:1px solid rgba(255,255,255,.65);
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.35),
-        0 0 60px rgba(179,135,255,.16);
+    box-shadow:0 30px 100px rgba(0,0,0,.35),
+               0 0 60px rgba(179,135,255,.16);
     color:var(--ink);
     text-align:center;
     animation:macWindowOpen .7s cubic-bezier(.2,.8,.2,1);
@@ -172,7 +171,6 @@ button {
     font-weight:800;
     letter-spacing:.3px;
     margin-bottom:8px;
-    color:#21103f;
 }
 
 .loader-content > p {
@@ -739,13 +737,50 @@ section.content-section {
 }
 
 /* =========================================
-   CLIENTS
+   CLIENT LOGO SECTION
 ========================================= */
 
 .clients-section {
     background:var(--paper);
     border-top:1px solid #f0ebf7;
     border-bottom:1px solid #f0ebf7;
+}
+
+.clients-heading {
+    text-align:center;
+    max-width:750px;
+    margin:0 auto 40px;
+}
+
+.section-label {
+    display:inline-block;
+    color:#8151bb;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:3px;
+    margin-bottom:13px;
+}
+
+.clients-heading h2 {
+    font-family:Manrope,sans-serif;
+    font-size:clamp(25px,4vw,36px);
+    font-weight:800;
+    letter-spacing:-1px;
+    margin-bottom:14px;
+}
+
+.clients-heading p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.9;
+}
+
+.clients-divider {
+    width:55px;
+    height:3px;
+    margin:22px auto 0;
+    border-radius:10px;
+    background:linear-gradient(90deg,#32145f,#a879ef);
 }
 
 .clients-grid {
@@ -774,6 +809,70 @@ section.content-section {
     border-color:#c9afea;
     box-shadow:var(--shadow);
 }
+
+/* Image client cards */
+
+.client-logo-box {
+    width:100%;
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px;
+}
+
+.client-logo-box img {
+    display:block;
+    max-width:100%;
+    max-height:65px;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    transition:transform .3s ease;
+}
+
+.client-card:hover .client-logo-box img {
+    transform:scale(1.06);
+}
+
+.client-name {
+    font-family:Manrope,sans-serif;
+    font-size:12px;
+    font-weight:800;
+    color:#382052;
+}
+
+.client-tag {
+    font-size:10px;
+    color:#93879f;
+}
+
+.clients-bottom {
+    margin-top:35px;
+    padding:24px;
+    text-align:center;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:13px;
+}
+
+.clients-bottom strong {
+    display:block;
+    font-family:Manrope,sans-serif;
+    font-size:14px;
+    color:#382052;
+    margin-bottom:9px;
+}
+
+.clients-bottom p {
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.8;
+}
+
+/* =========================================
+   SECOND CLIENT SECTION
+========================================= */
 
 .client-symbol {
     width:39px;
@@ -847,7 +946,7 @@ section.content-section {
 }
 
 /* =========================================
-   CTA
+   BOTTOM CTA
 ========================================= */
 
 .bottom-cta {
@@ -887,7 +986,7 @@ section.content-section {
 }
 
 /* =========================================
-   FOOTER - MISSING STYLES FIXED
+   FOOTER
 ========================================= */
 
 footer {
@@ -1090,6 +1189,7 @@ footer {
 ========================================= */
 
 @media(max-width:1100px) {
+
     .navbar {
         grid-template-columns:1fr auto;
     }
@@ -1116,6 +1216,7 @@ footer {
 }
 
 @media(max-width:800px) {
+
     .contact-layout {
         grid-template-columns:1fr;
     }
@@ -1135,6 +1236,7 @@ footer {
 }
 
 @media(max-width:700px) {
+
     .navbar {
         min-height:72px;
         width:calc(100% - 32px);
@@ -1250,6 +1352,7 @@ footer {
 }
 
 @media(max-width:380px) {
+
     .brand-logo {
         width:150px;
     }
@@ -1268,6 +1371,7 @@ footer {
 }
 
 @media(prefers-reduced-motion:reduce) {
+
     *,*::before,*::after {
         scroll-behavior:auto!important;
         animation-duration:.01ms!important;
@@ -1281,16 +1385,18 @@ footer {
 <body>
 
 <!-- =====================================
-     MACOS STYLE PAGE LOADER
+     MACOS PAGE LOADER
 ===================================== -->
 
 <div id="pageLoader">
+
     <div class="loader-content">
 
         <div class="loader-titlebar">
             <span class="mac-dot red"></span>
             <span class="mac-dot yellow"></span>
             <span class="mac-dot green"></span>
+
             <span class="loader-window-title">
                 Unique Water Technologies
             </span>
@@ -1305,6 +1411,7 @@ footer {
             >
 
             <h2>UNIQUE WATER TECHNOLOGIES</h2>
+
             <p>PURE SOLUTIONS. RELIABLE PERFORMANCE.</p>
 
             <div class="loader-spinner"></div>
@@ -1327,27 +1434,39 @@ footer {
 ===================================== -->
 
 <header>
+
 <nav class="navbar">
 
     <a href="https://uniquewater-io.github.io/Home/" class="brand">
+
         <img
             src="logo/unique logo.png"
             alt="Unique Water Technologies Logo"
             class="brand-logo"
         >
+
     </a>
 
     <div class="nav-links" id="navLinks">
+
         <a href="https://uniquewater-io.github.io/Home/">Home</a>
+
         <a href="https://uniquewater-io.github.io/Products/">Products</a>
+
         <a href="https://uniquewater-io.github.io/About/">About</a>
+
         <a href="https://uniquewater-io.github.io/Industries/">Industries</a>
+
         <a href="https://uniquewater-io.github.io/Contact/" class="active">Contact</a>
+
         <a href="#enquiry" class="nav-cta">Send an Enquiry ↗</a>
+
     </div>
 
     <div class="nav-right">
+
         <a href="#enquiry" class="nav-cta">Get a Quote ↗</a>
+
     </div>
 
     <button
@@ -1367,6 +1486,7 @@ footer {
 ===================================== -->
 
 <section class="hero">
+
     <div class="hero-inner">
 
         <div class="breadcrumb">HOME / CONTACT US</div>
@@ -1397,7 +1517,9 @@ footer {
             >WhatsApp Us</a>
 
         </div>
+
     </div>
+
 </section>
 
 <!-- =====================================
@@ -1405,15 +1527,20 @@ footer {
 ===================================== -->
 
 <section class="content-section">
+
 <div class="container">
 
     <div class="section-heading">
+
         <div class="eyebrow">GET IN TOUCH</div>
+
         <h2>We're Ready to Assist You</h2>
+
         <p>
             Contact Unique Water Technologies for product enquiries,
             quotations, replacement components and sourcing assistance.
         </p>
+
     </div>
 
     <div class="contact-layout">
@@ -1429,26 +1556,37 @@ footer {
             </p>
 
             <div class="info-item">
+
                 <div class="info-icon">✉</div>
+
                 <div>
+
                     <h4>Email Address</h4>
+
                     <p>
                         <a href="mailto:daisy@uniquewater.in">
                             daisy@uniquewater.in
                         </a>
                     </p>
+
                     <p>
                         <a href="mailto:uniqueblr@yahoo.com">
                             uniqueblr@yahoo.com
                         </a>
                     </p>
+
                 </div>
+
             </div>
 
             <div class="info-item">
+
                 <div class="info-icon">☎</div>
+
                 <div>
+
                     <h4>WhatsApp Enquiry</h4>
+
                     <p>
                         <a
                             href="https://wa.me/919845733383"
@@ -1456,26 +1594,38 @@ footer {
                             rel="noopener noreferrer"
                         >+91 98457 33383</a>
                     </p>
+
                 </div>
+
             </div>
 
             <div class="info-item">
+
                 <div class="info-icon">◷</div>
+
                 <div>
+
                     <h4>Enquiry Assistance</h4>
+
                     <p>
                         Product information<br>
                         Quotations & sourcing<br>
                         Industrial requirements<br>
                         Bulk & project enquiries
                     </p>
+
                 </div>
+
             </div>
 
             <div class="info-item">
+
                 <div class="info-icon">⌂</div>
+
                 <div>
+
                     <h4>Website</h4>
+
                     <p>
                         <a
                             href="https://uniquewater-io.github.io/Home/"
@@ -1483,13 +1633,17 @@ footer {
                             rel="noopener noreferrer"
                         >www.uniquewater.in</a>
                     </p>
+
                 </div>
+
             </div>
 
             <div class="info-note">
+
                 For faster assistance, please share the product name,
                 model number, dimensions, specifications, quantity
                 or application details.
+
             </div>
 
         </aside>
@@ -1499,11 +1653,14 @@ footer {
         <div class="form-card" id="enquiry">
 
             <div class="form-heading">
+
                 <h3>Send Us an Enquiry</h3>
+
                 <p>
                     Complete the form below. Your enquiry will be
                     submitted to our team by email.
                 </p>
+
             </div>
 
             <form id="contactForm">
@@ -1541,8 +1698,10 @@ footer {
                 <!-- SPAM PROTECTION -->
 
                 <div class="hp-field" aria-hidden="true">
+
                     <label>
                         Leave this field empty
+
                         <input
                             type="text"
                             name="_honey"
@@ -1550,11 +1709,13 @@ footer {
                             autocomplete="off"
                         >
                     </label>
+
                 </div>
 
                 <div class="form-grid">
 
                     <div class="form-group">
+
                         <label for="name">
                             Full Name <span>*</span>
                         </label>
@@ -1568,9 +1729,11 @@ footer {
                             maxlength="100"
                             required
                         >
+
                     </div>
 
                     <div class="form-group">
+
                         <label for="company">Company Name</label>
 
                         <input
@@ -1581,9 +1744,11 @@ footer {
                             autocomplete="organization"
                             maxlength="120"
                         >
+
                     </div>
 
                     <div class="form-group">
+
                         <label for="email">
                             Email Address <span>*</span>
                         </label>
@@ -1597,9 +1762,11 @@ footer {
                             maxlength="150"
                             required
                         >
+
                     </div>
 
                     <div class="form-group">
+
                         <label for="phone">
                             Phone / WhatsApp <span>*</span>
                         </label>
@@ -1615,9 +1782,11 @@ footer {
                             title="Enter a valid phone number using 7 to 20 permitted characters."
                             required
                         >
+
                     </div>
 
                     <div class="form-group full">
+
                         <label for="subject">
                             Enquiry Type <span>*</span>
                         </label>
@@ -1627,19 +1796,31 @@ footer {
                             name="enquiry_type"
                             required
                         >
+
                             <option value="">Select your enquiry</option>
+
                             <option>RO System Components</option>
+
                             <option>Filter Cartridges</option>
+
                             <option>Industrial Water Treatment Spares</option>
+
                             <option>Filter Housings & Vessels</option>
+
                             <option>Water Treatment Media</option>
+
                             <option>Pumps, Valves & Accessories</option>
+
                             <option>Bulk / Project Requirement</option>
+
                             <option>Other Enquiry</option>
+
                         </select>
+
                     </div>
 
                     <div class="form-group full">
+
                         <label for="message">
                             Your Requirement <span>*</span>
                         </label>
@@ -1651,6 +1832,7 @@ footer {
                             maxlength="3000"
                             required
                         ></textarea>
+
                     </div>
 
                 </div>
@@ -1669,23 +1851,26 @@ footer {
                         class="submit-btn"
                         id="submitBtn"
                     >
+
                         <span id="submitText">Send Enquiry</span>
+
                         <span id="submitArrow">↗</span>
+
                     </button>
 
                     <button
                         type="button"
                         class="whatsapp-btn"
                         id="whatsappFormBtn"
-                    >
-                        ☎ WhatsApp Enquiry
-                    </button>
+                    >☎ WhatsApp Enquiry</button>
 
                 </div>
 
                 <p class="form-disclaimer">
+
                     By submitting this form, you agree that our team
                     may contact you regarding your enquiry.
+
                 </p>
 
             </form>
@@ -1693,142 +1878,209 @@ footer {
         </div>
 
     </div>
+
 </div>
 </section>
 
+<!-- =====================================
+     CLIENT LOGOS
+===================================== -->
 
-<!-- OUR VALUED CLIENTS -->
+<section class="content-section clients-section" id="clients">
 
-<section class="section clients-section" id="clients">
+<div class="container">
 
-    <div class="container">
+    <div class="clients-heading">
 
-        <div class="clients-heading reveal">
+        <span class="section-label">OUR VALUED CLIENTS</span>
 
-            <span class="section-label">OUR VALUED CLIENTS</span>
+        <h2>Trusted by Our Valued Clients</h2>
 
-            <h2>Trusted by Our Valued Clients</h2>
+        <p>
+            We are proud to build professional relationships with
+            organisations across different industries. Their trust
+            inspires us to deliver dependable water treatment
+            solutions and quality-focused services.
+        </p>
 
-            <p>
-                We are proud to build professional relationships with
-                organisations across different industries. Their trust
-                inspires us to deliver dependable water treatment
-                solutions and quality-focused services.
-            </p>
+        <div class="clients-divider"></div>
 
-            <div class="clients-divider"></div>
+    </div>
+
+    <div class="clients-grid">
+
+        <div class="client-card">
+
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/1.jpg"
+                    alt="Client 1 Logo"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="client-name">Client Name 01</div>
+
+            <div class="client-tag">Our Valued Client</div>
 
         </div>
 
-        <div class="clients-grid">
+        <div class="client-card">
 
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/1.jpg"
-                         alt="Client 1 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 01</div>
-                <div class="client-tag">Our Valued Client</div>
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/2.jpeg"
+                    alt="Client 2 Logo"
+                    loading="lazy"
+                >
             </div>
 
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/2.jpeg"
-                         alt="Client 2 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 02</div>
-                <div class="client-tag">Our Valued Client</div>
-            </div>
+            <div class="client-name">Client Name 02</div>
 
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/3.png"
-                         alt="Client 3 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 03</div>
-                <div class="client-tag">Our Valued Client</div>
-            </div>
-
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/4.png"
-                         alt="Client 4 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 04</div>
-                <div class="client-tag">Our Valued Client</div>
-            </div>
-
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/5.webp"
-                         alt="Client 5 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 05</div>
-                <div class="client-tag">Our Valued Client</div>
-            </div>
-
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/6.webp"
-                         alt="Client 6 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 06</div>
-                <div class="client-tag">Our Valued Client</div>
-            </div>
-
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/7.webp"
-                         alt="Client 7 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 07</div>
-                <div class="client-tag">Our Valued Client</div>
-            </div>
-
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/8.webp"
-                         alt="Client 8 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 08</div>
-                <div class="client-tag">Our Valued Client</div>
-            </div>
-
-            <div class="client-card reveal">
-                <div class="client-logo-box">
-                    <img src="https://uniquewater-io.github.io/Home/unique-clients/9.png"
-                         alt="Client 9 Logo" loading="lazy">
-                </div>
-                <div class="client-name">Client Name 09</div>
-                <div class="client-tag">Our Valued Client</div>
-            </div>
+            <div class="client-tag">Our Valued Client</div>
 
         </div>
 
-        <div class="clients-bottom reveal">
+        <div class="client-card">
 
-            <strong>
-                Building Trust. Creating Long-Term Partnerships.
-            </strong>
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/3.png"
+                    alt="Client 3 Logo"
+                    loading="lazy"
+                >
+            </div>
 
-            <p>
-                Thank you to our clients for trusting Unique Water Technologies
-                with their industrial water treatment requirements.
-            </p>
+            <div class="client-name">Client Name 03</div>
+
+            <div class="client-tag">Our Valued Client</div>
+
+        </div>
+
+        <div class="client-card">
+
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/4.png"
+                    alt="Client 4 Logo"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="client-name">Client Name 04</div>
+
+            <div class="client-tag">Our Valued Client</div>
+
+        </div>
+
+        <div class="client-card">
+
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/5.webp"
+                    alt="Client 5 Logo"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="client-name">Client Name 05</div>
+
+            <div class="client-tag">Our Valued Client</div>
+
+        </div>
+
+        <div class="client-card">
+
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/6.webp"
+                    alt="Client 6 Logo"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="client-name">Client Name 06</div>
+
+            <div class="client-tag">Our Valued Client</div>
+
+        </div>
+
+        <div class="client-card">
+
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/7.webp"
+                    alt="Client 7 Logo"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="client-name">Client Name 07</div>
+
+            <div class="client-tag">Our Valued Client</div>
+
+        </div>
+
+        <div class="client-card">
+
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/8.webp"
+                    alt="Client 8 Logo"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="client-name">Client Name 08</div>
+
+            <div class="client-tag">Our Valued Client</div>
+
+        </div>
+
+        <div class="client-card">
+
+            <div class="client-logo-box">
+                <img
+                    src="https://uniquewater-io.github.io/Home/unique-clients/9.png"
+                    alt="Client 9 Logo"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="client-name">Client Name 09</div>
+
+            <div class="client-tag">Our Valued Client</div>
 
         </div>
 
     </div>
 
+    <div class="clients-bottom">
+
+        <strong>
+            Building Trust. Creating Long-Term Partnerships.
+        </strong>
+
+        <p>
+            Thank you to our clients for trusting Unique Water Technologies
+            with their industrial water treatment requirements.
+        </p>
+
+    </div>
+
+</div>
+</section>
 
 <!-- =====================================
-     OUR CLIENTS
+     OUR CLIENTS & PROJECTS
 ===================================== -->
 
-<section class="content-section clients-section">
+<section class="content-section">
+
 <div class="container">
 
     <div class="section-heading">
+
         <div class="eyebrow">OUR CLIENTS & PROJECTS</div>
 
         <h2>Building Connections Through Reliable Solutions</h2>
@@ -1838,41 +2090,63 @@ footer {
             that help us support water treatment and industrial
             requirements across different sectors.
         </p>
+
     </div>
 
     <div class="clients-grid">
 
         <div class="client-card">
+
             <div class="client-symbol">⚡</div>
+
             <strong>Biocon Biologics</strong>
+
             <small>Pharmaceutical & Medical</small>
+
         </div>
 
         <div class="client-card">
+
             <div class="client-symbol">💧</div>
+
             <strong>Centum</strong>
+
             <small>Environmental Solutions</small>
+
         </div>
 
         <div class="client-card">
+
             <div class="client-symbol">🏭</div>
+
             <strong>JSW</strong>
+
             <small>Industrial Sector</small>
+
         </div>
 
         <div class="client-card">
+
             <div class="client-symbol">🧪</div>
+
             <strong>Solvay</strong>
+
             <small>Chemical Solutions</small>
+
         </div>
 
         <div class="client-card">
+
             <div class="client-symbol">⚙</div>
+
             <strong>Bagmane</strong>
+
             <small>Engineering Solutions</small>
+
         </div>
 
     </div>
+
 </div>
 </section>
 
@@ -1881,9 +2155,11 @@ footer {
 ===================================== -->
 
 <section class="content-section">
+
 <div class="container">
 
     <div class="section-heading">
+
         <div class="eyebrow">HOW IT WORKS</div>
 
         <h2>From Requirement to the Right Component</h2>
@@ -1892,47 +2168,65 @@ footer {
             Share your requirements and let our team help you
             identify suitable water treatment products and components.
         </p>
+
     </div>
 
     <div class="process-grid">
 
         <div class="process-card">
+
             <div class="process-number">01</div>
+
             <h3>Tell Us What You Need</h3>
+
             <p>
                 Send the product name, application or a brief
                 description of your requirement.
             </p>
+
         </div>
 
         <div class="process-card">
+
             <div class="process-number">02</div>
+
             <h3>Share Specifications</h3>
+
             <p>
                 Include dimensions, model number, material,
                 micron rating or reference details.
             </p>
+
         </div>
 
         <div class="process-card">
+
             <div class="process-number">03</div>
+
             <h3>Requirement Review</h3>
+
             <p>
                 Our team reviews the information and helps
                 identify a suitable product option.
             </p>
+
         </div>
 
         <div class="process-card">
+
             <div class="process-number">04</div>
+
             <h3>Receive a Quotation</h3>
+
             <p>
                 Our team follows up using the contact details
                 provided in your enquiry.
             </p>
+
         </div>
 
     </div>
+
 </div>
 </section>
 
@@ -1976,11 +2270,13 @@ footer {
                 href="https://uniquewater-io.github.io/Home/"
                 class="footer-logo-link"
             >
+
                 <img
                     src="logo/unique logo.png"
                     alt="Unique Water Technologies Logo"
                     class="footer-logo"
                 >
+
             </a>
 
             <p>
@@ -1996,9 +2292,13 @@ footer {
             <h4>Explore</h4>
 
             <a href="https://uniquewater-io.github.io/Home/">Home</a>
+
             <a href="https://uniquewater-io.github.io/Products/">Products</a>
+
             <a href="https://uniquewater-io.github.io/About/">About Us</a>
+
             <a href="https://uniquewater-io.github.io/Industries/">Industries</a>
+
             <a href="https://uniquewater-io.github.io/Contact/">Contact</a>
 
         </div>
@@ -2066,6 +2366,7 @@ footer {
     aria-hidden="true"
     aria-labelledby="successTitle"
 >
+
     <div class="success-popup">
 
         <div class="success-icon">✓</div>
@@ -2085,6 +2386,7 @@ footer {
         >Great, Thank You!</button>
 
     </div>
+
 </div>
 
 <!-- =====================================
@@ -2095,7 +2397,7 @@ footer {
 "use strict";
 
 /* =====================================
-   PAGE LOADER WITH PROGRESS
+   MACOS PAGE LOADER
 ===================================== */
 
 (function() {
@@ -2107,9 +2409,14 @@ footer {
 
     if (!loader || !progress || !percent || !message) return;
 
+    const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
     let currentProgress = 0;
     let loaderFinished = false;
     let progressTimer = null;
+    let fallbackTimer = null;
 
     const messages = [
         "Preparing your experience...",
@@ -2123,6 +2430,7 @@ footer {
         currentProgress = Math.min(100, Math.max(0, value));
 
         progress.style.width = currentProgress + "%";
+
         percent.textContent = Math.round(currentProgress) + "%";
 
         const messageIndex = Math.min(
@@ -2140,17 +2448,18 @@ footer {
 
         loaderFinished = true;
 
-        if (progressTimer) {
-            clearInterval(progressTimer);
-        }
+        clearInterval(progressTimer);
+        clearTimeout(fallbackTimer);
 
         updateProgress(100);
 
         message.textContent = "Experience ready!";
 
         setTimeout(function() {
+
             loader.classList.add("hide");
-        }, 250);
+
+        }, reducedMotion ? 0 : 250);
 
     }
 
@@ -2171,16 +2480,18 @@ footer {
 
     }, 180);
 
-    window.addEventListener("load", hideLoader, { once:true });
+    window.addEventListener("load", hideLoader, {once:true});
 
-    /* Fallback: never leave the loader stuck */
+    /* Fallback prevents an endless loading screen */
 
-    setTimeout(hideLoader, 8000);
+    fallbackTimer = setTimeout(hideLoader, 8000);
 
-    /* Handle pages loaded from browser cache */
+    /* Browser cache handling */
 
     if (document.readyState === "complete") {
+
         setTimeout(hideLoader, 200);
+
     }
 
 })();
@@ -2233,7 +2544,9 @@ if (menuToggle && navLinks) {
             !navLinks.contains(event.target) &&
             !menuToggle.contains(event.target)
         ) {
+
             closeMobileMenu();
+
         }
 
     });
@@ -2241,7 +2554,9 @@ if (menuToggle && navLinks) {
     window.addEventListener("resize", function() {
 
         if (window.innerWidth > 700) {
+
             closeMobileMenu();
+
         }
 
     });
@@ -2256,7 +2571,9 @@ if (menuToggle && navLinks) {
 const yearElement = document.getElementById("year");
 
 if (yearElement) {
+
     yearElement.textContent = new Date().getFullYear();
+
 }
 
 
@@ -2267,12 +2584,15 @@ if (yearElement) {
 const contactForm = document.getElementById("contactForm");
 
 const submitBtn = document.getElementById("submitBtn");
+
 const submitText = document.getElementById("submitText");
+
 const submitArrow = document.getElementById("submitArrow");
 
 const errorMessage = document.getElementById("errorMessage");
 
 const successPopup = document.getElementById("successPopup");
+
 const popupClose = document.getElementById("popupClose");
 
 const whatsappFormBtn = document.getElementById("whatsappFormBtn");
@@ -2324,7 +2644,9 @@ function validateForm() {
 
     }
 
-    const honeypot = contactForm.querySelector('[name="_honey"]');
+    const honeypot = contactForm.querySelector(
+        '[name="_honey"]'
+    );
 
     if (honeypot && honeypot.value.trim() !== "") {
 
@@ -2356,18 +2678,31 @@ function getEnquiryMessage() {
     const message = document.getElementById("message").value.trim();
 
     return [
+
         "Hello Unique Water Technologies,",
+
         "",
+
         "I would like to make an enquiry.",
+
         "",
+
         "Name: " + name,
+
         "Company: " + (company || "Not provided"),
+
         "Email: " + email,
+
         "Phone: " + phone,
+
         "Enquiry Type: " + subject,
+
         "",
+
         "Requirement:",
+
         message
+
     ].join("\n");
 
 }
@@ -2380,6 +2715,12 @@ function getEnquiryMessage() {
 if (whatsappFormBtn) {
 
     whatsappFormBtn.addEventListener("click", function() {
+
+        if (errorMessage) {
+
+            errorMessage.style.display = "none";
+
+        }
 
         if (!validateForm()) return;
 
@@ -2425,7 +2766,9 @@ function openSuccessPopup() {
     document.body.classList.add("popup-open");
 
     if (popupClose) {
+
         popupClose.focus();
+
     }
 
 }
@@ -2444,7 +2787,9 @@ function closeSuccessPopup() {
         previousFocusedElement &&
         typeof previousFocusedElement.focus === "function"
     ) {
+
         previousFocusedElement.focus();
+
     }
 
 }
@@ -2463,7 +2808,9 @@ if (successPopup) {
     successPopup.addEventListener("click", function(event) {
 
         if (event.target === successPopup) {
+
             closeSuccessPopup();
+
         }
 
     });
@@ -2477,7 +2824,9 @@ document.addEventListener("keydown", function(event) {
         successPopup &&
         successPopup.classList.contains("show")
     ) {
+
         closeSuccessPopup();
+
     }
 
 });
@@ -2485,6 +2834,7 @@ document.addEventListener("keydown", function(event) {
 
 /* =====================================
    EMAIL FORM SUBMISSION
+   FORMSUBMIT AJAX
 ===================================== */
 
 if (contactForm) {
@@ -2494,8 +2844,11 @@ if (contactForm) {
         event.preventDefault();
 
         if (errorMessage) {
+
             errorMessage.style.display = "none";
+
             errorMessage.textContent = "";
+
         }
 
         if (!validateForm()) return;
@@ -2505,11 +2858,15 @@ if (contactForm) {
         submitBtn.disabled = true;
 
         if (submitText) {
+
             submitText.textContent = "Sending Enquiry...";
+
         }
 
         if (submitArrow) {
+
             submitArrow.textContent = "⏳";
+
         }
 
         try {
@@ -2521,7 +2878,9 @@ if (contactForm) {
                 method:"POST",
 
                 headers:{
+
                     "Accept":"application/json"
+
                 },
 
                 body:formData
@@ -2543,8 +2902,8 @@ if (contactForm) {
             }
 
             /*
-               FormSubmit can return success as a string
-               or a boolean. Accept both formats.
+             FormSubmit may return success as
+             a string or a boolean.
             */
 
             const submissionSuccessful =
@@ -2565,8 +2924,8 @@ if (contactForm) {
             }
 
             /*
-               Show success only after the service confirms
-               that it has accepted the submission.
+             Show the popup only after the email
+             service confirms successful submission.
             */
 
             contactForm.reset();
@@ -2582,13 +2941,19 @@ if (contactForm) {
             let errorText =
                 "Sorry, your enquiry could not be submitted. Please try again or contact us directly through WhatsApp at +91 98457 33383.";
 
-            if (
-                error instanceof TypeError &&
-                !navigator.onLine
-            ) {
+            if (!navigator.onLine) {
 
                 errorText =
                     "You appear to be offline. Please check your internet connection and try again.";
+
+            } else if (error instanceof TypeError) {
+
+                errorText =
+                    "Unable to connect to the email service. Please try again or contact us through WhatsApp.";
+
+            } else if (error.message) {
+
+                errorText = error.message;
 
             }
 
@@ -2601,11 +2966,15 @@ if (contactForm) {
             submitBtn.disabled = false;
 
             if (submitText) {
+
                 submitText.textContent = "Send Enquiry";
+
             }
 
             if (submitArrow) {
+
                 submitArrow.textContent = "↗";
+
             }
 
         }

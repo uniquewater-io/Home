@@ -16,6 +16,161 @@
 /* macOS-inspired loading screen */
 #loader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 20% 20%,rgba(152,101,237,.35),transparent 35%),radial-gradient(circle at 80% 80%,rgba(84,38,154,.4),transparent 35%),linear-gradient(135deg,#160b2b,#32145f 55%,#20103e);transition:opacity .55s,visibility .55s}#loader.hide{opacity:0;visibility:hidden;pointer-events:none}.loader-window{width:min(370px,100%);overflow:hidden;border:1px solid #ffffff38;border-radius:19px;background:#ffffff1c;backdrop-filter:blur(25px);box-shadow:0 35px 100px #0005}.loader-bar{height:40px;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #ffffff20;background:#ffffff12}.dot{width:10px;height:10px;border-radius:50%}.dot:nth-child(1){background:#ff5f57}.dot:nth-child(2){background:#febc2e}.dot:nth-child(3){background:#28c840}.loader-caption{flex:1;text-align:center;color:#ffffffb8;font-size:10px;letter-spacing:2px}.loader-body{text-align:center;padding:32px 25px}.loader-mark{width:65px;height:65px;border-radius:19px;display:grid;place-items:center;margin:0 auto 16px;background:linear-gradient(145deg,#fff,#e9dcff);font-size:32px}.loader-body h2{font:800 21px Manrope;color:#fff}.loader-body p{font-size:10px;letter-spacing:2px;color:#d9c9f4;margin:5px 0 25px;text-transform:uppercase}.progress{height:5px;background:#ffffff30;border-radius:20px;overflow:hidden}.progress:after{content:'';display:block;height:100%;width:100%;background:linear-gradient(90deg,#c5a4ff,#fff);transform-origin:left;animation:load 1.5s ease both}@keyframes load{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 /* top strip + navigation */
+
+/* STORE UNDER DEVELOPMENT NOTICE */
+.development-notice {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 15% 15%, #9865ed45, transparent 35%),
+    radial-gradient(circle at 85% 85%, #54269a55, transparent 35%),
+    linear-gradient(135deg, #160b2b, #32145f 55%, #20103e);
+  overflow-y: auto;
+}
+
+.development-card {
+  width: min(480px, 100%);
+  padding: 38px 30px;
+  text-align: center;
+  color: #fff;
+  background: #ffffff13;
+  border: 1px solid #ffffff35;
+  border-radius: 22px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 30px 90px #0005;
+  animation: developmentEnter .65s ease both;
+}
+
+.development-icon {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 20px;
+  border-radius: 22px;
+  background: #ffffff20;
+  font-size: 39px;
+  box-shadow: 0 10px 30px #0002;
+}
+
+.development-label {
+  display: inline-block;
+  padding: 7px 13px;
+  border: 1px solid #ffffff40;
+  border-radius: 30px;
+  color: #e0cbff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.development-card h2 {
+  margin: 19px 0 12px;
+  font: 800 clamp(23px, 5vw, 30px)/1.2 Manrope, sans-serif;
+}
+
+.development-card > p {
+  color: #e4d9f3;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.development-warning {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 23px 0;
+  padding: 16px;
+  border: 1px solid #ffc85760;
+  border-radius: 12px;
+  background: #ffb52b18;
+  color: #ffe1a3;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.development-warning span {
+  font-size: 21px;
+}
+
+.development-subtext {
+  margin-top: 12px;
+}
+
+.development-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin: 23px 0;
+  color: #bfffd5;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  background: #35df83;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #35df83;
+  animation: statusPulse 1.5s infinite;
+}
+
+.development-contact {
+  display: block;
+  padding: 14px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #fff, #e8dcff);
+  color: #32145f;
+  font-size: 12px;
+  font-weight: 800;
+  transition: .25s;
+}
+
+.development-contact:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px #0003;
+}
+
+.development-footer {
+  margin-top: 24px;
+  padding-top: 17px;
+  border-top: 1px solid #ffffff25;
+  color: #c9b8df;
+  font-size: 10px;
+}
+
+@keyframes developmentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes statusPulse {
+  50% {
+    opacity: .4;
+    box-shadow: 0 0 3px #35df83;
+  }
+}
+
+@media(max-width:480px) {
+  .development-card {
+    padding: 30px 20px;
+  }
+}
+
 .topbar{background:var(--primary);color:#e8ddf8;font-size:11px;padding:9px 0}.topbar-inner{display:flex;justify-content:space-between;gap:15px;align-items:center}.topbar strong,.topbar a{color:#fff}.header{position:sticky;top:0;z-index:1000;background:#ffffffef;backdrop-filter:blur(16px);border-bottom:1px solid #32145f12;transition:.25s}.header.scrolled{box-shadow:0 8px 28px #21163812}.nav-main{min-height:76px;display:grid;grid-template-columns:175px minmax(180px,1fr) auto;gap:22px;align-items:center}.brand-logo{width:155px;height:68px;object-fit:contain}.search-wrap{height:44px;display:flex;align-items:center;background:#f2eef8;border:1px solid transparent;border-radius:9px;overflow:hidden;transition:.2s}.search-wrap:focus-within{border-color:#b99be8;background:#fff;box-shadow:0 0 0 3px #9865ed18}.search-wrap input{width:100%;height:100%;border:0;outline:0;background:transparent;padding:0 15px;color:var(--ink);font-size:13px}.search-wrap button{height:100%;width:52px;border:0;background:var(--gradient);color:#fff;font-size:19px}.nav-actions{display:flex;align-items:center;gap:10px}.nav-action{position:relative;border:0;background:transparent;color:var(--primary);font-size:12px;font-weight:800;padding:10px 12px;border-radius:9px;display:flex;align-items:center;gap:7px}.nav-action:hover{background:var(--light)}.count{position:absolute;top:1px;right:0;min-width:17px;height:17px;padding:0 4px;border-radius:20px;background:#e84968;color:white;font-size:10px;display:grid;place-items:center}.mobile-menu{display:none;border:0;background:var(--light);color:var(--primary);width:42px;height:42px;border-radius:10px;font-size:22px}.category-nav{border-top:1px solid #eee8f5;background:#fff}.category-list{display:flex;align-items:center;justify-content:space-between;gap:12px;overflow-x:auto;scrollbar-width:none;padding:11px 0}.category-list::-webkit-scrollbar{display:none}.category-list button{white-space:nowrap;border:0;background:transparent;color:#5c506b;font-size:11px;font-weight:800;padding:7px 10px;border-radius:7px}.category-list button:hover,.category-list button.active{color:var(--secondary);background:var(--light)}
 /* hero */
 .hero{padding:24px 0 16px}.hero-banner{position:relative;min-height:280px;border-radius:17px;overflow:hidden;background:radial-gradient(circle at 80% 20%,#9865ed70,transparent 28%),linear-gradient(115deg,#24103f,#54269a 60%,#8054c5);color:#fff;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;padding:42px 6%;box-shadow:0 18px 45px #32145f20}.hero-banner:before{content:'';position:absolute;inset:0;background-image:linear-gradient(#ffffff0b 1px,transparent 1px),linear-gradient(90deg,#ffffff0b 1px,transparent 1px);background-size:35px 35px;pointer-events:none}.hero-copy,.hero-art{position:relative;z-index:1}.hero-kicker{display:inline-block;padding:7px 12px;border:1px solid #ffffff45;border-radius:30px;color:#e7dafa;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:15px}.hero-banner h1{font:800 clamp(29px,4.2vw,51px)/1.1 Manrope;letter-spacing:-1.7px;max-width:650px;margin-bottom:14px}.hero-banner h1 span{color:#d7bdff}.hero-banner p{max-width:550px;color:#e6d9f5;font-size:13px;line-height:1.8;margin-bottom:22px}.hero-cta{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--primary);padding:12px 18px;border-radius:8px;font-size:12px;font-weight:800;transition:.2s}.hero-cta:hover{transform:translateY(-3px);box-shadow:0 10px 25px #0003}.hero-art{display:flex;justify-content:center;align-items:center;min-height:190px}.hero-orb{width:190px;height:190px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ffffff40,#ffffff0c);border:1px solid #ffffff55;box-shadow:inset 0 0 35px #ffffff25,0 20px 50px #13062545;font-size:92px;animation:float 4s ease-in-out infinite}.hero-tag{position:absolute;background:#fff;color:var(--primary);padding:10px 14px;border-radius:10px;box-shadow:0 12px 30px #13062545;font-size:11px;font-weight:800}.hero-tag.one{right:4%;top:10%}.hero-tag.two{left:3%;bottom:8%}@keyframes float{50%{transform:translateY(-9px)}}
@@ -37,6 +192,54 @@
 </style>
 </head>
 <body>
+
+
+<!-- STORE UNDER DEVELOPMENT NOTICE -->
+<div id="developmentNotice" class="development-notice" role="alertdialog" aria-modal="true" aria-labelledby="devTitle">
+  <div class="development-card">
+    <div class="development-icon">🚧</div>
+
+    <span class="development-label">IMPORTANT NOTICE</span>
+
+    <h2 id="devTitle">Store Under Development</h2>
+
+    <p>
+      Welcome to the Unique Water Technologies Online Store.
+      Please be informed that this website is currently under development.
+    </p>
+
+    <div class="development-warning">
+      <span>⚠️</span>
+      <strong>
+        Please do not proceed with shopping, adding products to cart,
+        placing orders, or making any purchase-related interactions.
+      </strong>
+    </div>
+
+    <p class="development-subtext">
+      Our online shopping platform is being prepared.
+      Product listings, prices, availability and ordering functionality
+      are not yet officially released.
+    </p>
+
+    <div class="development-status">
+      <span class="status-dot"></span>
+      Website Development in Progress
+    </div>
+
+    <a href="https://uniquewater-io.github.io/Home/contact/contact"
+       class="development-contact">
+      Contact Us for Product Enquiries ↗
+    </a>
+
+    <div class="development-footer">
+      © <span id="developmentYear"></span> Unique Water Technologies
+    </div>
+  </div>
+</div>
+
+
+
 <div id="loader" role="status" aria-label="Loading store"><div class="loader-window"><div class="loader-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="loader-caption">UNIQUE WATER STORE</span></div><div class="loader-body"><div class="loader-mark">💧</div><h2>UNIQUE WATER</h2><p>Technologies • Online Store</p><div class="progress"></div></div></div></div>
 <div class="topbar"><div class="container topbar-inner"><span>Welcome to Unique Water Technologies <strong>— Water solutions, made accessible.</strong></span><span>Need help? <a href="mailto:daisy@uniquewater.in">daisy@uniquewater.in</a></span></div></div>
 <header class="header" id="header"><div class="container nav-main">
@@ -61,6 +264,39 @@
 <div class="modal-wrap" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Enquiry checkout"><div class="modal"><div class="modal-head"><h3>Complete Your Product Enquiry</h3><button class="close-btn" data-close="checkout" aria-label="Close">×</button></div><form class="checkout-form" id="checkoutForm"><p>This store demo sends your order request by email. Product prices and availability will be confirmed by Unique Water Technologies before order acceptance.</p><div class="form-grid"><div class="form-field"><label for="customerName">Full Name *</label><input id="customerName" name="name" required autocomplete="name"></div><div class="form-field"><label for="customerPhone">Mobile Number *</label><input id="customerPhone" name="phone" type="tel" required pattern="[0-9+() -]{8,18}" autocomplete="tel"></div><div class="form-field"><label for="customerEmail">Email Address *</label><input id="customerEmail" name="email" type="email" required autocomplete="email"></div><div class="form-field"><label for="customerCompany">Company (optional)</label><input id="customerCompany" name="company" autocomplete="organization"></div><div class="form-field full"><label for="customerAddress">Delivery Address / City *</label><textarea id="customerAddress" name="address" required></textarea></div><div class="form-field full"><label for="customerNotes">Additional Requirements (optional)</label><textarea id="customerNotes" name="notes" placeholder="Quantity, model, application or any special requirements"></textarea></div></div><button class="submit-order" type="submit">Send Enquiry by Email ↗</button></form></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
+
+
+// DEVELOPMENT NOTICE YEAR
+document.getElementById('developmentYear').textContent =
+  new Date().getFullYear();
+
+// BLOCK SHOPPING INTERACTIONS
+document.body.classList.add('locked');
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#developmentNotice')) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+}, true);
+
+// BLOCK SHOPPING FORM SUBMISSIONS
+document.addEventListener('submit', function(e) {
+  if (!e.target.closest('#developmentNotice')) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  }
+}, true);
+
+// PREVENT KEYBOARD SHOPPING SHORTCUTS
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    e.preventDefault();
+  }
+}, true);
+
+
 'use strict';
 /* ==========================================================
    STORE CONFIGURATION
